@@ -1,0 +1,272 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='WolframDesktop 12.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       161,          7]
+NotebookDataLength[     13435,        264]
+NotebookOptionsPosition[     12044,        231]
+NotebookOutlinePosition[     12386,        246]
+CellTagsIndexPosition[     12343,        243]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["A Computational Sustainability Toolkit", "Title",
+ CellChangeTimes->{{3.7762007826751947`*^9, 3.7762008063805437`*^9}, 
+   3.7762011080455256`*^9, {3.779531211121214*^9, 3.779531215305817*^9}, {
+   3.7816530556669807`*^9, 3.781653129399046*^9}, {3.781655074696412*^9, 
+   3.7816550838539248`*^9}, {3.7816552098308263`*^9, 
+   3.781655212029992*^9}},ExpressionUUID->"56df779e-2109-48a0-8dc0-\
+dbd57cd31e77"],
+
+Cell["\<\
+Lessons in Energy Monitoring and Application Building using the Wolfram \
+Language\
+\>", "Subtitle",
+ CellChangeTimes->{{3.781655106418598*^9, 3.7816551255881605`*^9}, {
+   3.7816552185004773`*^9, 3.7816552257819695`*^9}, {3.78165848284173*^9, 
+   3.7816584998528557`*^9}, 
+   3.7816586188063507`*^9},ExpressionUUID->"26e283a7-16cd-4692-9302-\
+e53b3ff55465"],
+
+Cell[CellGroupData[{
+
+Cell["Introduction", "Chapter",
+ CellChangeTimes->{{3.7795312227074857`*^9, 
+  3.7795312248174677`*^9}},ExpressionUUID->"c55c4f85-5fbd-4635-9ebb-\
+597394d271dd"],
+
+Cell["\<\
+I hope that these materials provide students with an understanding of how to \
+use technology in their pursuit of a more sustainable world. To that end, \
+these materials provide the source code of an application that students, and \
+their school communities, can use to track, and hopefully manage, their \
+school\[CloseCurlyQuote]s energy consumption. These materials also constitute \
+a series of lessons that are  relevant to a variety of educational topics \
+such as  computer science, math, physics or environmental studies
+
+By making these materials freely available, I hope that they will find their \
+way into schools through students, educators or administrators.  I hope that \
+students will find these materials sufficiently clear to use on their \
+initiative,  that educators will see sufficient value to incorporate them \
+into their lessons, and that administrators will see them as a useful means \
+to understand how their facilities use energy.  
+
+An individual student, or small group of students, could use the materials in \
+Chapter 1 to track their school\[CloseCurlyQuote]s daily energy consumption \
+by taking daily readings of their school\[CloseCurlyQuote]s meters. \
+Incorporating additional data, such as monthly bill data or data about fuel \
+oil deliveries, will require collaboration between students, teachers, and \
+administrators, as those other types of information are likely only \
+accessible to school administrators.  I hope that these materials are not \
+simply educational tools, but that they serve as a catalyst to bring about \
+real changes in energy use in schools.   
+
+Implementing a project to monitor a school\[CloseCurlyQuote]s energy \
+consumption with this set of tools has only three pre-requisites:
+\
+\>", "Text",
+ CellChangeTimes->{{3.779531668275158*^9, 3.779531690544205*^9}, {
+   3.779531728161619*^9, 3.77953175351884*^9}, {3.7795318712878714`*^9, 
+   3.7795318943926344`*^9}, {3.779531927722627*^9, 3.7795319618598604`*^9}, {
+   3.779532099629942*^9, 3.779532174412586*^9}, {3.7795323961444325`*^9, 
+   3.7795324043470697`*^9}, {3.779534654371065*^9, 3.7795347318736267`*^9}, {
+   3.779534949584983*^9, 3.7795350428281755`*^9}, {3.7795354934262486`*^9, 
+   3.7795355122858715`*^9}, {3.78165329782508*^9, 3.7816533113519096`*^9}, {
+   3.781653663723735*^9, 3.781653741810015*^9}, {3.7816538927212315`*^9, 
+   3.7816540701400805`*^9}, {3.781654236285268*^9, 3.7816543891131816`*^9}, 
+   3.781654432840173*^9, {3.7816544935065923`*^9, 3.7816545661719866`*^9}, {
+   3.781654730986635*^9, 3.7816547769582653`*^9}, {3.781654841826072*^9, 
+   3.78165491791111*^9}, 3.781658519382045*^9, {3.7816585496828346`*^9, 
+   3.781658605984307*^9}, {3.7816586801708097`*^9, 3.781658715596216*^9}, {
+   3.781658759961574*^9, 3.781658945447968*^9}, {3.7816589794050555`*^9, 
+   3.781659252014062*^9}, {3.7816593362820883`*^9, 3.781659386878934*^9}, {
+   3.7816594297752075`*^9, 3.7816594329899664`*^9}, {3.7816596728767023`*^9, 
+   3.781659897615702*^9}, {3.7816599364588947`*^9, 3.7816599479453897`*^9}, {
+   3.7816599956757355`*^9, 3.7816600496218433`*^9}, {3.78166009564366*^9, 
+   3.781660117773004*^9}, {3.781660165800152*^9, 3.78166020442607*^9}, {
+   3.7816602380734544`*^9, 3.781660246365957*^9}, {3.7816602980782986`*^9, 
+   3.781660352592313*^9}, 3.781660382844181*^9, {3.781660415191613*^9, 
+   3.7816605653692875`*^9}, {3.7816605979299316`*^9, 
+   3.7816606361214275`*^9}, {3.781660691506919*^9, 3.7816608155227175`*^9}, 
+   3.781660880806021*^9, {3.7816609686744857`*^9, 3.781660970193216*^9}, {
+   3.78234350247262*^9, 3.7823435043018007`*^9}, 3.782344430698864*^9, {
+   3.7823445160529265`*^9, 3.7823445165513787`*^9}, {3.783625812592767*^9, 
+   3.7836258373538494`*^9}, {3.783625916814788*^9, 3.7836260258707843`*^9}, {
+   3.783626056630528*^9, 3.7836260571198225`*^9}, {3.783629854549874*^9, 
+   3.7836299431401644`*^9}, {3.7836299917129273`*^9, 
+   3.7836299972721753`*^9}, {3.7836300822852507`*^9, 
+   3.7836301147244196`*^9}, {3.783630197186225*^9, 3.783630218777322*^9}, {
+   3.7836302995984416`*^9, 3.7836303024720144`*^9}, {3.783630363044476*^9, 
+   3.78363036390342*^9}, {3.7836305005396404`*^9, 3.7836306382224884`*^9}, {
+   3.7836307870842147`*^9, 3.7836308551971054`*^9}, {3.7836308867892694`*^9, 
+   3.7836310166236625`*^9}, {3.7836385399927793`*^9, 
+   3.7836385516902094`*^9}, {3.783640793753271*^9, 3.783640798624885*^9}, {
+   3.7836408606985416`*^9, 3.783641030802243*^9}, {3.7836410693661437`*^9, 
+   3.7836410728602853`*^9}, 3.783641106245463*^9, {3.783641148656598*^9, 
+   3.783641181576277*^9}, {3.783641242532394*^9, 3.783641295521432*^9}, {
+   3.7836413274623127`*^9, 3.7836416654908123`*^9}, {3.7836417076150885`*^9, 
+   3.783641784024271*^9}, {3.7836418228256903`*^9, 3.783641827227553*^9}, {
+   3.7836418607866435`*^9, 3.7836418812419796`*^9}, {3.783641917107602*^9, 
+   3.783641934908368*^9}, {3.783641996415184*^9, 3.783642023949358*^9}, {
+   3.783642054677043*^9, 3.783642273262885*^9}, {3.783642307695676*^9, 
+   3.7836424727128468`*^9}, {3.7836425131281796`*^9, 
+   3.7836425240382195`*^9}, {3.783642600265572*^9, 3.783642609172883*^9}, {
+   3.783802112217867*^9, 3.7838021166510077`*^9}, 3.7838022513627744`*^9, {
+   3.7838025910905056`*^9, 3.783802610547141*^9}, {3.783802665120462*^9, 
+   3.783802668126609*^9}, {3.783802703657197*^9, 3.7838027462256727`*^9}, {
+   3.783802791502982*^9, 3.78380279804758*^9}, {3.7838029106310053`*^9, 
+   3.7838029698721714`*^9}, {3.783803005093974*^9, 3.7838030128578405`*^9}, {
+   3.7838031037868447`*^9, 3.783803268887836*^9}, {3.783803305194602*^9, 
+   3.783803347269952*^9}, {3.783805297328393*^9, 3.783805319832797*^9}, {
+   3.783805743290906*^9, 3.783805792749535*^9}, {3.783960268518421*^9, 
+   3.7839602706046567`*^9}, {3.7839603132022977`*^9, 3.783960441553961*^9}, {
+   3.7839905964501543`*^9, 3.7839905988044834`*^9}, 
+   3.783992157680092*^9},ExpressionUUID->"d0787262-7623-4863-b45e-\
+5e4b43157da6"],
+
+Cell[CellGroupData[{
+
+Cell["a single individual willing to put in the required effort,", "Item",
+ CellChangeTimes->{{3.7795350761973567`*^9, 3.7795350991181355`*^9}, {
+  3.7795352017199345`*^9, 
+  3.7795352301531677`*^9}},ExpressionUUID->"a8bba1df-f8e9-4334-9dc3-\
+1523fc9ae759"],
+
+Cell["a basic Wolfram Cloud account,", "Item",
+ CellChangeTimes->{{3.7795350761973567`*^9, 3.7795350991181355`*^9}, {
+  3.7795352017199345`*^9, 
+  3.7795352342040505`*^9}},ExpressionUUID->"25f6c3b2-ea14-42c8-9ad3-\
+c83af824616a"],
+
+Cell["\<\
+the ability to record the values displayed on the school\[CloseCurlyQuote]s \
+utility meters.\
+\>", "Item",
+ CellChangeTimes->{{3.7795350761973567`*^9, 3.7795350991181355`*^9}, {
+  3.7795352017199345`*^9, 
+  3.779535291912842*^9}},ExpressionUUID->"8f212e39-880e-43ca-9f64-\
+e151daca1aae"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["A note on organization", "Chapter",
+ CellChangeTimes->{{3.781653042576576*^9, 3.781653049818205*^9}, {
+  3.7823435250983505`*^9, 3.7823435354514894`*^9}, {3.78234365875075*^9, 
+  3.78234367544547*^9}},ExpressionUUID->"806c9980-4b99-4bfd-a2b5-\
+943ca8b52093"],
+
+Cell["\<\
+The work contains several chapters, each with multiple user stories.  The \
+first section of three chapters provides the code and relevant background \
+materials necessary to build an application that will store and visualize the \
+energy consumption of a single building. The second section provides the code \
+necessary to build applications for more complex school campuses where \
+multiple buildings connect to a single meter, or where a district heating \
+system provides heat to many buildings on the campus.  The third section \
+explains how to use the Wolfram Language to analyze the data collected.  The \
+final section takes analysis tools further into an evaluation of the costs \
+and benefits of potential energy-saving measures.
+
+ For those not familiar with the concept, User Stories are a common method of \
+defining requirements in the world of software development.  The basic \
+structure of a user story is to state who the user is, what the user needs to \
+do, and why.   The format has many benefits over other means of specifying \
+software requirements, which have been written about extensively.   In the \
+context of these materials, I hope that by pairing each incremental piece of \
+code with a statement of the functional requirement that it satisfies will \
+help to clarify the relationship between the two.  
+ 
+ There is a significant amount of background knowledge that is helpful in \
+understanding energy systems, buildings, software development, and the \
+particulars of the Wolfram Language.  After working with several \
+organizational strategies, I settled on providing the background materials as \
+it became relevant in the sequence of user stories.  
+\
+\>", "Text",
+ CellChangeTimes->{{3.782343617591135*^9, 3.7823436392001925`*^9}, {
+   3.7823436839500513`*^9, 3.7823436847332582`*^9}, {3.7823437326270695`*^9, 
+   3.7823439307425613`*^9}, {3.78234401220639*^9, 3.78234404705633*^9}, {
+   3.7823441247859464`*^9, 3.7823441956195393`*^9}, {3.7823442289752493`*^9, 
+   3.782344277616619*^9}, {3.782344328861237*^9, 3.7823443290911036`*^9}, {
+   3.7836310458235393`*^9, 3.7836311281144686`*^9}, {3.783638790845315*^9, 
+   3.78363994689644*^9}, {3.7836400057227926`*^9, 3.783640473766921*^9}, {
+   3.783640504987486*^9, 3.7836405750093274`*^9}, {3.783640614355715*^9, 
+   3.7836406677063494`*^9}, 3.7836407017236123`*^9, {3.7836427123522625`*^9, 
+   3.7836427860043287`*^9}, {3.783642836345343*^9, 3.783643065927104*^9}, {
+   3.7836431129694567`*^9, 3.7836431593220034`*^9}, {3.783729117470043*^9, 
+   3.7837291181179695`*^9}, {3.783729168103422*^9, 3.7837291905976133`*^9}, {
+   3.783729306325197*^9, 3.783729320887735*^9}, {3.7838055496139555`*^9, 
+   3.7838055657529583`*^9}, {3.783805677240261*^9, 3.7838057046992316`*^9}, {
+   3.7838058908147297`*^9, 3.7838058984020915`*^9}, {3.7839909317346053`*^9, 
+   3.783990953834524*^9}, {3.7839910134844923`*^9, 3.783991013903901*^9}, 
+   3.7839926805718136`*^9},ExpressionUUID->"44af9664-7c3b-4f53-b145-\
+7fa43f262989"],
+
+Cell[CellGroupData[{
+
+Cell["The Wolfram Language", "Section",
+ CellChangeTimes->{{3.7795371811246758`*^9, 
+  3.77953718853506*^9}},ExpressionUUID->"22852d0d-e337-44fb-a034-\
+dec72b6eaf70"],
+
+Cell["The Wolfram Language is ", "Text",
+ CellChangeTimes->{{3.779543700478774*^9, 
+  3.7795437633523283`*^9}},ExpressionUUID->"860cf37e-4ff9-4764-8252-\
+d7856cb2c0af"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1352, 817},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"12.0 for Microsoft Windows (64-bit) (April 11, 2019)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[583, 22, 412, 6, 96, "Title",ExpressionUUID->"56df779e-2109-48a0-8dc0-dbd57cd31e77"],
+Cell[998, 30, 368, 8, 53, "Subtitle",ExpressionUUID->"26e283a7-16cd-4692-9302-e53b3ff55465"],
+Cell[CellGroupData[{
+Cell[1391, 42, 161, 3, 67, "Chapter",ExpressionUUID->"c55c4f85-5fbd-4635-9ebb-597394d271dd"],
+Cell[1555, 47, 5944, 87, 320, "Text",ExpressionUUID->"d0787262-7623-4863-b45e-5e4b43157da6"],
+Cell[CellGroupData[{
+Cell[7524, 138, 257, 4, 31, "Item",ExpressionUUID->"a8bba1df-f8e9-4334-9dc3-1523fc9ae759"],
+Cell[7784, 144, 229, 4, 31, "Item",ExpressionUUID->"25f6c3b2-ea14-42c8-9ad3-c83af824616a"],
+Cell[8016, 150, 298, 7, 31, "Item",ExpressionUUID->"8f212e39-880e-43ca-9f64-e151daca1aae"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8363, 163, 264, 4, 67, "Chapter",ExpressionUUID->"806c9980-4b99-4bfd-a2b5-943ca8b52093"],
+Cell[8630, 169, 3012, 45, 276, "Text",ExpressionUUID->"44af9664-7c3b-4f53-b145-7fa43f262989"],
+Cell[CellGroupData[{
+Cell[11667, 218, 166, 3, 67, "Section",ExpressionUUID->"22852d0d-e337-44fb-a034-dec72b6eaf70"],
+Cell[11836, 223, 168, 3, 34, "Text",ExpressionUUID->"860cf37e-4ff9-4764-8252-d7856cb2c0af"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
