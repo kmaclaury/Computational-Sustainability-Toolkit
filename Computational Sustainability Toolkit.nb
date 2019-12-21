@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       161,          7]
-NotebookDataLength[     13435,        264]
-NotebookOptionsPosition[     12044,        231]
-NotebookOutlinePosition[     12386,        246]
-CellTagsIndexPosition[     12343,        243]
+NotebookDataLength[     14524,        286]
+NotebookOptionsPosition[     12946,        251]
+NotebookOutlinePosition[     13288,        266]
+CellTagsIndexPosition[     13245,        263]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -182,11 +182,9 @@ and benefits of potential energy-saving measures.
  For those not familiar with the concept, User Stories are a common method of \
 defining requirements in the world of software development.  The basic \
 structure of a user story is to state who the user is, what the user needs to \
-do, and why.   The format has many benefits over other means of specifying \
-software requirements, which have been written about extensively.   In the \
-context of these materials, I hope that by pairing each incremental piece of \
-code with a statement of the functional requirement that it satisfies will \
-help to clarify the relationship between the two.  
+do, and why.   In the context of these materials, I hope that by pairing each \
+incremental piece of code with a statement of the functional requirement that \
+it satisfies will help to clarify the relationship between the two.  
  
  There is a significant amount of background knowledge that is helpful in \
 understanding energy systems, buildings, software development, and the \
@@ -211,7 +209,8 @@ it became relevant in the sequence of user stories.
    3.7838055657529583`*^9}, {3.783805677240261*^9, 3.7838057046992316`*^9}, {
    3.7838058908147297`*^9, 3.7838058984020915`*^9}, {3.7839909317346053`*^9, 
    3.783990953834524*^9}, {3.7839910134844923`*^9, 3.783991013903901*^9}, 
-   3.7839926805718136`*^9},ExpressionUUID->"44af9664-7c3b-4f53-b145-\
+   3.7839926805718136`*^9, {3.7856265148942475`*^9, 
+   3.785626518813198*^9}},ExpressionUUID->"44af9664-7c3b-4f53-b145-\
 7fa43f262989"],
 
 Cell[CellGroupData[{
@@ -224,7 +223,28 @@ dec72b6eaf70"],
 Cell["The Wolfram Language is ", "Text",
  CellChangeTimes->{{3.779543700478774*^9, 
   3.7795437633523283`*^9}},ExpressionUUID->"860cf37e-4ff9-4764-8252-\
-d7856cb2c0af"]
+d7856cb2c0af"],
+
+Cell["\<\
+What do I mean by computational sustainability?  
+
+Perhaps the best way to explain what I mean by Computational Sustainability \
+is to refer you to an excellent  popular culture depiction of it in action.  \
+The Expanse depicts human civilization in it\[CloseCurlyQuote]s \
+\>", "Text",
+ CellChangeTimes->{{3.785626611698992*^9, 3.785626624701543*^9}, {
+  3.7856268039428005`*^9, 3.7856268130340643`*^9}, {3.785627005444213*^9, 
+  3.7856270223059435`*^9}, {3.785627221487074*^9, 3.7856273096354733`*^9}, {
+  3.7856274547026124`*^9, 3.785627465602284*^9}, {3.785627497925789*^9, 
+  3.785627500413018*^9}, {3.785627620431345*^9, 
+  3.7856276339781957`*^9}},ExpressionUUID->"12a902b1-5702-48cf-9201-\
+9523a3bafc55"],
+
+Cell["It is the practice of of how energy and materials flow ", "Text",
+ CellChangeTimes->{{3.7856268250631886`*^9, 3.7856268664946475`*^9}, {
+  3.7856269943740606`*^9, 
+  3.7856269970880656`*^9}},ExpressionUUID->"44854e06-cbac-4e07-85ab-\
+aeeb5b9120c2"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
@@ -259,10 +279,12 @@ Cell[8016, 150, 298, 7, 31, "Item",ExpressionUUID->"8f212e39-880e-43ca-9f64-e151
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[8363, 163, 264, 4, 67, "Chapter",ExpressionUUID->"806c9980-4b99-4bfd-a2b5-943ca8b52093"],
-Cell[8630, 169, 3012, 45, 276, "Text",ExpressionUUID->"44af9664-7c3b-4f53-b145-7fa43f262989"],
+Cell[8630, 169, 2932, 44, 276, "Text",ExpressionUUID->"44af9664-7c3b-4f53-b145-7fa43f262989"],
 Cell[CellGroupData[{
-Cell[11667, 218, 166, 3, 67, "Section",ExpressionUUID->"22852d0d-e337-44fb-a034-dec72b6eaf70"],
-Cell[11836, 223, 168, 3, 34, "Text",ExpressionUUID->"860cf37e-4ff9-4764-8252-d7856cb2c0af"]
+Cell[11587, 217, 166, 3, 67, "Section",ExpressionUUID->"22852d0d-e337-44fb-a034-dec72b6eaf70"],
+Cell[11756, 222, 168, 3, 34, "Text",ExpressionUUID->"860cf37e-4ff9-4764-8252-d7856cb2c0af"],
+Cell[11927, 227, 722, 13, 78, "Text",ExpressionUUID->"12a902b1-5702-48cf-9201-9523a3bafc55"],
+Cell[12652, 242, 254, 4, 34, "Text",ExpressionUUID->"44854e06-cbac-4e07-85ab-aeeb5b9120c2"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
