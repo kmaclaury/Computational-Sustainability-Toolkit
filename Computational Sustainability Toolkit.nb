@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       161,          7]
-NotebookDataLength[     28149,        519]
-NotebookOptionsPosition[     25908,        477]
-NotebookOutlinePosition[     26250,        492]
-CellTagsIndexPosition[     26207,        489]
+NotebookDataLength[     27886,        511]
+NotebookOptionsPosition[     25737,        470]
+NotebookOutlinePosition[     26079,        485]
+CellTagsIndexPosition[     26036,        482]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -118,11 +118,11 @@ as computer science, math, physics or environmental studies. \
 
 Cell["\<\
 Implementing a project to monitor a school\[CloseCurlyQuote] s energy \
-consumption with this set of tools has only three prerequisites :
-\
+consumption with this set of tools has only three prerequisites :\
 \>", "Text",
  CellChangeTimes->{{3.7870066065061903`*^9, 3.787006610530074*^9}, 
-   3.7870151242239113`*^9},ExpressionUUID->"0f846e78-6e6f-478f-9a8a-\
+   3.7870151242239113`*^9, 
+   3.7871829018368034`*^9},ExpressionUUID->"0f846e78-6e6f-478f-9a8a-\
 c8b08a8b9f10"],
 
 Cell[CellGroupData[{
@@ -349,18 +349,7 @@ and benefits of potential energy-saving measures.\
    3.7839926805718136`*^9, {3.7856265148942475`*^9, 3.785626518813198*^9}, {
    3.787007248353752*^9, 
    3.787007278427156*^9}},ExpressionUUID->"44af9664-7c3b-4f53-b145-\
-7fa43f262989"],
-
-Cell["\<\
- There is a significant amount of background knowledge that is helpful in \
-understanding energy systems, buildings, software development, and the \
-particulars of the Wolfram Language.  After working with several \
-organizational strategies, I settled on providing the background materials as \
-it became relevant in the sequence of user stories.  \
-\>", "Text",
- CellChangeTimes->{{3.7870072694644375`*^9, 
-  3.7870072726245594`*^9}},ExpressionUUID->"9d795d39-128f-4fdf-8796-\
-fcebb74a2d6b"]
+7fa43f262989"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -427,14 +416,15 @@ sustainability. \
 Cell["\<\
 As someone who has been practicing Computational Sustainability in various \
 forms since I began work on my Master\[CloseCurlyQuote]s Thesis in 2005, I \
-believe that several skills  emerge from engaging with the idea that need to \
-become much more widespread if we are to tackle the challenges posed by \
-global warming and the many other environmental catastrophes that humanity \
-has brought upon itself.  \
+believe that several skills  emerge from engaging with the idea  of \
+Computational Sustainability that need to become much more widespread if we \
+are to tackle the challenges posed by global warming and the many other \
+environmental catastrophes that humanity has brought upon itself.  \
 \>", "Text",
  CellChangeTimes->{{3.787012005644415*^9, 3.7870120205882053`*^9}, {
   3.7870157314054923`*^9, 3.787015734242219*^9}, {3.7870158436057167`*^9, 
-  3.787015864554908*^9}},ExpressionUUID->"1ddc1034-cc8a-4409-9ead-\
+  3.787015864554908*^9}, {3.7871831306044617`*^9, 
+  3.7871831435442467`*^9}},ExpressionUUID->"1ddc1034-cc8a-4409-9ead-\
 5350add4c8b8"],
 
 Cell["\<\
@@ -464,12 +454,15 @@ options when they need to use those resources to some end.  \
 ee17fa91a4a2"],
 
 Cell["\<\
-We need more people in this world that can quantitatively evaluate a system, \
-understand the limitations of the system, and the capabilities of the tools \
-and strategies available to solve problems within the system.  \
+It is the abilities of quantitatively evaluating a system, understanding the \
+limitations of the system, and the capabilities of the tools and strategies \
+available to solve problems within the system that are displayed so often in \
+The Expanse that many more of us need to be capable of if we are going to \
+create a sustainable economy.  \
 \>", "Text",
- CellChangeTimes->{{3.7870158497103224`*^9, 
-  3.7870158525280056`*^9}},ExpressionUUID->"09d07b11-222e-4edb-8426-\
+ CellChangeTimes->{{3.7870158497103224`*^9, 3.7870158525280056`*^9}, {
+  3.7871832176831284`*^9, 3.7871833619398065`*^9}, {3.787183409121069*^9, 
+  3.787183411879304*^9}},ExpressionUUID->"09d07b11-222e-4edb-8426-\
 73128f406d0a"]
 }, Open  ]]
 }, Open  ]]
@@ -497,27 +490,26 @@ Cell[998, 30, 368, 8, 53, "Subtitle",ExpressionUUID->"26e283a7-16cd-4692-9302-e5
 Cell[CellGroupData[{
 Cell[1391, 42, 161, 3, 67, "Chapter",ExpressionUUID->"c55c4f85-5fbd-4635-9ebb-597394d271dd"],
 Cell[1555, 47, 4920, 69, 78, "Text",ExpressionUUID->"d0787262-7623-4863-b45e-5e4b43157da6"],
-Cell[6478, 118, 315, 7, 56, "Text",ExpressionUUID->"0f846e78-6e6f-478f-9a8a-c8b08a8b9f10"],
+Cell[6478, 118, 342, 7, 34, "Text",ExpressionUUID->"0f846e78-6e6f-478f-9a8a-c8b08a8b9f10"],
 Cell[CellGroupData[{
-Cell[6818, 129, 257, 4, 31, "Item",ExpressionUUID->"a8bba1df-f8e9-4334-9dc3-1523fc9ae759"],
-Cell[7078, 135, 229, 4, 31, "Item",ExpressionUUID->"25f6c3b2-ea14-42c8-9ad3-c83af824616a"],
-Cell[7310, 141, 298, 7, 31, "Item",ExpressionUUID->"8f212e39-880e-43ca-9f64-e151daca1aae"]
+Cell[6845, 129, 257, 4, 31, "Item",ExpressionUUID->"a8bba1df-f8e9-4334-9dc3-1523fc9ae759"],
+Cell[7105, 135, 229, 4, 31, "Item",ExpressionUUID->"25f6c3b2-ea14-42c8-9ad3-c83af824616a"],
+Cell[7337, 141, 298, 7, 31, "Item",ExpressionUUID->"8f212e39-880e-43ca-9f64-e151daca1aae"]
 }, Open  ]],
-Cell[7623, 151, 5407, 75, 122, "Text",ExpressionUUID->"4e1d14fa-5240-4b33-828b-dc6bb3041fd0"],
-Cell[13033, 228, 4951, 70, 100, "Text",ExpressionUUID->"29cdad6b-660e-453c-b1b0-84533bfaa95d"],
+Cell[7650, 151, 5407, 75, 122, "Text",ExpressionUUID->"4e1d14fa-5240-4b33-828b-dc6bb3041fd0"],
+Cell[13060, 228, 4951, 70, 100, "Text",ExpressionUUID->"29cdad6b-660e-453c-b1b0-84533bfaa95d"],
 Cell[CellGroupData[{
-Cell[18009, 302, 264, 4, 67, "Section",ExpressionUUID->"806c9980-4b99-4bfd-a2b5-943ca8b52093"],
-Cell[18276, 308, 614, 10, 78, "Text",ExpressionUUID->"4f6d2ed6-a62e-47b9-8ae5-c28d20473f10"],
-Cell[18893, 320, 2165, 31, 100, "Text",ExpressionUUID->"44af9664-7c3b-4f53-b145-7fa43f262989"],
-Cell[21061, 353, 503, 9, 56, "Text",ExpressionUUID->"9d795d39-128f-4fdf-8796-fcebb74a2d6b"]
+Cell[18036, 302, 264, 4, 67, "Section",ExpressionUUID->"806c9980-4b99-4bfd-a2b5-943ca8b52093"],
+Cell[18303, 308, 614, 10, 78, "Text",ExpressionUUID->"4f6d2ed6-a62e-47b9-8ae5-c28d20473f10"],
+Cell[18920, 320, 2165, 31, 100, "Text",ExpressionUUID->"44af9664-7c3b-4f53-b145-7fa43f262989"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[21601, 367, 225, 4, 67, "Section",ExpressionUUID->"22852d0d-e337-44fb-a034-dec72b6eaf70"],
-Cell[21829, 373, 761, 35, 34, "Text",ExpressionUUID->"225585e3-8a9b-4143-a9e0-a74f670f8c63"],
-Cell[22593, 410, 737, 14, 138, "Text",ExpressionUUID->"c30b8ce9-80a9-48ef-9ed1-669bae6058a3"],
-Cell[23333, 426, 661, 11, 56, "Text",ExpressionUUID->"1ddc1034-cc8a-4409-9ead-5350add4c8b8"],
-Cell[23997, 439, 1494, 24, 188, "Text",ExpressionUUID->"7d788e40-fa10-4f76-91c9-ee17fa91a4a2"],
-Cell[25494, 465, 374, 7, 56, "Text",ExpressionUUID->"09d07b11-222e-4edb-8426-73128f406d0a"]
+Cell[21122, 356, 225, 4, 67, "Section",ExpressionUUID->"22852d0d-e337-44fb-a034-dec72b6eaf70"],
+Cell[21350, 362, 761, 35, 34, "Text",ExpressionUUID->"225585e3-8a9b-4143-a9e0-a74f670f8c63"],
+Cell[22114, 399, 737, 14, 138, "Text",ExpressionUUID->"c30b8ce9-80a9-48ef-9ed1-669bae6058a3"],
+Cell[22854, 415, 747, 12, 78, "Text",ExpressionUUID->"1ddc1034-cc8a-4409-9ead-5350add4c8b8"],
+Cell[23604, 429, 1494, 24, 188, "Text",ExpressionUUID->"7d788e40-fa10-4f76-91c9-ee17fa91a4a2"],
+Cell[25101, 455, 596, 10, 56, "Text",ExpressionUUID->"09d07b11-222e-4edb-8426-73128f406d0a"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
