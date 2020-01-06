@@ -1,0 +1,1409 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='WolframDesktop 12.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       161,          7]
+NotebookDataLength[     61674,       1399]
+NotebookOptionsPosition[     59649,       1358]
+NotebookOutlinePosition[     59991,       1373]
+CellTagsIndexPosition[     59948,       1370]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+  "This", " ", "story", " ", "will", " ", "also", " ", "explore", " ", "some",
+    " ", "of", " ", "the", " ", "ways", " ", "in", " ", "which", " ", 
+   "multiple", " ", "pieces", " ", "of", " ", "content", " ", "can", " ", 
+   "be", " ", "presented", " ", "in", " ", "a", " ", "single", " ", "user", 
+   " ", "interface", " ", "through", " ", "the", " ", "use", " ", "of", " ", 
+   RowBox[{"TabView", ".", "  ", "The"}], " ", 
+   ButtonBox["Views",
+    BaseStyle->"Hyperlink",
+    ButtonData->{
+      URL["https://reference.wolfram.com/language/tutorial/Views.html"], None},
+    ButtonNote->"https://reference.wolfram.com/language/tutorial/Views.html"],
+    " ", "tutorial", " ", "explains", " ", "how", " ", "TabView"}], ",", " ", 
+  RowBox[{
+  "and", " ", "other", " ", "similar", " ", "functions", " ", "can", " ", 
+   "be", " ", "used", " ", "to", " ", "build", " ", "complex", " ", 
+   RowBox[{"interfaces", ".", "  ", "In"}], " ", "this", " ", "case", " ", 
+   "we", " ", "will", " ", "use", " ", "TabView", " ", "to", " ", "display", 
+   " ", "fuel", " ", "oil", " ", "deliveries", " ", "on", " ", "one", " ", 
+   "tab"}], ",", " ", 
+  RowBox[{
+  "and", " ", "information", " ", "about", " ", "electrical", " ", 
+   "consumption", " ", "on", " ", "another", " ", 
+   RowBox[{"tab", ".", "  ", "We"}], " ", "will", " ", "see", " ", "how", " ",
+    "views", " ", "can", " ", "be", " ", "nested", " ", "by", " ", 
+   "including", " ", "a", " ", "second", " ", "TabView", " ", "on", " ", 
+   "the", " ", "electrical", " ", "consumption", " ", "tab", " ", "that", " ",
+    "presents", " ", "monthly", " ", "usage", " ", "in", " ", "one", " ", 
+   "tab"}], ",", " ", 
+  RowBox[{"and", " ", "interval", " ", "data", " ", "in", " ", "the", " ", 
+   RowBox[{"other", ".", "  ", "\n", "\n", "For"}], " ", "reasons", " ", 
+   "that", " ", 
+   RowBox[{"aren", "'"}], "t", " ", "clear", " ", "currently"}], ",", " ", 
+  RowBox[{
+  "the", " ", "Delayed", " ", "function", " ", "does", " ", "not", " ", 
+   "work", " ", "as", " ", "expected", " ", "with", " ", "multiple", " ", 
+   "charts", " ", "embedded", " ", "in", " ", "a", " ", 
+   RowBox[{"TabView", ".", "  ", "We"}], " ", "will", " ", "explore", " ", 
+   "a", " ", "few", " ", "ways", " ", "around", " ", "this", " ", "to", " ", 
+   "ensure", " ", "that", " ", "the", " ", "visualizations", " ", "reflect", 
+   " ", "updated", " ", 
+   RowBox[{"data", ".", "  ", "One"}], " ", "possibility", " ", "for", " ", 
+   "updating", " ", "the", " ", "published", " ", "visualizations", " ", "is",
+    " ", "to", " ", "take", " ", "them", " ", "down"}], ",", " ", 
+  RowBox[{"re", "-", 
+   RowBox[{"evaluate", " ", "them", " ", "and", " ", "re"}], "-", 
+   RowBox[{
+   "deploy", " ", "them", " ", "when", " ", "new", " ", "data", " ", "is", 
+    " ", "added", " ", "to", " ", "the", " ", 
+    RowBox[{"CloudExpressions", ".", "  ", "Another"}], " ", "option", " ", 
+    "is", " ", "to", " ", "use", " ", "AutoRefreshed", " ", "which", " ", 
+    "will", " ", "automatically", " ", "re"}], "-", 
+   RowBox[{
+   "evaluate", " ", "the", " ", "expression", " ", "at", " ", "a", " ", 
+    "regular", " ", 
+    RowBox[{"interval", ".", "  ", "If"}], " ", "not", " ", "interval", " ", 
+    "is", " ", "specified"}]}], ",", " ", 
+  RowBox[{"the", " ", "default", " ", "value", " ", "is", " ", 
+   RowBox[{"hourly", ".", "  "}]}]}]], "Text",
+ CellChangeTimes->{{3.7872606242337523`*^9, 
+  3.78726062642239*^9}},ExpressionUUID->"0ebe127f-b767-4d73-ada5-\
+b54a379bedfe"],
+
+Cell["\<\
+The code below takes advantage of the charts defined in the Charts notebook \
+which can be found in the Code Samples directory of the GitHub project.  The \
+notebook must be opened and the charts evaluated before they can be rendered \
+in this notebook.  
+
+\
+\>", "Text",
+ CellChangeTimes->{{3.785436551982847*^9, 3.7854366259745708`*^9}, {
+  3.785436736761539*^9, 3.785436738489129*^9}, {3.785436789334104*^9, 
+  3.785436806790387*^9}, {3.785436851699214*^9, 3.785436887142668*^9}, {
+  3.7854370636582565`*^9, 
+  3.7854370652137384`*^9}},ExpressionUUID->"28b15403-4987-4951-81c5-\
+357e2c123200"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"tabView", "=", 
+   RowBox[{"TabView", "[", 
+    RowBox[{"{", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{
+      "\"\<Fuel Oil Deliveries\>\"", "\[Rule]", "\[IndentingNewLine]", 
+       "fueloilchart"}], "\[IndentingNewLine]", ",", "\[IndentingNewLine]", 
+      RowBox[{
+      "\"\<Electrical Consumption\>\"", "\[Rule]", "\[IndentingNewLine]", 
+       RowBox[{"TabView", "[", 
+        RowBox[{"{", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{
+          "\"\<Monthly Electrical Bills\>\"", "\[Rule]", 
+           "\[IndentingNewLine]", "monthlyconsumptionchart"}], 
+          "\[IndentingNewLine]", ",", "\[IndentingNewLine]", 
+          RowBox[{
+          "\"\<Interval Data\>\"", "\[Rule]", "\[IndentingNewLine]", 
+           "intervaldatachart"}]}], "\[IndentingNewLine]", 
+         "\[IndentingNewLine]", "}"}], "]"}]}]}], "\[IndentingNewLine]", 
+     "}"}], "]"}]}], "\[IndentingNewLine]"}]], "Input",
+ CellChangeTimes->{
+  3.785084006961711*^9, {3.785177492727721*^9, 3.785177497764922*^9}, {
+   3.785179288589114*^9, 3.785179290119319*^9}, 3.7851793696023226`*^9, 
+   3.7851794454826736`*^9},
+ CellLabel->"In[43]:=",ExpressionUUID->"e5265a5c-fc68-4021-ab29-c2ab8344c79c"],
+
+Cell[BoxData[
+ TabViewBox[{{1,"\<\"Fuel Oil Deliveries\"\>"->
+  GraphicsBox[{{}, {{{}, {}, {}, {}, 
+      {RGBColor[0.368417, 0.506779, 0.709798], Opacity[0.3], 
+       LineBox[{{3.7560672*^9, 0.}, {3.7560672*^9, 250.}}], 
+       LineBox[{{3.7573632*^9, 0.}, {3.7573632*^9, 200.}}], 
+       LineBox[{{3.7607328*^9, 0.}, {3.7607328*^9, 370.}}], 
+       LineBox[{{3.7620288*^9, 0.}, {3.7620288*^9, 250.}}], 
+       LineBox[{{3.7656576*^9, 0.}, {3.7656576*^9, 260.}}], 
+       LineBox[{{3.7708416*^9, 0.}, {3.7708416*^9, 150.}}], 
+       LineBox[{{3.776112*^9, 0.}, {3.776112*^9, 110.}}], 
+       LineBox[{{3.7792224*^9, 0.}, {3.7792224*^9, 200.}}], 
+       LineBox[{{3.7827648*^9, 0.}, {3.7827648*^9, 220.}}], 
+       LineBox[{{3.7852704*^9, 0.}, {3.7852704*^9, 270.}}]}}, 
+     {RGBColor[0.368417, 0.506779, 0.709798], PointSize[
+      0.012833333333333334`], AbsoluteThickness[1.6], 
+      GeometricTransformationBox[InsetBox[
+        FormBox[
+         StyleBox[
+          GraphicsBox[
+           {EdgeForm[None], DiskBox[{0, 0}]}],
+          StripOnInput->False,
+          GraphicsBoxOptions->{DefaultBaseStyle->Directive[
+            PointSize[0.012833333333333334`], 
+            RGBColor[0.368417, 0.506779, 0.709798], 
+            AbsoluteThickness[1.6]]}],
+         TraditionalForm], {0., 0.}, Automatic, Offset[6.272]], {{{
+       3.7560672*^9, 250.}}, {{3.7573632*^9, 200.}}, {{3.7607328*^9, 
+       370.}}, {{3.7620288*^9, 250.}}, {{3.7656576*^9, 260.}}, {{3.7708416*^9,
+        150.}}, {{3.776112*^9, 110.}}, {{3.7792224*^9, 200.}}, {{3.7827648*^9,
+        220.}}, {{3.7852704*^9, 270.}}}]}, {
+      {RGBColor[0.368417, 0.506779, 0.709798], PointSize[
+       0.012833333333333334`], AbsoluteThickness[1.6]}, {}}, {
+      {RGBColor[0.368417, 0.506779, 0.709798], PointSize[
+       0.012833333333333334`], AbsoluteThickness[1.6]}, {}}}, {{}, {{}, {
+       GraphicsGroupBox[{
+         {EdgeForm[None], FaceForm[{GrayLevel[1], Opacity[
+           NCache[
+            Rational[2, 3], 0.6666666666666666]]}], 
+          PolygonBox[{
+           Offset[{12.999999999999998`, 12.000000000000004`}, {3.7560672*^9, 
+             254.64825126339852`}], 
+            Offset[{13.000000000000002`, 2.6645352591003757`*^-15}, {
+             3.7560672*^9, 254.64825126339852`}], 
+            Offset[{-12.999999999999998`, -2.6645352591003757`*^-15}, {
+             3.7560672*^9, 254.64825126339852`}], 
+            Offset[{-13.000000000000002`, 11.999999999999996`}, {3.7560672*^9,
+              254.64825126339852`}]}]}, 
+         {RGBColor[
+          0.6666666666666666, 0.6666666666666666, 0.6666666666666666], 
+          AbsoluteThickness[1.25], EdgeForm[None]}, {}, InsetBox[
+          StyleBox[
+           RotationBox["250.`",
+            BoxRotation->0.],
+           StripOnInput->False,
+           LineOpacity->1,
+           FrontFaceOpacity->1,
+           BackFaceOpacity->1,
+           Opacity->1,
+           FontOpacity->1], 
+          Offset[{0., 6.}, {3.7560672*^9, 254.64825126339852}], {0, 0}]}], 
+       GraphicsGroupBox[{
+         {EdgeForm[None], FaceForm[{GrayLevel[1], Opacity[
+           NCache[
+            Rational[2, 3], 0.6666666666666666]]}], 
+          PolygonBox[{
+           Offset[{12.999999999999998`, 12.000000000000004`}, {3.7573632*^9, 
+             204.64825126339852`}], 
+            Offset[{13.000000000000002`, 2.6645352591003757`*^-15}, {
+             3.7573632*^9, 204.64825126339852`}], 
+            Offset[{-12.999999999999998`, -2.6645352591003757`*^-15}, {
+             3.7573632*^9, 204.64825126339852`}], 
+            Offset[{-13.000000000000002`, 11.999999999999996`}, {3.7573632*^9,
+              204.64825126339852`}]}]}, 
+         {RGBColor[
+          0.6666666666666666, 0.6666666666666666, 0.6666666666666666], 
+          AbsoluteThickness[1.25], EdgeForm[None]}, {}, InsetBox[
+          StyleBox[
+           RotationBox["200.`",
+            BoxRotation->0.],
+           StripOnInput->False,
+           LineOpacity->1,
+           FrontFaceOpacity->1,
+           BackFaceOpacity->1,
+           Opacity->1,
+           FontOpacity->1], 
+          Offset[{0., 6.}, {3.7573632*^9, 204.64825126339852}], {0, 0}]}], 
+       GraphicsGroupBox[{
+         {EdgeForm[None], FaceForm[{GrayLevel[1], Opacity[
+           NCache[
+            Rational[2, 3], 0.6666666666666666]]}], 
+          PolygonBox[{
+           Offset[{12.999999999999998`, 12.000000000000004`}, {3.7607328*^9, 
+             374.6482512633985}], 
+            Offset[{13.000000000000002`, 2.6645352591003757`*^-15}, {
+             3.7607328*^9, 374.6482512633985}], 
+            Offset[{-12.999999999999998`, -2.6645352591003757`*^-15}, {
+             3.7607328*^9, 374.6482512633985}], 
+            Offset[{-13.000000000000002`, 11.999999999999996`}, {3.7607328*^9,
+              374.6482512633985}]}]}, 
+         {RGBColor[
+          0.6666666666666666, 0.6666666666666666, 0.6666666666666666], 
+          AbsoluteThickness[1.25], EdgeForm[None]}, {}, InsetBox[
+          StyleBox[
+           RotationBox["370.`",
+            BoxRotation->0.],
+           StripOnInput->False,
+           LineOpacity->1,
+           FrontFaceOpacity->1,
+           BackFaceOpacity->1,
+           Opacity->1,
+           FontOpacity->1], 
+          Offset[{0., 6.}, {3.7607328*^9, 374.6482512633985}], {0, 0}]}], 
+       GraphicsGroupBox[{
+         {EdgeForm[None], FaceForm[{GrayLevel[1], Opacity[
+           NCache[
+            Rational[2, 3], 0.6666666666666666]]}], 
+          PolygonBox[{
+           Offset[{12.999999999999998`, 12.000000000000004`}, {3.7620288*^9, 
+             254.64825126339852`}], 
+            Offset[{13.000000000000002`, 2.6645352591003757`*^-15}, {
+             3.7620288*^9, 254.64825126339852`}], 
+            Offset[{-12.999999999999998`, -2.6645352591003757`*^-15}, {
+             3.7620288*^9, 254.64825126339852`}], 
+            Offset[{-13.000000000000002`, 11.999999999999996`}, {3.7620288*^9,
+              254.64825126339852`}]}]}, 
+         {RGBColor[
+          0.6666666666666666, 0.6666666666666666, 0.6666666666666666], 
+          AbsoluteThickness[1.25], EdgeForm[None]}, {}, InsetBox[
+          StyleBox[
+           RotationBox["250.`",
+            BoxRotation->0.],
+           StripOnInput->False,
+           LineOpacity->1,
+           FrontFaceOpacity->1,
+           BackFaceOpacity->1,
+           Opacity->1,
+           FontOpacity->1], 
+          Offset[{0., 6.}, {3.7620288*^9, 254.64825126339852}], {0, 0}]}], 
+       GraphicsGroupBox[{
+         {EdgeForm[None], FaceForm[{GrayLevel[1], Opacity[
+           NCache[
+            Rational[2, 3], 0.6666666666666666]]}], 
+          PolygonBox[{
+           Offset[{12.999999999999998`, 12.000000000000004`}, {3.7656576*^9, 
+             264.6482512633985}], 
+            Offset[{13.000000000000002`, 2.6645352591003757`*^-15}, {
+             3.7656576*^9, 264.6482512633985}], 
+            Offset[{-12.999999999999998`, -2.6645352591003757`*^-15}, {
+             3.7656576*^9, 264.6482512633985}], 
+            Offset[{-13.000000000000002`, 11.999999999999996`}, {3.7656576*^9,
+              264.6482512633985}]}]}, 
+         {RGBColor[
+          0.6666666666666666, 0.6666666666666666, 0.6666666666666666], 
+          AbsoluteThickness[1.25], EdgeForm[None]}, {}, InsetBox[
+          StyleBox[
+           RotationBox["260.`",
+            BoxRotation->0.],
+           StripOnInput->False,
+           LineOpacity->1,
+           FrontFaceOpacity->1,
+           BackFaceOpacity->1,
+           Opacity->1,
+           FontOpacity->1], 
+          Offset[{0., 6.}, {3.7656576*^9, 264.6482512633985}], {0, 0}]}], 
+       GraphicsGroupBox[{
+         {EdgeForm[None], FaceForm[{GrayLevel[1], Opacity[
+           NCache[
+            Rational[2, 3], 0.6666666666666666]]}], 
+          PolygonBox[{
+           Offset[{12.999999999999998`, 12.000000000000004`}, {3.7708416*^9, 
+             154.64825126339852`}], 
+            Offset[{13.000000000000002`, 2.6645352591003757`*^-15}, {
+             3.7708416*^9, 154.64825126339852`}], 
+            Offset[{-12.999999999999998`, -2.6645352591003757`*^-15}, {
+             3.7708416*^9, 154.64825126339852`}], 
+            Offset[{-13.000000000000002`, 11.999999999999996`}, {3.7708416*^9,
+              154.64825126339852`}]}]}, 
+         {RGBColor[
+          0.6666666666666666, 0.6666666666666666, 0.6666666666666666], 
+          AbsoluteThickness[1.25], EdgeForm[None]}, {}, InsetBox[
+          StyleBox[
+           RotationBox["150.`",
+            BoxRotation->0.],
+           StripOnInput->False,
+           LineOpacity->1,
+           FrontFaceOpacity->1,
+           BackFaceOpacity->1,
+           Opacity->1,
+           FontOpacity->1], 
+          Offset[{0., 6.}, {3.7708416*^9, 154.64825126339852}], {0, 0}]}], 
+       GraphicsGroupBox[{
+         {EdgeForm[None], FaceForm[{GrayLevel[1], Opacity[
+           NCache[
+            Rational[2, 3], 0.6666666666666666]]}], 
+          PolygonBox[{
+           Offset[{12.999999999999998`, 12.000000000000004`}, {3.776112*^9, 
+             114.6482512633985}], 
+            Offset[{13.000000000000002`, 2.6645352591003757`*^-15}, {
+             3.776112*^9, 114.6482512633985}], 
+            Offset[{-12.999999999999998`, -2.6645352591003757`*^-15}, {
+             3.776112*^9, 114.6482512633985}], 
+            Offset[{-13.000000000000002`, 11.999999999999996`}, {3.776112*^9, 
+             114.6482512633985}]}]}, 
+         {RGBColor[
+          0.6666666666666666, 0.6666666666666666, 0.6666666666666666], 
+          AbsoluteThickness[1.25], EdgeForm[None]}, {}, InsetBox[
+          StyleBox[
+           RotationBox["110.`",
+            BoxRotation->0.],
+           StripOnInput->False,
+           LineOpacity->1,
+           FrontFaceOpacity->1,
+           BackFaceOpacity->1,
+           Opacity->1,
+           FontOpacity->1], 
+          Offset[{0., 6.}, {3.776112*^9, 114.6482512633985}], {0, 0}]}], 
+       GraphicsGroupBox[{
+         {EdgeForm[None], FaceForm[{GrayLevel[1], Opacity[
+           NCache[
+            Rational[2, 3], 0.6666666666666666]]}], 
+          PolygonBox[{
+           Offset[{12.999999999999998`, 12.000000000000004`}, {3.7792224*^9, 
+             204.64825126339852`}], 
+            Offset[{13.000000000000002`, 2.6645352591003757`*^-15}, {
+             3.7792224*^9, 204.64825126339852`}], 
+            Offset[{-12.999999999999998`, -2.6645352591003757`*^-15}, {
+             3.7792224*^9, 204.64825126339852`}], 
+            Offset[{-13.000000000000002`, 11.999999999999996`}, {3.7792224*^9,
+              204.64825126339852`}]}]}, 
+         {RGBColor[
+          0.6666666666666666, 0.6666666666666666, 0.6666666666666666], 
+          AbsoluteThickness[1.25], EdgeForm[None]}, {}, InsetBox[
+          StyleBox[
+           RotationBox["200.`",
+            BoxRotation->0.],
+           StripOnInput->False,
+           LineOpacity->1,
+           FrontFaceOpacity->1,
+           BackFaceOpacity->1,
+           Opacity->1,
+           FontOpacity->1], 
+          Offset[{0., 6.}, {3.7792224*^9, 204.64825126339852}], {0, 0}]}], 
+       GraphicsGroupBox[{
+         {EdgeForm[None], FaceForm[{GrayLevel[1], Opacity[
+           NCache[
+            Rational[2, 3], 0.6666666666666666]]}], 
+          PolygonBox[{
+           Offset[{12.999999999999998`, 12.000000000000004`}, {3.7827648*^9, 
+             224.64825126339852`}], 
+            Offset[{13.000000000000002`, 2.6645352591003757`*^-15}, {
+             3.7827648*^9, 224.64825126339852`}], 
+            Offset[{-12.999999999999998`, -2.6645352591003757`*^-15}, {
+             3.7827648*^9, 224.64825126339852`}], 
+            Offset[{-13.000000000000002`, 11.999999999999996`}, {3.7827648*^9,
+              224.64825126339852`}]}]}, 
+         {RGBColor[
+          0.6666666666666666, 0.6666666666666666, 0.6666666666666666], 
+          AbsoluteThickness[1.25], EdgeForm[None]}, {}, InsetBox[
+          StyleBox[
+           RotationBox["220.`",
+            BoxRotation->0.],
+           StripOnInput->False,
+           LineOpacity->1,
+           FrontFaceOpacity->1,
+           BackFaceOpacity->1,
+           Opacity->1,
+           FontOpacity->1], 
+          Offset[{0., 6.}, {3.7827648*^9, 224.64825126339852}], {0, 0}]}], 
+       GraphicsGroupBox[{
+         {EdgeForm[None], FaceForm[{GrayLevel[1], Opacity[
+           NCache[
+            Rational[2, 3], 0.6666666666666666]]}], 
+          PolygonBox[{
+           Offset[{12.999999999999998`, 12.000000000000004`}, {3.7852704*^9, 
+             274.6482512633985}], 
+            Offset[{13.000000000000002`, 2.6645352591003757`*^-15}, {
+             3.7852704*^9, 274.6482512633985}], 
+            Offset[{-12.999999999999998`, -2.6645352591003757`*^-15}, {
+             3.7852704*^9, 274.6482512633985}], 
+            Offset[{-13.000000000000002`, 11.999999999999996`}, {3.7852704*^9,
+              274.6482512633985}]}]}, 
+         {RGBColor[
+          0.6666666666666666, 0.6666666666666666, 0.6666666666666666], 
+          AbsoluteThickness[1.25], EdgeForm[None]}, {}, InsetBox[
+          StyleBox[
+           RotationBox["270.`",
+            BoxRotation->0.],
+           StripOnInput->False,
+           LineOpacity->1,
+           FrontFaceOpacity->1,
+           BackFaceOpacity->1,
+           Opacity->1,
+           FontOpacity->1], 
+          Offset[{0., 6.}, {3.7852704*^9, 274.6482512633985}], {0, 0}]}]}}}},
+   AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+   Axes->{False, False},
+   AxesLabel->{None, None},
+   AxesOrigin->{3.7560672*^9, 0},
+   DisplayFunction->Identity,
+   Frame->{{True, True}, {True, True}},
+   FrameLabel->{{None, None}, {None, None}},
+   FrameStyle->Automatic,
+   FrameTicks->FrontEndValueCache[{{Automatic, Automatic}, {
+       Charting`DateTicksFunction[Automatic, DateTicksFormat -> {Automatic}], 
+       Charting`DateTicksFunction[
+       Automatic, DateTicksFormat -> {Automatic}, "TickLabels" -> None]}}, {{
+      Automatic, Automatic}, {{{3.7552896*^9, 
+         FormBox[
+          StyleBox["\"Jan\"", 
+           Directive[], {}, StripOnInput -> False], TraditionalForm], {
+         0.013888888888888888`, 0.}, 
+         Directive[]}, {3.7603872*^9, 
+         FormBox[
+          StyleBox["\"Mar\"", 
+           Directive[], {}, StripOnInput -> False], TraditionalForm], {
+         0.013888888888888888`, 0.}, 
+         Directive[]}, {3.7656576*^9, 
+         FormBox[
+          StyleBox["\"May\"", 
+           Directive[], {}, StripOnInput -> False], TraditionalForm], {
+         0.013888888888888888`, 0.}, 
+         Directive[]}, {3.770928*^9, 
+         FormBox[
+          StyleBox["\"Jul\"", 
+           Directive[], {}, StripOnInput -> False], TraditionalForm], {
+         0.013888888888888888`, 0.}, 
+         Directive[]}, {3.7762848*^9, 
+         FormBox[
+          StyleBox["\"Sep\"", 
+           Directive[], {}, StripOnInput -> False], TraditionalForm], {
+         0.013888888888888888`, 0.}, 
+         Directive[]}, {3.7815552*^9, 
+         FormBox[
+          StyleBox["\"Nov\"", 
+           Directive[], {}, StripOnInput -> False], TraditionalForm], {
+         0.013888888888888888`, 0.}, 
+         Directive[]}, {3.7868256*^9, 
+         FormBox[
+          StyleBox["\"Jan\"", 
+           Directive[], {}, StripOnInput -> False], TraditionalForm], {
+         0.013888888888888888`, 0.}, 
+         Directive[]}}, {{3.7552896*^9, 
+         FormBox[
+          TemplateBox[{0., 0.}, "Spacer2"], TraditionalForm], {
+         0.013888888888888888`, 0.}, 
+         Directive[]}, {3.7603872*^9, 
+         FormBox[
+          TemplateBox[{0., 0.}, "Spacer2"], TraditionalForm], {
+         0.013888888888888888`, 0.}, 
+         Directive[]}, {3.7656576*^9, 
+         FormBox[
+          TemplateBox[{0., 0.}, "Spacer2"], TraditionalForm], {
+         0.013888888888888888`, 0.}, 
+         Directive[]}, {3.770928*^9, 
+         FormBox[
+          TemplateBox[{0., 0.}, "Spacer2"], TraditionalForm], {
+         0.013888888888888888`, 0.}, 
+         Directive[]}, {3.7762848*^9, 
+         FormBox[
+          TemplateBox[{0., 0.}, "Spacer2"], TraditionalForm], {
+         0.013888888888888888`, 0.}, 
+         Directive[]}, {3.7815552*^9, 
+         FormBox[
+          TemplateBox[{0., 0.}, "Spacer2"], TraditionalForm], {
+         0.013888888888888888`, 0.}, 
+         Directive[]}, {3.7868256*^9, 
+         FormBox[
+          TemplateBox[{0., 0.}, "Spacer2"], TraditionalForm], {
+         0.013888888888888888`, 0.}, 
+         Directive[]}}}}],
+   GridLines->FrontEndValueCache[{Charting`ScaledTickValues[
+       ((Transpose[{#, 
+         Table[
+          Directive[
+           GrayLevel[0.4, 0.5], 
+           AbsoluteThickness[1], 
+           AbsoluteDashing[{1, 2}]], {
+           Length[#]}]}]& )[
+        Part[
+         Select[
+          Charting`DateTicksFunction[
+          Automatic, DateTicksFormat -> {Automatic}][
+           SlotSequence[1]], And[
+           FreeQ[#, 
+            Alternatives["", 
+             Spacer[{0, 0}]]], Head[#] === List, Length[#] > 0]& ], All, 
+         1]]& )[
+        SlotSequence[1]], {Identity, Identity}]& , 
+      Automatic}, {{{3.7552896*^9, 
+        Directive[
+         GrayLevel[0.4], 
+         Opacity[0.5], 
+         AbsoluteThickness[1.], 
+         AbsoluteDashing[{1., 2.}]]}, {3.7603872*^9, 
+        Directive[
+         GrayLevel[0.4], 
+         Opacity[0.5], 
+         AbsoluteThickness[1.], 
+         AbsoluteDashing[{1., 2.}]]}, {3.7656576*^9, 
+        Directive[
+         GrayLevel[0.4], 
+         Opacity[0.5], 
+         AbsoluteThickness[1.], 
+         AbsoluteDashing[{1., 2.}]]}, {3.770928*^9, 
+        Directive[
+         GrayLevel[0.4], 
+         Opacity[0.5], 
+         AbsoluteThickness[1.], 
+         AbsoluteDashing[{1., 2.}]]}, {3.7762848*^9, 
+        Directive[
+         GrayLevel[0.4], 
+         Opacity[0.5], 
+         AbsoluteThickness[1.], 
+         AbsoluteDashing[{1., 2.}]]}, {3.7815552*^9, 
+        Directive[
+         GrayLevel[0.4], 
+         Opacity[0.5], 
+         AbsoluteThickness[1.], 
+         AbsoluteDashing[{1., 2.}]]}, {3.7868256*^9, 
+        Directive[
+         GrayLevel[0.4], 
+         Opacity[0.5], 
+         AbsoluteThickness[1.], 
+         AbsoluteDashing[{1., 2.}]]}}, Automatic}],
+   GridLinesStyle->Directive[
+     GrayLevel[0.4, 0.5], 
+     AbsoluteThickness[1], 
+     AbsoluteDashing[{1, 2}]],
+   ImageSize->Full,
+   Method->{
+    "NoShowPlotTheme" -> "Detailed", "OptimizePlotMarkers" -> True, 
+     "CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+         (Identity[#]& )[
+          Part[#, 1]], 
+         (Identity[#]& )[
+          Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+         (Identity[#]& )[
+          Part[#, 1]], 
+         (Identity[#]& )[
+          Part[#, 2]]}& )}},
+   PlotLabel->FormBox[
+    "\"2019 Fuel Oil Deliveries in Gallons\"", TraditionalForm],
+   PlotRange->{{3.7560672*^9, 3.7852704*^9}, {0, 370.}},
+   PlotRangeClipping->True,
+   PlotRangePadding->{{
+      Scaled[0.02573529411764514], 
+      Scaled[0.02573529411764514]}, {
+      Scaled[0.02], 
+      Scaled[0.11224215922531475`]}},
+   Ticks->{{}, Automatic}]}, {2,"\<\"Electrical Consumption\"\>"->
+  TabViewBox[{{1,"\<\"Monthly Electrical Bills\"\>"->
+   GraphicsBox[{{}, {{{}, {}, 
+       {RGBColor[0.368417, 0.506779, 0.709798], PointSize[
+        0.012833333333333334`], AbsoluteThickness[1.6], 
+        LineBox[CompressedData["
+1:eJxTTMoPSmViYGCQAGIQDQQGk7e/dgSzeCY6AMkLLXug/IxeEL+g7CCUv2Iy
+iL/g2TEofwdYvcC601C+wQQQv6H0ApTv0APm774K5YeA5RXW3oLyLTpB/ADZ
+B1D+gg4Q/8CTJ1C+Qh2In3DtJZS/oRnEN/j0DsbvBrv38WeYfe0gvsPqH1B+
+QBuY//EvlF/RBeI/eMT0BsI/AZYPWMUO5Te0gvkfeKD8CWD7DmwXhPIdwO5L
+WCkG5QeA/ZPwXhqmvh/EZ3ioAOVz9IHD65IqTB4cHgXvtKB8hR4HAJJNZBM=
+
+         "]]}}, 
+      {RGBColor[0.368417, 0.506779, 0.709798], PointSize[
+       0.012833333333333334`], AbsoluteThickness[1.6], 
+       GeometricTransformationBox[InsetBox[
+         FormBox[
+          StyleBox[
+           GraphicsBox[
+            {EdgeForm[None], DiskBox[{0, 0}]}],
+           StripOnInput->False,
+           GraphicsBoxOptions->{DefaultBaseStyle->Directive[
+             PointSize[0.012833333333333334`], 
+             RGBColor[0.368417, 0.506779, 0.709798], 
+             AbsoluteThickness[1.6]]}],
+          TraditionalForm], {0., 0.}, Automatic, Offset[
+         6.272]], CompressedData["
+1:eJxTTMoPSmVmYGCQAGJGIGZiAAODydtfO4JZPBMdgOSFlj1QfkYviF9QdhDK
+XzEZxF/w7BiUvwOsXmDdaSjfYAKI31B6Acp36AHzd1+F8kPA8gprb0H5Fp0g
+foDsAyh/QQeIf+DJEyhfoQ7ET7j2Esrf0AziG3x6B+N3g937+DPMvnYQ32H1
+Dyg/oA3M//gXyq/oAvEfPGJ6A+GfAMsHrGKH8htawfwPPFD+BLB9B7YLQvkO
+YPclrBSD8gPA/kl4Lw1T3w/iMzxUgPI5+sDhdUkVJg8Oj4J3WlC+Qo8DAJx1
+ZBU=
+        "]]}, {
+       {RGBColor[0.368417, 0.506779, 0.709798], PointSize[
+        0.012833333333333334`], AbsoluteThickness[1.6]}, {}}, {
+       {RGBColor[0.368417, 0.506779, 0.709798], PointSize[
+        0.012833333333333334`], AbsoluteThickness[1.6]}, {}}}, {{}, {}}},
+    AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+    Axes->{False, False},
+    AxesLabel->{None, None},
+    AxesOrigin->{3.7201248*^9, 0},
+    DisplayFunction->Identity,
+    Frame->{{True, True}, {True, True}},
+    FrameLabel->{{None, None}, {None, None}},
+    FrameStyle->Automatic,
+    FrameTicks->FrontEndValueCache[{{Automatic, Automatic}, {
+        Charting`DateTicksFunction[Automatic, DateTicksFormat -> {Automatic}], 
+        Charting`DateTicksFunction[
+        Automatic, DateTicksFormat -> {Automatic}, "TickLabels" -> None]}}, {{
+       Automatic, Automatic}, {{{3.7237536*^9, 
+          FormBox[
+           StyleBox["\"2018\"", 
+            Directive[], {}, StripOnInput -> False], TraditionalForm], {
+          0.013888888888888888`, 0.}, 
+          Directive[]}, {3.7552896*^9, 
+          FormBox[
+           StyleBox["\"2019\"", 
+            Directive[], {}, StripOnInput -> False], TraditionalForm], {
+          0.013888888888888888`, 0.}, 
+          Directive[]}}, {{3.7237536*^9, 
+          FormBox[
+           TemplateBox[{0., 0.}, "Spacer2"], TraditionalForm], {
+          0.013888888888888888`, 0.}, 
+          Directive[]}, {3.7552896*^9, 
+          FormBox[
+           TemplateBox[{0., 0.}, "Spacer2"], TraditionalForm], {
+          0.013888888888888888`, 0.}, 
+          Directive[]}}}}],
+    GridLines->FrontEndValueCache[{Charting`ScaledTickValues[
+        ((Transpose[{#, 
+          Table[
+           Directive[
+            GrayLevel[0.4, 0.5], 
+            AbsoluteThickness[1], 
+            AbsoluteDashing[{1, 2}]], {
+            Length[#]}]}]& )[
+         Part[
+          Select[
+           Charting`DateTicksFunction[
+           Automatic, DateTicksFormat -> {Automatic}][
+            SlotSequence[1]], And[
+            FreeQ[#, 
+             Alternatives["", 
+              Spacer[{0, 0}]]], Head[#] === List, Length[#] > 0]& ], All, 
+          1]]& )[
+         SlotSequence[1]], {Identity, Identity}]& , 
+       Automatic}, {{{3.7237536*^9, 
+         Directive[
+          GrayLevel[0.4], 
+          Opacity[0.5], 
+          AbsoluteThickness[1.], 
+          AbsoluteDashing[{1., 2.}]]}, {3.7552896*^9, 
+         Directive[
+          GrayLevel[0.4], 
+          Opacity[0.5], 
+          AbsoluteThickness[1.], 
+          AbsoluteDashing[{1., 2.}]]}}, Automatic}],
+    GridLinesStyle->Directive[
+      GrayLevel[0.4, 0.5], 
+      AbsoluteThickness[1], 
+      AbsoluteDashing[{1, 2}]],
+    ImageSize->Full,
+    Method->{
+     "NoShowPlotTheme" -> "Detailed", "OptimizePlotMarkers" -> True, 
+      "CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+          (Identity[#]& )[
+           Part[#, 1]], 
+          (Identity[#]& )[
+           Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+          (Identity[#]& )[
+           Part[#, 1]], 
+          (Identity[#]& )[
+           Part[#, 2]]}& )}},
+    PlotLabel->FormBox[
+     "\"Monthly Electrical Consumption in kWh\"", TraditionalForm],
+    PlotRange->{{3.7201248*^9, 3.7806048*^9}, {0, 1258.}},
+    PlotRangeClipping->True,
+    PlotRangePadding->{{
+       Scaled[0.02], 
+       Scaled[0.02]}, {
+       Scaled[0.02], 
+       Scaled[0.05]}},
+    Ticks->{{}, Automatic}]}, {2,"\<\"Interval Data\"\>"->
+   TagBox[
+    StyleBox[
+     DynamicModuleBox[{$CellContext`a$$ = 3776285700, $CellContext`b$$ = 
+      3778790400, Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+      Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ =
+       1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
+         Hold[$CellContext`a$$], 3776285700, "Start Date"}, 3776285700, 
+        3778790400}, {{
+         Hold[$CellContext`b$$], 3778790400, "End Date"}, 3776285700, 
+        3778790400}}, Typeset`size$$ = {1135., {353., 357.}}, 
+      Typeset`update$$ = 0, Typeset`initDone$$, Typeset`skipInitDone$$ = 
+      True, $CellContext`a$28654$$ = 0, $CellContext`b$28655$$ = 0}, 
+      DynamicBox[Manipulate`ManipulateBoxes[
+       1, StandardForm, 
+        "Variables" :> {$CellContext`a$$ = 3776285700, $CellContext`b$$ = 
+          3778790400}, "ControllerVariables" :> {
+          Hold[$CellContext`a$$, $CellContext`a$28654$$, 0], 
+          Hold[$CellContext`b$$, $CellContext`b$28655$$, 0]}, 
+        "OtherVariables" :> {
+         Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+          Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+          Typeset`specs$$, Typeset`size$$, Typeset`update$$, 
+          Typeset`initDone$$, Typeset`skipInitDone$$}, "Body" :> DateListPlot[
+          TimeSeriesWindow[
+           TemporalData[TimeSeries, {CompressedData["
+1:eJyNnDtsnUkVxw1l6tQguqWmXt3toN2tUyFBy9IuderU0C71VivtIkVRQhKx
+RtlogxMSgvE6cR527EBeziYUQOz5fvPp/Ob+ubZkjeZ15syZc86cx3z3Rz//
+1Ue/+P7a2tr33v1vn1pb++HZ/Q+//MHDxY/PnPvj4XsPFrc//fj9U7d3ev3g
+Xe/Z/XuL3x81f/rN4t4npz/76b0/L04dD/xTLy8fvvduxtXFb466P7my+Mnx
+336vu596mp/qrN/ab/b6r4/Q+/jrXj/e1tn9Dh84Lj86GvXhVxO+l/s6v/vt
+0d/61L6xOKLGmXN/6fVGlxuLXx7//XXxs+OFb0z02+j4UG90vrU4WvX0Z7en
+/n/0/gS/0f1ix7O1X+p4gjf4Mq+d37N+fq+Phh/e6XQD7wbnVm9nPiX7WDv+
++2YqX03r/W2i7+1eHg9//26Hx74oaW/4bE/t9zt+Df5272/7vtPpB74Nr6d9
+HvuhNH9CJ/MD7ZWvrgzzOQfGQW/owvm4n/ntPK5pnYPeTztwoDvzgGc+Px7+
+5fUBDvJKP+eZ8KzwLvRx7Vj3O92Bx76pc+60Iw+cO/iAB/2MRw4anPuT/H43
+9T+b8Jz5GDn5+trRH/2HU/3VVG52/mE97x+8XLb5D7oebPt4MtXXPmj4/nfa
+z/Np/MHUf7A4Pt7Tj6ZzfjDR6VEv6W/8+mg618Nep2z72uvjwavtf6fLXdvP
+3U5f5Aw6QV/2x7mbr+A36EQduYCubb37w3joSmm+97qUHpfwYLzPEz5seuJ5
+p8PxtDPfdn0FP0Af6z/WYT78aT3ofvBhvulJv/nM59LK7S53Dd/t3g6e1oeU
+wGM948H9wzjgJbipjrw3uJudvuhf+M56CPlt+N3rctXO6XHnb/gd+aNseDzs
+8sE86NXwej3JxeNeNjo87HwLPdFP0Mf3QeJn6Gr9aX41/W0/0c99YDnxfOjo
+e8Dz4HvODb5nv+n8aYdPOF/f543+/xzsFpf0Iy+2A1gPvqGOXgN/7I7GN2+n
+83vV7QT4yvKEfEJv23VJ/yM/4I0963GN315M495O63/X7U/wgp7sq/X/fTrP
+rX5e0MfybLoZT++74r3Rz4txprvvDfjM+tZ8DB+a762Xk71hPkcOsLc4N+Cw
+v5OuSzvzml7Z6vs3XOv/So+trnfsv7Cu/RmPY7/2Q2i3/0Edetju93rYb8aL
+knG+T5Meqfbr5gJ/seGz2/U1ehV7Bz+y8f/uxO873d7HfsHeq3p8p8Nt67yZ
+4D/p+h88KG1vMQ79z7nZv2U8cFiXcfRXO26r318N/svhnkae8b+wXxmH3mI8
+/fiFHm+/iPXpb/R82cfRDn2hH3DRCz7/5P/4XjR/UiKXjZ5Ph3sGuUp+r/0z
+ywt87HbjAxz7sb7HmQcevh+wd7F3sH9sB6I/gGN6wt/476Yz7dA5ldYbKY7S
+9vGHQV94ffqxw2hH36R4Q4JjPKmjl+z31fvu6gAXPWM8TC/qnt/O+XwfRz3R
+PY0HXuODJ8O5mF7eN+3UgWc+qvfRxaj3mW94Xt/twLM8Od7GOOAwLsXRfD6c
+s/WD4bgf+tb7bLYfgGv5SXghz74HUxzI+Hh/Fe7eoB9N91VxUper5B562J+E
+bj5/7yfJjfnC5248PD7xn+mDPWD5SHBXjYMvHFdCv1veV8lD4otEz1Vy4XPj
+3qvx9UuRD+g3/1gvWB+Al/0B6z3mYf/gd1j+rY/SfWV9aX1qehsecuXzAQ7t
+Xod9L9e3c/zTcXXKOm9v2D/rpXke5/vI9DaehpvuFc+znFW8ritvMOuLGnc7
+3/ed5Mz4LM/3jPeS+Xi53H0+yFXSo6aH+cbreT9VD94Y7D7v1+uk+xz7aZXc
+eH+Jb5IcGV7Td3sDH6TzoSQegV+GPsJfsN+BP0M7dfwX4vD4XczD/8Ffsd/i
+Enj4OfZnXLc/RB09y37tL9T7iHjwHGd0XtR+GuuxP8oGd6f7o5T4lfihbR+7
+vc56+J1tf296XoFx9k+JazKfOvJsP9d5XvbDfPu7LhkHn5j+9bz3uh+I3888
+l4me9p8Zxzz6XeccmnzO9KUdvw77G70IX8Nn9OP3UTqviX/p+JTjwM47OY/H
+uJSH9TjwYx3HWx2vtBygBzhf+IsSeXYcHr6GvsQXsO8o8XurfWE+n/Md7XwP
+J3yfyd/a72VrX/ugycV/pvVf9zhng5vXd/yIfRHHgk/gW+K1Pn/7a9CVc2Vf
+KQ9Ae+p33N+l+Qr7lxI9V/2xW8p7bPbzhB6VnnMehvuCOFXr/7foPL9zoO58
+pPMJ4G9+Nl0Yn/Jytvfg61NT3L2+Y5jjD23/Wz2PSrv9LPtfPu/qd1wb5Hb5
+O4B5fvI/67gnQ3zW9lJ6R2N/tPqzY7zI8Dh/ztF2kP0h86PpxjzbNeCDHrF9
+b78AfOm3vQS8ZMdiv9mOOqlfTsl5ex3zTaXfjcHPTqXjffbnWB/5c37beTHz
+ufWGy7ru42hnn9RvSf5R8pd8zqYzdeQMfc94x0FSvM51853jXL5ngcs9ZDxX
+xXuT35v8n+QfOC6U/BnvN63ncdDBehW6wPf1/r0a/T3LVaXjV8N49Cb1Vfku
+jyO+bDjOc1hPp3yE41CWb+cpUz4j6RPu2fqO5UqHC/9539bHrOd7KcVNnS9x
+/CC9w8QPIX/i+L/zjqZLen9hfKu8X43nWflq9kO9vvfvfa+6Z1P8ynrf+6jx
+jPVBT6Y8yarScpXy16ve4Xp8ldv94V4y/cyXPl/4x3rV84DPeK9n/JPc1rjS
+HDeo7xFOTq+U10jn5nt1eZ5tb7Dv63uQMe6+6v5cblfel987x1fa/BedTo7D
+uB0/nfb6DnmM13gecJnn+At2PXEUv0Oo74Jczu9Haa9+d6Yj66U4IXLuOH2K
+J6d4/6r83vL49+z3EDdK41OeNMX5V9nVy/tHu8dl4/svhvXSOsmeZNzZ6d2V
+7ZB6f5zv8+0X+PxSXsjnuTzfM58bfoz9tWSXJbva90DKv1V75FL0j2m3Xbcq
+Dm66J79x1fulVflH/N2EB/gnvZ7oZ/ss0cHz6vz5PbrXS3RIfo7t6SQv+BPJ
+j/H5pXbuVfSo30Whb1tc5EXXzzXueyfeP/id1u/1u45ZvxO3xl9xvNl5CuPr
+vIXvpZqn2BzsQs4TPP2Oa/n986y/9wc/8KLe6D7H7d2Of+p4K/4158290/z6
+x8P3Wcxv9H3W6Qy+psPyOPd2j4PRn0rgt/jfiwFu299WLw2Xduq8H7d/UuPv
+D4e4vOMf6T6y3nG92ukH0W5ela9P8Y/l9vOdwR+odt1N3V93h/g+7cRx/S7d
+70n9Tg04zsesrfhjf8SZwLe+n53z7/AhfI28U8L3lI1f5vxZo9NO5/cmZy+H
+PBFyXL8XmvWM9QT2vvMj9iPq/XWrw3P81HzodwK2O1y3PVb1zc0Bbnpf4fwE
+8uL7jn1DN+QxxT19X9tuMh7Vv7o4yGuyB5I9nOJFbq/xno3hOxnHoY2P5cTy
+kuLarA+fJ7qwnunheIblKfmNyX7yeVV+W+96o75n9jvS9ajP0nuWVedrO6nG
+e550fnecyPu0XCU6eZz5psr5dterPjfze4rz+D1+ehdiPK1HnA+u9vulgb8S
+P1uuHB+r668P81Nc1XY9cOGjFEd0/MjzfI/BB/6err73OxjW9feFCa9V78MN
+p97nX8TvG01ny3erHwx86HMwXdBP6Le0jv2iVe9AHbc1f1jvWD+kuGHyR4xn
+8qtdtx8NPeET9LXl1eeYvoOp8DdiHNjvP8xH2Benpvyz33VUfsZO3+32Cflz
++Bw4vEegjv3M/q03HQ+Bf9iX84DUq33g7+E2BjlM9yV2Ivtz3Cp9l+48t+P0
+jh97XJv/tn83CN347g08/R2a9a3pWv2Sp4NeYh6l8zOsC39wztR9Hp4PXPZh
+Pq7+4JuJ/v/qfML96u8m2Tf41HcUN/Vu5NrA90kOsCsb3+zHdzSOG3Afe33T
+z/jDn5TAxd6BH9k/JfTx73MAh3UbvKeDPFlO2BfzbIfT77y8xzn/6PWSHEI3
+6I2/Xvdzv7/zwd+Cf/xOitL+FnEN4hWe73dX+H282+UeRD9w/4AfcRXi+25n
+fdrZN/2e3/a/08+deEyVp/ODfvF7pPRdtuuGQ8m4k+ZB6z23K31woZ+r5cD4
+p/dmab8p/2374tz0jiblwXwvpfs9fXdie8X+sr8/rPI//l6O75+UT3Q9fcfs
+ssY/1jt/ol8M135X1bebPX7p+5u69aDLVfEq22nGK+UdbI+Z3vWe2RHeFwc/
+CbrZH7UdmvDye5yUZ6dE70Fv1k3j0z6dtzK+9j/tNyI/5nPXUxwmvU+q+uBy
+t4P87hr9yD1R44FzftZ5WseHiVsBD/j0Ox9MCd0r34/v74GL3qfe8Hre7zPk
+ze/GKx/eGe5Tv7/w+6HleapRn5kvrU/tZ9n/S3qLOv5nehdlfWL80MftXOb3
+fH6nU+2RMf+a3hmYL+s9crfzQYovWZ5S3MN6ZHney7/rdD6Ot/3FfMfrrB/p
+tz4EXsoHprio/WSfp/WU6+DH9xjmx+X+7qhfrU/NH17XePs7zPQ+Ju3Dei99
+f5t+z8/0TfAth9azNW6+2/XoSX+XwPZdirOnfFM9//F7PdsTlseTvhfy+OVx
+xafDe63Ev0lv+N503fZJopfP1/aM+czvBV0Cj/NO52i9Dt2TH2f9nH7nKb1v
+xD5I34kkOxI8oL/3YXvf+KV3mOl34hyvXf49x8HgF9c4wPi7Iun76+QvWc6T
+fiHu7nsTvel5J827pPct5n/zqfNMNU6Q3mNfj+8Jq596IfJ9hef47APFhcZ9
+GX6yg5Net374//bI/G7B61rv2b8A7v8A7qjy3A==
+             "], {
+              
+              TemporalData`DateSpecification[{2019, 9, 1, 0, 15, 0.}, {
+               2019, 9, 30, 0, 0, 0.}, {15, "Minute"}]}, 1, {
+             "Continuous", 1}, {"Discrete", 1}, 1, {
+             ValueDimensions -> 1, DateFunction -> Automatic, 
+              ResamplingMethod -> {
+               "Interpolation", InterpolationOrder -> 1}}}, True, 
+            12.], {$CellContext`a$$, $CellContext`b$$}], ImageSize -> Full], 
+        "Specifications" :> {{{$CellContext`a$$, 3776285700, "Start Date"}, 
+           3776285700, 
+           3778790400}, {{$CellContext`b$$, 3778790400, "End Date"}, 
+           3776285700, 3778790400}}, "Options" :> {}, "DefaultOptions" :> {}],
+       ImageSizeCache->{1186., {413., 419.}},
+       SingleEvaluation->True],
+      Deinitialization:>None,
+      DynamicModuleValues:>{},
+      SynchronousInitialization->True,
+      UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+      UnsavedVariables:>{Typeset`initDone$$},
+      UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+     Deployed->True,
+     StripOnInput->False],
+    Manipulate`InterpretManipulate[1]]}}, 1]}}, 1]], "Output",
+ CellChangeTimes->{
+  3.7851775026224146`*^9, 3.7851794481611147`*^9, 3.785437412603736*^9, 
+   3.7855335831999764`*^9, {3.785546840599492*^9, 3.785546848034509*^9}, {
+   3.785546931366588*^9, 3.7855469502058845`*^9}, 3.785885928921698*^9, 
+   3.7858902990084553`*^9, 3.7858903751466565`*^9, 3.785891326873872*^9},
+ CellLabel->"Out[43]=",ExpressionUUID->"c8431f9e-90b1-40a1-92c4-02dd6070b791"]
+}, Open  ]],
+
+Cell["\<\
+The TabView above can be CloudDeployed as the singular charts from Chapter 2 \
+were deployed.  As you will see this works quite well.  In this case we name \
+the CloudDeployed visualization \[OpenCurlyDoubleQuote]My School\
+\[CloseCurlyDoubleQuote].  By using a specific name we will be able to take \
+down the CloudDeployed object, and re-deploy an updated object when new data \
+is added to the CloudExpressions.  \
+\>", "Text",
+ CellChangeTimes->{{3.7854371022744827`*^9, 3.785437174798467*^9}, 
+   3.7854372212090683`*^9, {3.7854375377818556`*^9, 3.7854375595159273`*^9}, {
+   3.7854376692882566`*^9, 
+   3.7854378027703056`*^9}},ExpressionUUID->"a49ab4dd-2dcb-4e35-99d8-\
+590eb70f26df"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"CloudDeploy", "[", 
+  RowBox[{"tabView", ",", "\"\<My School\>\""}], "]"}]], "Input",
+ CellLabel->"In[47]:=",ExpressionUUID->"7eff579a-3083-465d-85d5-6f6345f3e629"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"CloudObject", "[", 
+   TemplateBox[{
+    "\"https://www.wolframcloud.com/obj/kmaclaury/My School\"",
+     "https://www.wolframcloud.com/obj/kmaclaury/My School"},
+    "HyperlinkURL"], "]"}],
+  CloudObject["https://www.wolframcloud.com/obj/kmaclaury/My School"],
+  SelectWithContents->True]], "Output",
+ CellChangeTimes->{3.7854374250997458`*^9, 3.785891761786318*^9},
+ CellLabel->"Out[47]=",ExpressionUUID->"18d17dd8-832e-4d27-8530-6561a6601a9c"]
+}, Open  ]],
+
+Cell["\<\
+We can test the Delayed function to ensure that the TabView isn\
+\[CloseCurlyQuote]t evaluated until accessed.  Unfortunately, this doesn\
+\[CloseCurlyQuote]t render as expected.  \
+\>", "Text",
+ CellChangeTimes->{{3.785437814503121*^9, 3.785437822710478*^9}, {
+  3.785452053569572*^9, 3.7854520693455153`*^9}, {3.7854522194139414`*^9, 
+  3.7854522695051622`*^9}},ExpressionUUID->"1142237d-02dc-44c7-a83c-\
+cd36b2fee462"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"CloudDeploy", "[", 
+  RowBox[{
+   RowBox[{"Delayed", "[", "\[IndentingNewLine]", 
+    RowBox[{"TabView", "[", 
+     RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{
+       "\"\<Fuel Oil Deliveries\>\"", "\[Rule]", "\[IndentingNewLine]", 
+        "fueloilchart"}], "\[IndentingNewLine]", ",", "\[IndentingNewLine]", 
+       RowBox[{
+       "\"\<Electrical Consumption\>\"", "\[Rule]", "\[IndentingNewLine]", 
+        RowBox[{"TabView", "[", 
+         RowBox[{"{", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{
+           "\"\<Monthly Electrical Bills\>\"", "\[Rule]", 
+            "\[IndentingNewLine]", "monthlyconsumptionchart"}], 
+           "\[IndentingNewLine]", ",", "\[IndentingNewLine]", 
+           RowBox[{
+           "\"\<Interval Data\>\"", "\[Rule]", "\[IndentingNewLine]", 
+            "intervaldatachart"}]}], "\[IndentingNewLine]", 
+          "\[IndentingNewLine]", "}"}], "]"}]}]}], "\[IndentingNewLine]", 
+      "}"}], "]"}], "\[IndentingNewLine]", "]"}], ",", 
+   "\"\<Delayed Tab View\>\""}], "\[IndentingNewLine]", "]"}]], "Input",
+ CellChangeTimes->{{3.7854376082723804`*^9, 3.785437640600439*^9}, {
+  3.7858914097431355`*^9, 3.785891424616145*^9}},
+ CellLabel->"In[44]:=",ExpressionUUID->"4aa40cd3-53f9-4abe-863b-3287256dbb5e"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"CloudObject", "[", 
+   TemplateBox[{
+    "\"https://www.wolframcloud.com/obj/kmaclaury/Delayed Tab View\"",
+     "https://www.wolframcloud.com/obj/kmaclaury/Delayed Tab View"},
+    "HyperlinkURL"], "]"}],
+  CloudObject["https://www.wolframcloud.com/obj/kmaclaury/Delayed Tab View"],
+  SelectWithContents->True]], "Output",
+ CellChangeTimes->{3.78543764612317*^9, 3.7858914306231136`*^9},
+ CellLabel->"Out[44]=",ExpressionUUID->"fdbe5cb3-e54e-48e9-8646-536dd67a3f11"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"CloudObjectInformation", "[", 
+  RowBox[{
+  "CloudObject", "[", 
+   "\"\<https://www.wolframcloud.com/obj/kmaclaury/Delayed Tab View\>\"", 
+   "]"}], "]"}]], "Input",
+ NumberMarks->False,
+ CellLabel->"In[45]:=",ExpressionUUID->"549c4f12-6fc1-48c1-be1f-7832179c0cb4"],
+
+Cell[BoxData[
+ InterpretationBox[
+  PanelBox[
+   TagBox[GridBox[{
+      {
+       TemplateBox[{
+        StyleBox[
+         "\"CloudObject: \"", FontColor -> GrayLevel[0.5], StripOnInput -> 
+          False],"\"Delayed Tab View\""},
+        "RowDefault"]},
+      {
+       ItemBox[
+        TagBox[
+         DynamicModuleBox[{Typeset`var$$ = False}, 
+          InterpretationBox[
+           StyleBox[
+            PaneSelectorBox[{False->GridBox[{
+               {
+                OpenerBox[Dynamic[Typeset`var$$],
+                 Appearance->Automatic,
+                 AutoAction->False,
+                 ContinuousAction->False,
+                 Enabled->Automatic], 
+                StyleBox["\<\"File information\"\>",
+                 StripOnInput->False,
+                 FontWeight->Bold]}
+              },
+              AutoDelete->False,
+              BaselinePosition->{1, 1},
+              GridBoxAlignment->{"Columns" -> {{Left}}},
+              GridBoxBackground->{"Columns" -> {{Automatic}}},
+              
+              GridBoxItemSize->{
+               "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+              GridBoxSpacings->{"Columns" -> {{0.2}}, "Rows" -> {{0.5}}}], 
+             True->GridBox[{
+               {
+                OpenerBox[Dynamic[Typeset`var$$],
+                 Appearance->Automatic,
+                 AutoAction->False,
+                 ContinuousAction->False,
+                 Enabled->Automatic], 
+                StyleBox["\<\"File information\"\>",
+                 StripOnInput->False,
+                 FontWeight->Bold]},
+               {"", 
+                PaneBox[
+                 TagBox[
+                  TagBox[GridBox[{
+                    {"\<\"UUID\"\>", \
+"\<\"b5512cf6-9a9a-4381-9e27-0c67e809409a\"\>"},
+                    {"\<\"Path\"\>", "\<\"kmaclaury/Delayed Tab View\"\>"},
+                    {"\<\"Name\"\>", "\<\"Delayed Tab View\"\>"},
+                    {"\<\"DisplayName\"\>", "\<\"Delayed Tab View\"\>"},
+                    {"\<\"OwnerWolframUUID\"\>", \
+"\<\"58f3ee6b-3083-40a8-9846-527d81df8447\"\>"},
+                    {"\<\"OwnerCloudUserUUID\"\>", \
+"\<\"58f3ee6b-3083-40a8-9846-527d81df8447\"\>"},
+                    {"\<\"OwnerWolframID\"\>", "\<\"kmaclaury@me.com\"\>"},
+                    {"\<\"OwnerCloudUserID\"\>", "\<\"kmaclaury@me.com\"\>"},
+                    {"\<\"MIMEType\"\>", \
+"\<\"application/vnd.wolfram.expression.computation\"\>"},
+                    {"\<\"MimeType\"\>", \
+"\<\"application/vnd.wolfram.expression.computation\"\>"},
+                    {"\<\"FileType\"\>", "File"},
+                    {"\<\"FileByteCount\"\>", "31638"},
+                    {"\<\"FileHashMD5\"\>", 
+                    "307059665896985261454805008219042758742"},
+                    {"\<\"Created\"\>", 
+                    TemplateBox[{RowBox[{"\"Fri 20 Dec 2019 22:30:34\"", 
+                    StyleBox[
+                    RowBox[{"\"GMT\"", "\[InvisibleSpace]", 
+                    StyleBox[
+                    RowBox[{"-", "5.`"}], NumberMarks -> False, StripOnInput -> 
+                    False]}], FontColor -> GrayLevel[0.5]]}],
+                    RowBox[{"DateObject", "[", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    
+                    RowBox[{"2019", ",", "12", ",", "20", ",", "22", ",", 
+                    "30", ",", "34.`"}], "}"}], ",", "\"Instant\"", ",", 
+                    "\"Gregorian\"", ",", 
+                    RowBox[{"-", "5.`"}]}], "]"}]},
+                    "DateObject",
+                    Editable->False]},
+                    {"\<\"LastAccessed\"\>", 
+                    TemplateBox[{RowBox[{"\"Fri 20 Dec 2019 22:30:59\"", 
+                    StyleBox[
+                    RowBox[{"\"GMT\"", "\[InvisibleSpace]", 
+                    StyleBox[
+                    RowBox[{"-", "5.`"}], NumberMarks -> False, StripOnInput -> 
+                    False]}], FontColor -> GrayLevel[0.5]]}],
+                    RowBox[{"DateObject", "[", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    
+                    RowBox[{"2019", ",", "12", ",", "20", ",", "22", ",", 
+                    "30", ",", "59.`"}], "}"}], ",", "\"Instant\"", ",", 
+                    "\"Gregorian\"", ",", 
+                    RowBox[{"-", "5.`"}]}], "]"}]},
+                    "DateObject",
+                    Editable->False]},
+                    {"\<\"LastModified\"\>", 
+                    TemplateBox[{RowBox[{"\"Fri 20 Dec 2019 22:30:33\"", 
+                    StyleBox[
+                    RowBox[{"\"GMT\"", "\[InvisibleSpace]", 
+                    StyleBox[
+                    RowBox[{"-", "5.`"}], NumberMarks -> False, StripOnInput -> 
+                    False]}], FontColor -> GrayLevel[0.5]]}],
+                    RowBox[{"DateObject", "[", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    
+                    RowBox[{"2019", ",", "12", ",", "20", ",", "22", ",", 
+                    "30", ",", "33"}], "}"}], ",", "\"Instant\"", ",", 
+                    "\"Gregorian\"", ",", 
+                    RowBox[{"-", "5.`"}]}], "]"}]},
+                    "DateObject",
+                    Editable->False]},
+                    {"\<\"Permissions\"\>", 
+                    RowBox[{"{", 
+                    RowBox[{"\<\"Owner\"\>", "\[Rule]", 
+                    RowBox[{"{", 
+                    
+                    RowBox[{"\<\"Read\"\>", ",", "\<\"Write\"\>", 
+                    ",", "\<\"Execute\"\>"}], "}"}]}], "}"}]},
+                    {"\<\"Active\"\>", "True"}
+                    },
+                    AutoDelete->False,
+                    GridBoxAlignment->{"Columns" -> {Right, Left}},
+                    
+                    GridBoxItemSize->{
+                    "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+                   "Grid"],
+                  BoxForm`Undeploy,
+                  DefaultBaseStyle->{Deployed -> False}],
+                 ImageMargins->0]}
+              },
+              AutoDelete->False,
+              BaselinePosition->{1, 1},
+              GridBoxAlignment->{"Columns" -> {{Left}}},
+              GridBoxBackground->{"Columns" -> {{Automatic}}},
+              
+              GridBoxItemSize->{
+               "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+              GridBoxSpacings->{"Columns" -> {{0.2}}, "Rows" -> {{0.5}}}]}, 
+             Dynamic[Typeset`var$$],
+             Alignment->Automatic,
+             BaseStyle->{},
+             BaselinePosition->Baseline,
+             DefaultBaseStyle->"OpenerView",
+             ImageMargins->0,
+             ImageSize->Automatic], "Deploy",
+            StripOnInput->False],
+           OpenerView[{
+             Style["File information", Bold], 
+             BoxForm`Undeploy[
+              
+              Grid[{{"UUID", "b5512cf6-9a9a-4381-9e27-0c67e809409a"}, {
+                "Path", "kmaclaury/Delayed Tab View"}, {
+                "Name", "Delayed Tab View"}, {
+                "DisplayName", "Delayed Tab View"}, {
+                "OwnerWolframUUID", "58f3ee6b-3083-40a8-9846-527d81df8447"}, {
+                "OwnerCloudUserUUID", 
+                 "58f3ee6b-3083-40a8-9846-527d81df8447"}, {
+                "OwnerWolframID", "kmaclaury@me.com"}, {
+                "OwnerCloudUserID", "kmaclaury@me.com"}, {
+                "MIMEType", 
+                 "application/vnd.wolfram.expression.computation"}, {
+                "MimeType", 
+                 "application/vnd.wolfram.expression.computation"}, {
+                "FileType", File}, {"FileByteCount", 31638}, {
+                "FileHashMD5", 307059665896985261454805008219042758742}, {
+                "Created", 
+                 
+                 DateObject[{2019, 12, 20, 22, 30, 34.}, "Instant", 
+                  "Gregorian", -5.]}, {"LastAccessed", 
+                 
+                 DateObject[{2019, 12, 20, 22, 30, 59.}, "Instant", 
+                  "Gregorian", -5.]}, {"LastModified", 
+                 
+                 DateObject[{2019, 12, 20, 22, 30, 33}, "Instant", 
+                  "Gregorian", -5.]}, {
+                "Permissions", {"Owner" -> {"Read", "Write", "Execute"}}}, {
+                "Active", True}}, Alignment -> {{Right, Left}}]]}, False, 
+            Deployed -> True]],
+          DynamicModuleValues:>{}],
+         Setting[#, {0}]& ],
+        Alignment->Left,
+        StripOnInput->False]}
+     },
+     BaselinePosition->{2, 1},
+     DefaultBaseStyle->"Column",
+     FrameStyle->GrayLevel[0.85],
+     GridBoxAlignment->{"Columns" -> {{Left}}},
+     GridBoxDividers->{"Columns" -> {{False}}, "Rows" -> {False, True}},
+     GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+     GridBoxSpacings->{
+      "Columns" -> {{Automatic}}, "Rows" -> {Automatic, 1.2}}],
+    "Column"],
+   BaselinePosition->Baseline],
+  CloudObjectInformationData[
+   Association[{
+    "UUID" -> "b5512cf6-9a9a-4381-9e27-0c67e809409a", "Path" -> 
+     "kmaclaury/Delayed Tab View", "Name" -> "Delayed Tab View", 
+     "DisplayName" -> "Delayed Tab View", "OwnerWolframUUID" -> 
+     "58f3ee6b-3083-40a8-9846-527d81df8447", "OwnerCloudUserUUID" -> 
+     "58f3ee6b-3083-40a8-9846-527d81df8447", "OwnerWolframID" -> 
+     "kmaclaury@me.com", "OwnerCloudUserID" -> "kmaclaury@me.com", "MIMEType" -> 
+     "application/vnd.wolfram.expression.computation", "MimeType" -> 
+     "application/vnd.wolfram.expression.computation", "FileType" -> File, 
+     "FileByteCount" -> 31638, "FileHashMD5" -> 
+     307059665896985261454805008219042758742, "Created" -> 
+     DateObject[{2019, 12, 20, 22, 30, 34.}, "Instant", "Gregorian", -5.], 
+     "LastAccessed" -> 
+     DateObject[{2019, 12, 20, 22, 30, 59.}, "Instant", "Gregorian", -5.], 
+     "LastModified" -> 
+     DateObject[{2019, 12, 20, 22, 30, 33}, "Instant", "Gregorian", -5.], 
+     "Permissions" -> {"Owner" -> {"Read", "Write", "Execute"}}, "Active" -> 
+     True}]],
+  SelectWithContents->True]], "Output",
+ CellChangeTimes->{3.7858914915352545`*^9},
+ CellLabel->"Out[45]=",ExpressionUUID->"5d359bfb-34f6-486a-b7ae-10ae09c14927"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"CloudDeploy", "[", 
+  RowBox[{
+   RowBox[{"AutoRefreshed", "[", "\[IndentingNewLine]", 
+    RowBox[{"TabView", "[", 
+     RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{
+       "\"\<Fuel Oil Deliveries\>\"", "\[Rule]", "\[IndentingNewLine]", 
+        "fueloilchart"}], "\[IndentingNewLine]", ",", "\[IndentingNewLine]", 
+       RowBox[{
+       "\"\<Electrical Consumption\>\"", "\[Rule]", "\[IndentingNewLine]", 
+        RowBox[{"TabView", "[", 
+         RowBox[{"{", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{
+           "\"\<Monthly Electrical Bills\>\"", "\[Rule]", 
+            "\[IndentingNewLine]", "monthlyconsumptionchart"}], 
+           "\[IndentingNewLine]", ",", "\[IndentingNewLine]", 
+           RowBox[{
+           "\"\<Interval Data\>\"", "\[Rule]", "\[IndentingNewLine]", 
+            "intervaldatachart"}]}], "\[IndentingNewLine]", 
+          "\[IndentingNewLine]", "}"}], "]"}]}]}], "\[IndentingNewLine]", 
+      "}"}], "]"}], "\[IndentingNewLine]", "]"}], ",", 
+   "\"\<AutoRefreshed Tab View\>\""}], "\[IndentingNewLine]", "]"}]], "Input",
+ CellChangeTimes->{{3.7854376082723804`*^9, 3.785437640600439*^9}, {
+  3.7858914097431355`*^9, 3.785891424616145*^9}, {3.785891506445139*^9, 
+  3.785891522171074*^9}},
+ CellLabel->"In[46]:=",ExpressionUUID->"23e548ec-12a9-4d77-a132-0be8cd8e1b61"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"CloudObject", "[", 
+   TemplateBox[{
+    "\"https://www.wolframcloud.com/obj/kmaclaury/AutoRefreshed Tab View\"",
+     "https://www.wolframcloud.com/obj/kmaclaury/AutoRefreshed Tab View"},
+    "HyperlinkURL"], "]"}],
+  CloudObject[
+  "https://www.wolframcloud.com/obj/kmaclaury/AutoRefreshed Tab View"],
+  SelectWithContents->True]], "Output",
+ CellChangeTimes->{3.7858916056914315`*^9},
+ CellLabel->"Out[46]=",ExpressionUUID->"785d8cdb-8f94-4993-ae95-ecdc969f237b"]
+}, Open  ]],
+
+Cell["\<\
+Another option for publishing the TabView is to deploy the TabView, and embed \
+it in an iFrame within a website.  You can use the EmbedCode function to \
+create code that can be inserted into a website.  \
+\>", "Text",
+ CellChangeTimes->{{3.7854526019216805`*^9, 3.785452722734666*^9}, {
+  3.7854528688522625`*^9, 3.785452877187562*^9}, {3.785453009148158*^9, 
+  3.7854530202130384`*^9}, {3.7854530790910835`*^9, 
+  3.7854531722436943`*^9}},ExpressionUUID->"d8bb66b2-fb9a-4abe-8c14-\
+9a4c73da0573"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"EmbedCode", "[", 
+  RowBox[{
+   InterpretationBox[
+    RowBox[{"CloudObject", "[", 
+     TemplateBox[{
+      "\"https://www.wolframcloud.com/obj/kmaclaury/My School\"",
+       "https://www.wolframcloud.com/obj/kmaclaury/My School"},
+      "HyperlinkURL"], "]"}],
+    CloudObject["https://www.wolframcloud.com/obj/kmaclaury/My School"],
+    SelectWithContents->True], ",", "\"\<HTML\>\""}], "]"}]], "Input",
+ CellChangeTimes->{{3.785177529382722*^9, 3.7851775431521225`*^9}, {
+   3.7851776942843494`*^9, 3.7851776998944216`*^9}, 3.785178160570529*^9},
+ CellLabel->"In[18]:=",ExpressionUUID->"7866f5a2-f79e-43fc-901a-29e001765368"],
+
+Cell[BoxData[
+ InterpretationBox[
+  FrameBox[
+   PanelBox[
+    TagBox[GridBox[{
+       {
+        StyleBox["\<\"Embeddable Code\"\>", "ControlStyle",
+         StripOnInput->False,
+         FontSize->Larger,
+         FontWeight->Bold,
+         FontColor->GrayLevel[0.3]]},
+       {
+        StyleBox["\<\"Use the code below to call the Wolfram Cloud function \
+from HTML:\"\>",
+         StripOnInput->False,
+         FontColor->RGBColor[0.23, 0.23, 0.23]]},
+       {
+        FrameBox[
+         TagBox[GridBox[{
+            {
+             TagBox[GridBox[{
+                {
+                 TagBox[GridBox[{
+                    {
+                    StyleBox["\<\"Code\"\>", "ControlStyle",
+                    StripOnInput->False,
+                    FontWeight->Bold,
+                    FontColor->RGBColor[0.33, 0.33, 0.33]]},
+                    {
+                    StyleBox["\<\"\"\>",
+                    StripOnInput->False,
+                    FontColor->RGBColor[0.33, 0.33, 0.33]]}
+                   },
+                   DefaultBaseStyle->"Column",
+                   GridBoxAlignment->{"Columns" -> {{Left}}},
+                   
+                   GridBoxItemSize->{
+                    "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+                  "Column"], 
+                 ItemBox[
+                  ButtonBox["\<\"Copy to Clipboard\"\>",
+                   
+                   Appearance:>FEPrivate`FrontEndResource[
+                    "FEExpressions", "GrayButtonNinePatchAppearance"],
+                   BaseStyle->"DialogStyle",
+                   
+                   ButtonFunction:>CopyToClipboard[
+                    "<iframe \
+src=\"https://www.wolframcloud.com/obj/kmaclaury/My School?_embed=iframe\" \
+width=\"600\" height=\"800\"></iframe>"],
+                   Evaluator->Automatic,
+                   FrameMargins->{{10, 10}, {0, 0}},
+                   ImageSize->Automatic,
+                   Method->"Queued"],
+                  Alignment->Right,
+                  StripOnInput->False]}
+               },
+               AutoDelete->False,
+               GridBoxAlignment->{"Columns" -> {{Left}}, "Rows" -> {{Top}}},
+               GridBoxItemSize->{"Columns" -> {{Fit}}, "Rows" -> {{Fit}}}],
+              "Grid"]},
+            {
+             FrameBox[
+              PaneBox[Cell["\<\
+<iframe src=\"https://www.wolframcloud.com/obj/kmaclaury/My \
+School?_embed=iframe\" width=\"600\" height=\"800\"></iframe>\
+\>",
+                Editable->False,
+                Deployed->False,ExpressionUUID->
+                "3719acbb-00bd-46ea-81b0-7fadf267ce6e"],
+               AppearanceElements->{},
+               ImageSize->{
+                 Scaled[1], 60},
+               Scrollbars->Automatic],
+              Background->GrayLevel[1],
+              BaseStyle->"StandardForm",
+              FrameStyle->RGBColor[0.69, 0.69, 0.69],
+              StripOnInput->False]}
+           },
+           DefaultBaseStyle->"Column",
+           GridBoxAlignment->{"Columns" -> {{Left}}},
+           GridBoxItemSize->{"Columns" -> {{Fit}}, "Rows" -> {{Fit}}},
+           GridBoxSpacings->{"Columns" -> {{0}}, "Rows" -> {0.2, {0.5}}}],
+          "Column"],
+         Background->RGBColor[0.96, 0.96, 0.96],
+         FrameMargins->{{14, 14}, {14, 10}},
+         FrameStyle->RGBColor[0.69, 0.69, 0.69],
+         StripOnInput->False]}
+      },
+      DefaultBaseStyle->"Column",
+      GridBoxAlignment->{"Columns" -> {{Left}}},
+      GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+      GridBoxSpacings->{"Columns" -> {{0}}, "Rows" -> {0.3, 0.4, 0.8, 1.5}}],
+     "Column"],
+    Background->RGBColor[0.87, 0.87, 0.87],
+    BaseStyle->{"Deploy"},
+    ImageSize->630],
+   Background->RGBColor[0.87, 0.87, 0.87],
+   FrameMargins->{{2, 2}, {1, 1}},
+   FrameStyle->RGBColor[0.76, 0.76, 0.76],
+   RoundingRadius->6,
+   StripOnInput->False],
+  EmbeddingObject[
+   Association[
+   "EnvironmentName" -> "HTML", "CodeSection" -> 
+    Association[
+     "Content" -> 
+      "<iframe src=\"https://www.wolframcloud.com/obj/kmaclaury/My \
+School?_embed=iframe\" width=\"600\" height=\"800\"></iframe>", "Title" -> 
+      Automatic, "Filename" -> "cloudembed.html"], "CloudObject" -> 
+    CloudObject[
+     "https://www.wolframcloud.com/obj/kmaclaury/My School"]]]]], "Output",
+ CellChangeTimes->{3.7851775455565357`*^9, 3.7851777019598103`*^9, 
+  3.7851781637870836`*^9},
+ CellLabel->"Out[18]=",ExpressionUUID->"5e1bbaa2-c487-47c7-a1cc-e6828be38fd8"]
+}, Open  ]]
+},
+WindowSize->{1352, 829},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"12.0 for Microsoft Windows (64-bit) (April 11, 2019)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[561, 20, 3537, 63, 264, "Text",ExpressionUUID->"0ebe127f-b767-4d73-ada5-b54a379bedfe"],
+Cell[4101, 85, 606, 13, 100, "Text",ExpressionUUID->"28b15403-4987-4951-81c5-357e2c123200"],
+Cell[CellGroupData[{
+Cell[4732, 102, 1236, 27, 295, "Input",ExpressionUUID->"e5265a5c-fc68-4021-ab29-c2ab8344c79c"],
+Cell[5971, 131, 31856, 709, 935, "Output",ExpressionUUID->"c8431f9e-90b1-40a1-92c4-02dd6070b791"]
+}, Open  ]],
+Cell[37842, 843, 701, 12, 56, "Text",ExpressionUUID->"a49ab4dd-2dcb-4e35-99d8-590eb70f26df"],
+Cell[CellGroupData[{
+Cell[38568, 859, 188, 3, 28, "Input",ExpressionUUID->"7eff579a-3083-465d-85d5-6f6345f3e629"],
+Cell[38759, 864, 491, 10, 35, "Output",ExpressionUUID->"18d17dd8-832e-4d27-8530-6561a6601a9c"]
+}, Open  ]],
+Cell[39265, 877, 431, 8, 34, "Text",ExpressionUUID->"1142237d-02dc-44c7-a83c-cd36b2fee462"],
+Cell[CellGroupData[{
+Cell[39721, 889, 1309, 27, 333, "Input",ExpressionUUID->"4aa40cd3-53f9-4abe-863b-3287256dbb5e"],
+Cell[41033, 918, 511, 10, 35, "Output",ExpressionUUID->"fdbe5cb3-e54e-48e9-8646-536dd67a3f11"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[41581, 933, 290, 7, 28, "Input",ExpressionUUID->"549c4f12-6fc1-48c1-be1f-7832179c0cb4"],
+Cell[41874, 942, 10149, 222, 84, "Output",ExpressionUUID->"5d359bfb-34f6-486a-b7ae-10ae09c14927"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[52060, 1169, 1370, 28, 333, "Input",ExpressionUUID->"23e548ec-12a9-4d77-a132-0be8cd8e1b61"],
+Cell[53433, 1199, 511, 11, 35, "Output",ExpressionUUID->"785d8cdb-8f94-4993-ae95-ecdc969f237b"]
+}, Open  ]],
+Cell[53959, 1213, 509, 9, 34, "Text",ExpressionUUID->"d8bb66b2-fb9a-4abe-8c14-9a4c73da0573"],
+Cell[CellGroupData[{
+Cell[54493, 1226, 653, 13, 32, "Input",ExpressionUUID->"7866f5a2-f79e-43fc-901a-29e001765368"],
+Cell[55149, 1241, 4484, 114, 218, "Output",ExpressionUUID->"5e1bbaa2-c487-47c7-a1cc-e6828be38fd8"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+

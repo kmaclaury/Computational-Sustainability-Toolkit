@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       161,          7]
-NotebookDataLength[     27886,        511]
-NotebookOptionsPosition[     25737,        470]
-NotebookOutlinePosition[     26079,        485]
-CellTagsIndexPosition[     26036,        482]
+NotebookDataLength[     28024,        511]
+NotebookOptionsPosition[     25877,        470]
+NotebookOutlinePosition[     26219,        485]
+CellTagsIndexPosition[     26176,        482]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -234,8 +234,7 @@ initiative,  that educators will see sufficient value to incorporate them \
 into their lessons, and that administrators will see them as a useful means \
 to understand how their facilities use energy.  I hope that these materials \
 are used as educational tools, and perhaps more importantly, that they are \
-used to bring about real change in the way that schools use energy.
-\
+used to bring about real change in the way that schools use energy.\
 \>", "Text",
  CellChangeTimes->{{3.779531668275158*^9, 3.779531690544205*^9}, {
    3.779531728161619*^9, 3.77953175351884*^9}, {3.7795318712878714`*^9, 
@@ -294,8 +293,8 @@ used to bring about real change in the way that schools use energy.
    3.7839602706046567`*^9}, {3.7839603132022977`*^9, 3.783960441553961*^9}, {
    3.7839905964501543`*^9, 3.7839905988044834`*^9}, 3.783992157680092*^9, {
    3.787006482763438*^9, 3.787006517521284*^9}, {3.7870065817192936`*^9, 
-   3.787006619654874*^9}, 3.7870071284033184`*^9, 
-   3.7870155364584336`*^9},ExpressionUUID->"29cdad6b-660e-453c-b1b0-\
+   3.787006619654874*^9}, 3.7870071284033184`*^9, 3.7870155364584336`*^9, 
+   3.787263665927664*^9},ExpressionUUID->"29cdad6b-660e-453c-b1b0-\
 84533bfaa95d"],
 
 Cell[CellGroupData[{
@@ -310,12 +309,12 @@ Cell["\<\
  For those not familiar with the concept, User Stories are a common method of \
 defining requirements in the world of software development.  The basic \
 structure of a user story is to state who the user is, what the user needs to \
-do, and why.   In the context of these materials, I hope that by pairing each \
+do, and why.   In the context of these materials, I hope that  pairing each \
 incremental piece of code with a statement of the functional requirement that \
 it satisfies will help to clarify the relationship between the two.  \
 \>", "Text",
- CellChangeTimes->{{3.7870072519583273`*^9, 
-  3.787007254183365*^9}},ExpressionUUID->"4f6d2ed6-a62e-47b9-8ae5-\
+ CellChangeTimes->{{3.7870072519583273`*^9, 3.787007254183365*^9}, 
+   3.7872637956992764`*^9},ExpressionUUID->"4f6d2ed6-a62e-47b9-8ae5-\
 c28d20473f10"],
 
 Cell["\<\
@@ -446,23 +445,24 @@ the characters of the series display a deep understanding of the physical \
 systems that govern their lives.  They have a keen understanding of the \
 materials and energy available to them at any given time, and they are \
 comfortable doing mental and computer assisted calculations to evaluate their \
-options when they need to use those resources to some end.  \
-\>", "Text",
- CellChangeTimes->{
-  3.7870158134277477`*^9, {3.7870158934379177`*^9, 3.7870159264774*^9}, 
-   3.7870159614456196`*^9},ExpressionUUID->"7d788e40-fa10-4f76-91c9-\
-ee17fa91a4a2"],
-
-Cell["\<\
-It is the abilities of quantitatively evaluating a system, understanding the \
+options when they need to use those resources to some end.  It is these \
+abilities of quantitatively evaluating a system, understanding the \
 limitations of the system, and the capabilities of the tools and strategies \
 available to solve problems within the system that are displayed so often in \
 The Expanse that many more of us need to be capable of if we are going to \
 create a sustainable economy.  \
 \>", "Text",
+ CellChangeTimes->{
+  3.7870158134277477`*^9, {3.7870158934379177`*^9, 3.7870159264774*^9}, 
+   3.7870159614456196`*^9, {3.78726375680888*^9, 
+   3.7872637597881203`*^9}},ExpressionUUID->"7d788e40-fa10-4f76-91c9-\
+ee17fa91a4a2"],
+
+Cell["", "Text",
  CellChangeTimes->{{3.7870158497103224`*^9, 3.7870158525280056`*^9}, {
   3.7871832176831284`*^9, 3.7871833619398065`*^9}, {3.787183409121069*^9, 
-  3.787183411879304*^9}},ExpressionUUID->"09d07b11-222e-4edb-8426-\
+  3.787183411879304*^9}, {3.787263731678256*^9, 
+  3.787263754616386*^9}},ExpressionUUID->"09d07b11-222e-4edb-8426-\
 73128f406d0a"]
 }, Open  ]]
 }, Open  ]]
@@ -497,19 +497,19 @@ Cell[7105, 135, 229, 4, 31, "Item",ExpressionUUID->"25f6c3b2-ea14-42c8-9ad3-c83a
 Cell[7337, 141, 298, 7, 31, "Item",ExpressionUUID->"8f212e39-880e-43ca-9f64-e151daca1aae"]
 }, Open  ]],
 Cell[7650, 151, 5407, 75, 122, "Text",ExpressionUUID->"4e1d14fa-5240-4b33-828b-dc6bb3041fd0"],
-Cell[13060, 228, 4951, 70, 100, "Text",ExpressionUUID->"29cdad6b-660e-453c-b1b0-84533bfaa95d"],
+Cell[13060, 228, 4972, 69, 78, "Text",ExpressionUUID->"29cdad6b-660e-453c-b1b0-84533bfaa95d"],
 Cell[CellGroupData[{
-Cell[18036, 302, 264, 4, 67, "Section",ExpressionUUID->"806c9980-4b99-4bfd-a2b5-943ca8b52093"],
-Cell[18303, 308, 614, 10, 78, "Text",ExpressionUUID->"4f6d2ed6-a62e-47b9-8ae5-c28d20473f10"],
-Cell[18920, 320, 2165, 31, 100, "Text",ExpressionUUID->"44af9664-7c3b-4f53-b145-7fa43f262989"]
+Cell[18057, 301, 264, 4, 67, "Section",ExpressionUUID->"806c9980-4b99-4bfd-a2b5-943ca8b52093"],
+Cell[18324, 307, 637, 10, 78, "Text",ExpressionUUID->"4f6d2ed6-a62e-47b9-8ae5-c28d20473f10"],
+Cell[18964, 319, 2165, 31, 100, "Text",ExpressionUUID->"44af9664-7c3b-4f53-b145-7fa43f262989"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[21122, 356, 225, 4, 67, "Section",ExpressionUUID->"22852d0d-e337-44fb-a034-dec72b6eaf70"],
-Cell[21350, 362, 761, 35, 34, "Text",ExpressionUUID->"225585e3-8a9b-4143-a9e0-a74f670f8c63"],
-Cell[22114, 399, 737, 14, 138, "Text",ExpressionUUID->"c30b8ce9-80a9-48ef-9ed1-669bae6058a3"],
-Cell[22854, 415, 747, 12, 78, "Text",ExpressionUUID->"1ddc1034-cc8a-4409-9ead-5350add4c8b8"],
-Cell[23604, 429, 1494, 24, 188, "Text",ExpressionUUID->"7d788e40-fa10-4f76-91c9-ee17fa91a4a2"],
-Cell[25101, 455, 596, 10, 56, "Text",ExpressionUUID->"09d07b11-222e-4edb-8426-73128f406d0a"]
+Cell[21166, 355, 225, 4, 67, "Section",ExpressionUUID->"22852d0d-e337-44fb-a034-dec72b6eaf70"],
+Cell[21394, 361, 761, 35, 34, "Text",ExpressionUUID->"225585e3-8a9b-4143-a9e0-a74f670f8c63"],
+Cell[22158, 398, 737, 14, 138, "Text",ExpressionUUID->"c30b8ce9-80a9-48ef-9ed1-669bae6058a3"],
+Cell[22898, 414, 747, 12, 78, "Text",ExpressionUUID->"1ddc1034-cc8a-4409-9ead-5350add4c8b8"],
+Cell[23648, 428, 1892, 30, 210, "Text",ExpressionUUID->"7d788e40-fa10-4f76-91c9-ee17fa91a4a2"],
+Cell[25543, 460, 294, 5, 34, "Text",ExpressionUUID->"09d07b11-222e-4edb-8426-73128f406d0a"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
