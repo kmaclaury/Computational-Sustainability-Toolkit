@@ -28,9 +28,9 @@ There are many ways that individuals can contribute to this project.  Those inte
 So, what is Computational Sustainability? On its website www.computational-sustainability.org the Institute for Computational Sustainability states:
 * Computational Sustainability is an interdisciplinary field that aims to apply techniques from computer science, information science, operations research, applied mathematics, and statistics for balancing environmental, economic, and societal needs for sustainable development. Focus: developing computational and mathematical models and methods for decision making concerning the management and allocation of resources in order to help solve some of the most challenging problems related to sustainability. 
 
-Computational Sustainability as a field extends far beyond energy consumption on school campuses, and at some point these materials may expand beyond that scope.  At th moment, focusing on energy consumption in schools is the place to start because ...
+Computational Sustainability as a field extends far beyond energy consumption on school campuses, and at some point these materials may expand beyond that scope.  At the moment, focusing on energy consumption in schools is the place to start because of the immediate relevance to students, and the ability of students to have some influence on the energy consumed in their schools.
 
-##Licensing
+## Licensing
 
    Copyright 2020 Kyle MacLaury
 
