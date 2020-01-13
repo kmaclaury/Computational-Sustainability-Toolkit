@@ -1,5 +1,5 @@
 # Computational-Sustainability-Toolkit
-Lessons in Energy Monitoring and Application Building using the Wolfram Language
+**Lessons in Energy Monitoring and Application Building using the Wolfram Language
 
 I hope that these materials provide students with an understanding of how to use computational technology and computational thinking in their pursuit of a more sustainable world. 
 
