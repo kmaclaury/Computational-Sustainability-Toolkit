@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       161,          7]
-NotebookDataLength[     21902,        505]
-NotebookOptionsPosition[     18174,        433]
-NotebookOutlinePosition[     18518,        448]
-CellTagsIndexPosition[     18475,        445]
+NotebookDataLength[     22633,        532]
+NotebookOptionsPosition[     18448,        452]
+NotebookOutlinePosition[     18790,        467]
+CellTagsIndexPosition[     18747,        464]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -50,24 +50,7 @@ manage permissions to control access to the forms and published data.  \
   3.785456355275955*^9, 3.785456477982938*^9}, {3.785456516614078*^9, 
   3.7854566204720354`*^9}, {3.7872652159588795`*^9, 
   3.787265217748621*^9}},ExpressionUUID->"2e47c4e6-0cb2-4a8d-ab4b-\
-abf3df905012"],
-
-Cell["\<\
-To pull all of the pieces of the application into one location I suggest \
-creating a notebook that contains the code that creates each visualization, \
-Form and CloudExpression.  The notebook titled My School\[CloseCurlyQuote]s \
-Energy Consumption Project Notebook in the Sample Code directory contains \
-code that can be used to build and deploy an application to track a single \
-building\[CloseCurlyQuote]s energy consumption.  It uses the data in the \
-Sample Data directory.  You can take this notebook, and use it with your own \
-data, and modify it as you see fit.\
-\>", "Text",
- CellChangeTimes->{{3.78726662727269*^9, 3.7872667367223516`*^9}, {
-  3.787266805876008*^9, 3.7872668442129717`*^9}, {3.7872668798034873`*^9, 
-  3.7872669611450043`*^9}, {3.7872673102551894`*^9, 3.787267405731284*^9}, {
-  3.7872674815644827`*^9, 3.7872675023060875`*^9}, {3.787592691664687*^9, 
-  3.787592702161523*^9}},ExpressionUUID->"1389532b-bec6-411b-ae72-\
-3897ee4aa441"]
+abf3df905012"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -79,182 +62,130 @@ Cell["User Stories", "Section",
 
 Cell[CellGroupData[{
 
-Cell["\<\
-User accesses all energy tracking visualizations through a single entry point.\
-\>", "Subsection",
- CellChangeTimes->{{3.781383247113061*^9, 3.781383291124697*^9}, {
-  3.7813835709195538`*^9, 3.781383573336465*^9}, {3.784424726895665*^9, 
-  3.7844248079355645`*^9}, {3.7854550900167413`*^9, 3.7854551564386597`*^9}, {
-  3.787623394271531*^9, 
-  3.7876234438151383`*^9}},ExpressionUUID->"52765876-74d0-47a1-a851-\
-ae094bec781d"],
+Cell["Administrator manages deployments through a project notebook", \
+"Subsection",
+ CellChangeTimes->{{3.787739210583406*^9, 3.7877392629034815`*^9}, {
+  3.787739304884968*^9, 
+  3.78773932099474*^9}},ExpressionUUID->"7c1e3fd0-d08f-4fe6-a448-\
+151e0e2d13fa"],
 
 Cell[CellGroupData[{
 
 Cell["Story Details", "Subsubsection",
- CellChangeTimes->{{3.781383391065668*^9, 
-  3.781383407691759*^9}},ExpressionUUID->"80e59622-d448-42c2-ba1d-\
-dea6d6fe01e0"],
+ CellChangeTimes->{{3.787739284665768*^9, 
+  3.787739286746855*^9}},ExpressionUUID->"3e0fa138-c1e9-4297-8631-\
+19d6195f92b1"],
 
 Cell["\<\
-As a school\[CloseCurlyQuote]s energy tracking initiative we want to provide \
-a single entry point to the visualizations of all of our school\
-\[CloseCurlyQuote]s energy consumption data, as well as the forms used to add \
-additional data.\
+As the administrator of my school\[CloseCurlyQuote]s energy tracking \
+initiative I would like to be able to manage the deployment of project \
+artifacts through a single interface.\
 \>", "Text",
- CellChangeTimes->{{3.781383413844165*^9, 3.78138346837156*^9}, 
-   3.782434088746277*^9, {3.784424853569163*^9, 3.7844248992377973`*^9}, {
-   3.7851768199699135`*^9, 3.7851768210271482`*^9}, {3.7854551697502193`*^9, 
-   3.785455277382204*^9}, {3.7854558963521476`*^9, 3.785455896621479*^9}, {
-   3.785624336476115*^9, 3.7856243502508016`*^9}, {3.7872441504760795`*^9, 
-   3.7872441897758827`*^9}, {3.787244590663233*^9, 
-   3.7872446078296785`*^9}},ExpressionUUID->"10352efa-54c1-4091-b4a6-\
-90bf0a687f98"]
+ CellChangeTimes->{{3.7877392910048985`*^9, 3.7877392912445545`*^9}, {
+  3.787739364996538*^9, 3.7877393753356423`*^9}, {3.787739678695388*^9, 
+  3.7877397636683016`*^9}},ExpressionUUID->"a82ba741-f52e-4367-9d9d-\
+329ddd492526"]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell["Background Information", "Subsubsection",
- CellChangeTimes->{{3.7813835003952417`*^9, 
-  3.7813835103187327`*^9}},ExpressionUUID->"f5652945-b153-4a14-9898-\
-05ff092369bf"],
+ CellChangeTimes->{{3.7877397766088085`*^9, 
+  3.7877397954265594`*^9}},ExpressionUUID->"97338d5b-4857-45dc-a8c0-\
+627422502bc8"],
 
 Cell["\<\
-The Wolfram Language provides many ways to publish content to the web.  In \
-prior sections we used CloudDeploy to deploy simple charts and forms.  In \
-this user story we will use  CloudPublish to publish a notebook that provides \
-links to the various visualizations and forms that we have already deployed.\
+There is no new code that is part of this user story. Rather, there is a \
+single notebook that contains all of the code necessary to create and deploy \
+the artifacts necessary for an energy tracking initiative to track the energy \
+consumed by a single building. That notebook is titled \"School Energy \
+Tracking Project Notebook\", and can be found in the Code Samples folder of \
+the GitHub repository.  you can use that notebook as is, or modify it as you \
+wish. \
 \>", "Text",
- CellChangeTimes->{{3.7850030653391476`*^9, 3.7850030971951704`*^9}, {
-   3.785003169685377*^9, 3.7850033158002195`*^9}, {3.78500341678928*^9, 
-   3.7850035384506845`*^9}, {3.785003728485798*^9, 3.7850037984039097`*^9}, {
-   3.7850038809549255`*^9, 3.7850041777368984`*^9}, {3.785432508833661*^9, 
-   3.7854326347145615`*^9}, {3.785432921442114*^9, 3.7854329251532593`*^9}, {
-   3.7854365111016235`*^9, 3.785436511820302*^9}, {3.785884407815181*^9, 
-   3.785884442444174*^9}, {3.785884995749141*^9, 3.785885042809663*^9}, {
-   3.7858854471755247`*^9, 3.7858855092648835`*^9}, {3.785885614979314*^9, 
-   3.7858856997008724`*^9}, {3.787244213143552*^9, 3.7872442310096474`*^9}, {
-   3.7872446186152096`*^9, 3.787244639443448*^9}, 3.7872606169360886`*^9, 
-   3.787263927243984*^9, 
-   3.7875927377313495`*^9},ExpressionUUID->"e4eb0ccc-5d6c-4c62-8fa9-\
-466196d38ee2"]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell["Code Explanation", "Subsubsection",
- CellChangeTimes->{{3.7813835151643105`*^9, 
-  3.7813835224884386`*^9}},ExpressionUUID->"d0e25aff-ed86-4cdf-b9ae-\
-536e8d719547"],
+ CellChangeTimes->{{3.7878711310529366`*^9, 
+  3.7878711594713573`*^9}},ExpressionUUID->"cb09da3e-6f9e-4614-8a71-\
+ff47852c82a4"],
 
 Cell["\<\
-There are several ways to  publish materials using the Wolfram Language, and \
-several ways that we could tie all of our forms and visualizations together.  \
-For now we will use a relatively simple method which is to CloudPublish a \
-notebook that has hyperlinks to the individual visualizations.  
-
-Please see the My School\[CloseCurlyQuote]s Energy Consumption Page notebook \
-in the Code Samples directory of the GitHub repository.  What you will find \
-in that notebook is quite simple.  You can add much more content to your \
-notebook if you wish. \
+The subsequent user stories in this chapter will have code samples for \
+reference.  The relevant code can also be found within the Project Notebook.  \
 \>", "Text",
- CellChangeTimes->{{3.785453517918659*^9, 3.7854535764648013`*^9}, {
-  3.7854536648064685`*^9, 3.7854536810919437`*^9}, {3.785453920095563*^9, 
-  3.7854539872079535`*^9}, {3.7854540418167458`*^9, 3.785454078647764*^9}, {
-  3.7872616069621744`*^9, 3.7872616119988346`*^9}, {3.78726189027662*^9, 
-  3.78726194428047*^9}, {3.78726228310637*^9, 3.787262355375205*^9}, {
-  3.787264075836319*^9, 3.7872641052716246`*^9}, {3.7872641685293465`*^9, 
-  3.7872642936839523`*^9}},ExpressionUUID->"751c6f6e-9bc5-4247-acef-\
-98c4c308f1a2"],
-
-Cell["\<\
-The code below CloudPublishes the My School\[CloseCurlyQuote]s Energy \
-Consumption Page notebook.  To CloudPublish a notebook you need to include a \
-NotebookObject in the function.  One way to acquire the NotebookObject  is to \
-evaluate EvaluationNotebook[] within the notebook that you intend to publish. \
-I simply copy the returned NotebookObject, and paste it into the CloudPublish \
-function.  Before you CloudPublish the notebook delete the EvaluationNotebook \
-code.    Note that CloudPublish makes the notebook available to the public.
-
-The example notebook has hyperlinks to example forms and visualizations.  You \
-will want to introduce hyperlinks to your own forms and visualizations into \
-the notebook.  \
-\>", "Text",
- CellChangeTimes->{{3.787264034675888*^9, 3.7872640547945013`*^9}, {
-  3.7872648320376406`*^9, 3.787264854536661*^9}, {3.7872650410945415`*^9, 
-  3.787265059342105*^9}, {3.7872724770157776`*^9, 3.7872725370209956`*^9}, {
-  3.7872725890817766`*^9, 3.787272644695715*^9}, {3.787592766551793*^9, 
-  3.787592813842151*^9}, {3.7875928555045123`*^9, 
-  3.7875929223975677`*^9}},ExpressionUUID->"5b9abe16-6e2f-43bd-b729-\
-6c58f53766fb"],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"CloudPublish", "[", 
-  RowBox[{
-   TemplateBox[{FrontEndObject[
-      LinkObject["n32vk_shm", 3, 1]],17,
-     "FrontEndObject[LinkObject[\"n32vk_shm\", 3, 1]]","17",
-     "\"My School's Energy Consumption Page.nb\"",
-     "\"C:\\\\Users\\\\kylem\\\\Documents\\\\GitHub\\\\Computational-\
-Sustainability-Toolkit\\\\Code Samples\\\\My School's Energy Consumption \
-Page.nb\""},
-    "NotebookObject"], ",", "\"\<My School's Energy Consumption\>\""}], 
-  "]"}]], "Input",
- CellChangeTimes->{{3.785177312829829*^9, 3.7851773224603047`*^9}, {
-   3.785177817259898*^9, 3.785177822533354*^9}, 3.7854533104522333`*^9, {
-   3.785454143459113*^9, 3.785454146795336*^9}, {3.7872639702258587`*^9, 
-   3.78726400247469*^9}},
- CellLabel->"In[38]:=",ExpressionUUID->"182cd836-a72c-45cf-9546-08b9f14b719b"],
-
-Cell[BoxData[
- InterpretationBox[
-  RowBox[{"CloudObject", "[", 
-   TemplateBox[{
-    "\"https://www.wolframcloud.com/obj/user-58f3ee6b-3083-40a8-9846-\
-527d81df8447/My School's Energy Consumption\"",
-     "https://www.wolframcloud.com/obj/user-58f3ee6b-3083-40a8-9846-\
-527d81df8447/My School's Energy Consumption"},
-    "HyperlinkURL"], "]"}],
-  CloudObject[
-  "https://www.wolframcloud.com/obj/user-58f3ee6b-3083-40a8-9846-527d81df8447/\
-My School's Energy Consumption"],
-  SelectWithContents->True]], "Output",
- CellChangeTimes->{3.7872727554979134`*^9},
- CellLabel->"Out[38]=",ExpressionUUID->"9219888e-b4df-445f-bdad-29a6cc43e5fa"]
-}, Open  ]],
-
-Cell["\<\
-Since the CloudPublished notebook is distinct from the individual \
-visualizations and forms that the notebook links to the permissions to the \
-visualizations and forms need to be managed independently.  The next story \
-will cover how to do this.  \
-\>", "Text",
- CellChangeTimes->{{3.7854371785576415`*^9, 3.785437178656605*^9}, {
-  3.7872650746114054`*^9, 3.7872651799670944`*^9}, {3.7875929332174497`*^9, 
-  3.7875929465572696`*^9}},ExpressionUUID->"6e801b5d-c7e4-44a7-bb89-\
-ba75cf9e0fa3"],
-
-Cell[BoxData[""], "Input",
- CellChangeTimes->{{3.785084126248283*^9, 3.7850841333130517`*^9}, {
-   3.785084182425024*^9, 3.7850841985607967`*^9}, {3.785111679320198*^9, 
-   3.785111696958429*^9}, {3.7851772930837793`*^9, 3.7851773271918387`*^9}, {
-   3.7851777960516124`*^9, 3.7851778036266365`*^9}, {3.7851778713719616`*^9, 
-   3.785177872653818*^9}, 3.7854370953565693`*^9, {3.7876234522036*^9, 
-   3.7876234530451393`*^9}},ExpressionUUID->"9a3d8dbe-a694-469b-8cec-\
-62741e0acf07"]
+ CellChangeTimes->{{3.7878711882328863`*^9, 
+  3.7878712838246775`*^9}},ExpressionUUID->"1eba098b-ca8c-45c7-b35d-\
+71f134349cd1"]
 }, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell["\<\
-Administrator manages access to forms, visualizations and project notebook\
+Administrators manage deployments through a shared project notebook\
+\>", "Subsection",
+ CellChangeTimes->{{3.787739983920617*^9, 
+  3.787739998653203*^9}},ExpressionUUID->"8012cf5c-7b30-4727-93d4-\
+d5dbe5d4d456"],
+
+Cell[CellGroupData[{
+
+Cell["Story Details", "Subsubsection",
+ CellChangeTimes->{{3.787739284665768*^9, 
+  3.787739286746855*^9}},ExpressionUUID->"e43efacc-e324-40ae-b146-\
+77e9e4fff41a"],
+
+Cell["\<\
+As the administrators of my school\[CloseCurlyQuote]s energy tracking \
+initiative we would all like to be able to access the project notebook.\
+\>", "Text",
+ CellChangeTimes->{{3.7877392910048985`*^9, 3.7877392912445545`*^9}, {
+  3.787739364996538*^9, 3.7877393753356423`*^9}, {3.7877396786953883`*^9, 
+  3.7877397636683016`*^9}, {3.7878744478196917`*^9, 
+  3.7878744834592843`*^9}},ExpressionUUID->"fb102479-4655-480b-8086-\
+7d09f3b1de13"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Code Explanation", "Subsubsection",
+ CellChangeTimes->{{3.7877397766088085`*^9, 3.7877397954265594`*^9}, {
+  3.7878744903870087`*^9, 
+  3.7878744930986605`*^9}},ExpressionUUID->"436e038e-7275-4d17-9088-\
+a91f7d94a6b5"],
+
+Cell["\<\
+The CloudShare function allows multiple users to share access to a notebook \
+through their WolframCloud accounts.  It is analogous to shared documents in \
+any cloud document management system where multiple users are able to access \
+the same document.  The code below shares the notebook in which the function \
+is being evaluated (this is what EvaluationNotebook[] does) with the members \
+of the PermissionsGroup \[OpenCurlyDoubleQuote]administrator\
+\[CloseCurlyDoubleQuote].\
+\>", "Text",
+ CellChangeTimes->{{3.787875767429492*^9, 3.7878758111519065`*^9}, {
+  3.7878758589789767`*^9, 3.787875957931362*^9}, {3.7878763554175463`*^9, 
+  3.7878763854598384`*^9}, {3.7878764209066753`*^9, 
+  3.787876476895153*^9}},ExpressionUUID->"44662f49-f64c-4d1a-af42-\
+a8b7378c569c"],
+
+Cell[BoxData[
+ RowBox[{"CloudShare", "[", 
+  RowBox[{
+   RowBox[{"EvaluationNotebook", "[", "]"}], ",", 
+   RowBox[{"PermissionsGroup", "[", "\"\<administrator\>\"", "]"}]}], 
+  "]"}]], "Input",ExpressionUUID->"27a7c0d7-1392-4c84-bc32-a7824d7ad4ab"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Administrator manages user access to deployed CloudObjects and \
+CloudExpressions\
 \>", "Subsection",
  CellChangeTimes->{{3.7876203791724205`*^9, 3.7876203961208663`*^9}, {
   3.787620514821588*^9, 3.787620558917918*^9}, {3.787620594272797*^9, 
-  3.787620626381078*^9}},ExpressionUUID->"877c8e49-b95b-44c3-b7b8-\
+  3.787620626381078*^9}, {3.787874137474197*^9, 
+  3.787874161783947*^9}},ExpressionUUID->"877c8e49-b95b-44c3-b7b8-\
 233eae48770e"],
 
 Cell[CellGroupData[{
@@ -327,58 +258,58 @@ must be active Wolfram IDs.  Anyone can create a free Wolfram ID ",
     URL["https://account.wolfram.com/auth/create"], None},
   ButtonNote->"https://account.wolfram.com/auth/create"],
  ".  Note that $CloudUserID assigns the user creating the group to the group. \
- "
+ This first function creates an \[OpenCurlyDoubleQuote]administrator\
+\[CloseCurlyDoubleQuote] PermissionsGroup with a single user.  "
 }], "Text",
  CellChangeTimes->{{3.7847401583062863`*^9, 3.7847401801642594`*^9}, {
   3.784740339907172*^9, 3.784740362728752*^9}, {3.784740878350334*^9, 
   3.784740941892767*^9}, {3.784741011220605*^9, 3.7847410417874775`*^9}, {
-  3.7847410740711703`*^9, 
-  3.7847411027079325`*^9}},ExpressionUUID->"1e774931-d29d-4562-98a1-\
+  3.7847410740711703`*^9, 3.7847411027079325`*^9}, {3.7878730118033085`*^9, 
+  3.7878730466356225`*^9}},ExpressionUUID->"1e774931-d29d-4562-98a1-\
 6a17f87293f4"],
-
-Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"CreatePermissionsGroup", "[", 
   RowBox[{"\"\<administrator\>\"", ",", 
-   RowBox[{"{", 
-    RowBox[{
-    "\"\<admin1@example.com\>\"", ",", "\"\<admin2@example.com\>\"", ",", 
-     "$CloudUserID"}], "}"}]}], "]"}]], "Input",
+   RowBox[{"{", "$CloudUserID", "}"}]}], "]"}]], "Input",
  CellChangeTimes->{{3.7847401934389486`*^9, 3.7847402689779644`*^9}, {
-  3.7847403244983697`*^9, 3.7847403357380705`*^9}},
- CellLabel->"In[2]:=",ExpressionUUID->"4b4778ad-1f3c-4988-a09b-423118f36b94"],
-
-Cell[BoxData[
- TemplateBox[{
-  "CreatePermissionsGroup","userunknown",
-   "\"User \\!\\(\\*RowBox[{\\\"\\\\\\\"{\\\\\\\\\\\\\\\"extraData\\\\\\\\\\\\\
-\\\":\\\\\\\\\\\\\\\"admin1@example.com\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\"\
-errorCode\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"unknown-user\\\\\\\\\\\\\\\"}\\\\\\\
-\"\\\"}]\\) unknown to the Wolfram Cloud.\"",2,2,3,24223637263554358633,
-   "Local"},
-  "MessageTemplate"]], "Message", "MSG",
- CellChangeTimes->{3.784740846242614*^9},
- CellLabel->
-  "During evaluation of \
-In[2]:=",ExpressionUUID->"79582cd1-fa73-4908-978e-eedfedb3c0cc"],
-
-Cell[BoxData["$Failed"], "Output",
- CellChangeTimes->{3.784740846342731*^9},
- CellLabel->"Out[2]=",ExpressionUUID->"3cea4497-4445-499c-a717-b6accbcc9428"]
-}, Open  ]],
+   3.7847403244983697`*^9, 3.7847403357380705`*^9}, 
+   3.787872875440031*^9},ExpressionUUID->"4b4778ad-1f3c-4988-a09b-\
+423118f36b94"],
 
 Cell["\<\
-This group assigns the \[OpenCurlyDoubleQuote]administrator\
+This next piece of code is what you should use to manage the users of the \
+group after the group\[CloseCurlyQuote]s original creation.  Every time you \
+use the SetUsers function the list of users replaces the prior list of users. \
+ You can also use the AddUsers and RemoveUsers to incrementally add or remove \
+users from the list.\
+\>", "Text",
+ CellChangeTimes->{{3.7878730520418587`*^9, 3.787873167128257*^9}, {
+  3.787873985443465*^9, 
+  3.7878740707652917`*^9}},ExpressionUUID->"b8ec758a-2fdf-4dad-9d93-\
+d057a8f2d631"],
+
+Cell[BoxData[
+ RowBox[{"SetUsers", "[", 
+  RowBox[{"\"\<administrator\>\"", ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<administrator1@myschool.edu\>\"", ",", 
+     "\"\<administrator2@myschool.edu\>\""}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.787872979110881*^9, 
+  3.7878729993492312`*^9}},ExpressionUUID->"cba08b71-45f7-4bae-ad59-\
+82881e99a6fc"],
+
+Cell["\<\
+This code assigns the \[OpenCurlyDoubleQuote]administrator\
 \[CloseCurlyDoubleQuote] group to a CloudExpression.  In this case, it is the \
 form \
 \>", "Text",
  CellChangeTimes->{{3.7847404416959734`*^9, 3.7847404688098235`*^9}, {
   3.784740646962315*^9, 3.7847406504830236`*^9}, {3.784740724635187*^9, 
-  3.784740744345727*^9}},ExpressionUUID->"4a7c59c1-b6f3-4325-a199-\
+  3.784740744345727*^9}, {3.787874081534108*^9, 
+  3.7878740841564155`*^9}},ExpressionUUID->"4a7c59c1-b6f3-4325-a199-\
 067450048233"],
-
-Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"SetPermissions", "[", 
@@ -395,44 +326,132 @@ Cell[BoxData[
  CellChangeTimes->{{3.7847404903553123`*^9, 3.784740509772512*^9}, {
   3.7847406095112076`*^9, 3.784740704178233*^9}, {3.7847408283672695`*^9, 
   3.7847408323373117`*^9}},ExpressionUUID->"c0ee575b-f25c-4d36-9ddd-\
-857b37f60788"],
-
-Cell[BoxData[
- TemplateBox[{
-  "CloudObjectInformation","cloudnf",
-   "\"No CloudObject found at the given address\"",2,1,1,24223637263554358633,
-   "Local"},
-  "MessageTemplate"]], "Message", "MSG",
- CellChangeTimes->{3.7847407134105716`*^9},
- CellLabel->
-  "During evaluation of \
-In[1]:=",ExpressionUUID->"4c5e6e0b-1dd5-4b7c-8620-68e881b90db2"],
-
-Cell[BoxData[
- TemplateBox[{
-  "PermissionsGroup","invusr",
-   "\"Invalid user or permissions group \\!\\(\\*RowBox[{\\\"PermissionsGroup\
-\\\", \\\"[\\\", \
-\\\"\\\\\\\"https://www.wolframcloud.com/obj/kmaclaury/PermissionsGroup/\
-administrator\\\\\\\"\\\", \\\"]\\\"}]\\).\"",2,1,2,24223637263554358633,
-   "Local"},
-  "MessageTemplate"]], "Message", "MSG",
- CellChangeTimes->{3.784740713740549*^9},
- CellLabel->
-  "During evaluation of \
-In[1]:=",ExpressionUUID->"07e5da24-50b9-45e2-ae35-f0aa2f20300c"],
-
-Cell[BoxData["$Failed"], "Output",
- CellChangeTimes->{3.7847407137908897`*^9},
- CellLabel->"Out[1]=",ExpressionUUID->"f507a79a-6c6a-400a-ac06-9325945c1eae"]
+857b37f60788"]
 }, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Member of the public accesses all energy tracking visualizations through a \
+single entry point.\
+\>", "Subsection",
+ CellChangeTimes->{{3.781383247113061*^9, 3.781383291124697*^9}, {
+  3.7813835709195538`*^9, 3.781383573336465*^9}, {3.784424726895665*^9, 
+  3.7844248079355645`*^9}, {3.7854550900167413`*^9, 3.7854551564386597`*^9}, {
+  3.787623394271531*^9, 3.7876234438151383`*^9}, {3.7878765628405375`*^9, 
+  3.787876567572819*^9}},ExpressionUUID->"52765876-74d0-47a1-a851-\
+ae094bec781d"],
+
+Cell[CellGroupData[{
+
+Cell["Story Details", "Subsubsection",
+ CellChangeTimes->{{3.781383391065668*^9, 
+  3.781383407691759*^9}},ExpressionUUID->"80e59622-d448-42c2-ba1d-\
+dea6d6fe01e0"],
+
+Cell["\<\
+As a school\[CloseCurlyQuote]s energy tracking initiative we want to provide \
+a single entry point to members of the public and initiative participants to \
+the visualizations of all of our school\[CloseCurlyQuote]s energy consumption \
+data, as well as the forms used to add additional data.\
+\>", "Text",
+ CellChangeTimes->{{3.781383413844165*^9, 3.78138346837156*^9}, 
+   3.782434088746277*^9, {3.784424853569163*^9, 3.7844248992377973`*^9}, {
+   3.7851768199699135`*^9, 3.7851768210271482`*^9}, {3.7854551697502193`*^9, 
+   3.785455277382204*^9}, {3.7854558963521476`*^9, 3.785455896621479*^9}, {
+   3.785624336476115*^9, 3.7856243502508016`*^9}, {3.7872441504760795`*^9, 
+   3.7872441897758827`*^9}, {3.787244590663233*^9, 3.7872446078296785`*^9}, {
+   3.7878765824605045`*^9, 
+   3.7878766142913427`*^9}},ExpressionUUID->"10352efa-54c1-4091-b4a6-\
+90bf0a687f98"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Code Explanation", "Subsubsection",
+ CellChangeTimes->{{3.7813835151643105`*^9, 
+  3.7813835224884386`*^9}},ExpressionUUID->"d0e25aff-ed86-4cdf-b9ae-\
+536e8d719547"],
+
+Cell["\<\
+There are several ways to  publish materials using the Wolfram Language, and \
+several ways that we could tie all of our forms and visualizations together.  \
+For now we will use a relatively simple method which is to CloudPublish a \
+notebook that has hyperlinks to the individual visualizations and forms.  
+
+Please see the \[OpenCurlyDoubleQuote]School Energy Consumption Page\
+\[CloseCurlyDoubleQuote] notebook in the Code Samples directory of the GitHub \
+repository.  What you will find in that notebook is quite simple.  Each \
+visualization and form page has a hyperlink to it within the notebook.  You \
+can add much more content to your notebook if you wish. \
+\>", "Text",
+ CellChangeTimes->{{3.785453517918659*^9, 3.7854535764648013`*^9}, {
+  3.7854536648064685`*^9, 3.7854536810919437`*^9}, {3.785453920095563*^9, 
+  3.7854539872079535`*^9}, {3.7854540418167458`*^9, 3.785454078647764*^9}, {
+  3.7872616069621744`*^9, 3.7872616119988346`*^9}, {3.78726189027662*^9, 
+  3.78726194428047*^9}, {3.78726228310637*^9, 3.787262355375205*^9}, {
+  3.787264075836319*^9, 3.7872641052716246`*^9}, {3.7872641685293465`*^9, 
+  3.7872642936839523`*^9}, {3.787871470149617*^9, 3.787871564372463*^9}, {
+  3.787876635722147*^9, 
+  3.7878766373332124`*^9}},ExpressionUUID->"751c6f6e-9bc5-4247-acef-\
+98c4c308f1a2"],
+
+Cell["\<\
+The code below CloudPublishes the \[OpenCurlyDoubleQuote]School Energy \
+Consumption Page\[CloseCurlyDoubleQuote] notebook.  To CloudPublish a \
+notebook you need to include a NotebookObject in the function.  One way to \
+acquire the NotebookObject  is to evaluate EvaluationNotebook[] within the \
+notebook that you intend to publish. I simply copy the returned \
+NotebookObject, and paste it into the CloudPublish function.  Before you \
+CloudPublish the notebook delete the EvaluationNotebook code.    Note that \
+CloudPublish makes the notebook available to the public.
+
+The example notebook has hyperlinks to example forms and visualizations.  You \
+will want to introduce hyperlinks to your own forms and visualizations into \
+the notebook.  \
+\>", "Text",
+ CellChangeTimes->{{3.787264034675888*^9, 3.7872640547945013`*^9}, {
+  3.7872648320376406`*^9, 3.787264854536661*^9}, {3.7872650410945415`*^9, 
+  3.787265059342105*^9}, {3.7872724770157776`*^9, 3.7872725370209956`*^9}, {
+  3.7872725890817766`*^9, 3.787272644695715*^9}, {3.787592766551793*^9, 
+  3.787592813842151*^9}, {3.7875928555045123`*^9, 3.7875929223975677`*^9}, {
+  3.7878715902936144`*^9, 
+  3.7878716051181717`*^9}},ExpressionUUID->"5b9abe16-6e2f-43bd-b729-\
+6c58f53766fb"],
+
+Cell[BoxData[
+ RowBox[{"CloudPublish", "[", 
+  RowBox[{
+   TemplateBox[{FrontEndObject[
+      LinkObject["bxwvw_shm", 3, 1]],23,
+     "FrontEndObject[LinkObject[\"bxwvw_shm\", 3, 1]]","23",
+     "\"School Energy Consumption Page.nb\"",
+     "\"C:\\\\Users\\\\kylem\\\\Documents\\\\GitHub\\\\Computational-\
+Sustainability-Toolkit\\\\Code Samples\\\\School Energy Consumption \
+Page.nb\""},
+    "NotebookObject"], ",", "\"\<MySchoolNotebook\>\""}], "]"}]], "Input",
+ CellChangeTimes->{{3.7878717354403253`*^9, 
+  3.787871739577031*^9}},ExpressionUUID->"f611d556-2f2d-486a-9637-\
+b4cfb93c5d1e"],
+
+Cell["\<\
+Since the CloudPublished notebook is distinct from the individual \
+visualizations and forms that the notebook links to the permissions to the \
+visualizations and forms need to be managed independently.  The next story \
+will cover how to do this.  \
+\>", "Text",
+ CellChangeTimes->{{3.7854371785576415`*^9, 3.785437178656605*^9}, {
+  3.7872650746114054`*^9, 3.7872651799670944`*^9}, {3.7875929332174497`*^9, 
+  3.7875929465572696`*^9}},ExpressionUUID->"6e801b5d-c7e4-44a7-bb89-\
+ba75cf9e0fa3"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
 },
-WindowSize->{1368, 829},
-WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+WindowSize->{682, 820},
+WindowMargins->{{-7, Automatic}, {Automatic, 0}},
 FrontEndVersion->"12.0 for Microsoft Windows (64-bit) (April 11, 2019)",
 StyleDefinitions->"Default.nb"
 ]
@@ -448,61 +467,69 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[583, 22, 348, 5, 67, "Chapter",ExpressionUUID->"64eb974a-457d-4268-a706-5d0b2a29fdba"],
+Cell[583, 22, 348, 5, 113, "Chapter",ExpressionUUID->"64eb974a-457d-4268-a706-5d0b2a29fdba"],
 Cell[CellGroupData[{
 Cell[956, 31, 161, 3, 67, "Section",ExpressionUUID->"f87c04ec-5076-494e-8979-365974a7d5aa"],
-Cell[1120, 36, 1056, 16, 78, "Text",ExpressionUUID->"2e47c4e6-0cb2-4a8d-ab4b-abf3df905012"],
-Cell[2179, 54, 975, 15, 78, "Text",ExpressionUUID->"1389532b-bec6-411b-ae72-3897ee4aa441"]
+Cell[1120, 36, 1056, 16, 122, "Text",ExpressionUUID->"2e47c4e6-0cb2-4a8d-ab4b-abf3df905012"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[3191, 74, 159, 3, 67, "Section",ExpressionUUID->"019772fb-5ac3-4e80-afb2-2d720592883f"],
+Cell[2213, 57, 159, 3, 67, "Section",ExpressionUUID->"019772fb-5ac3-4e80-afb2-2d720592883f"],
 Cell[CellGroupData[{
-Cell[3375, 81, 437, 8, 53, "Subsection",ExpressionUUID->"52765876-74d0-47a1-a851-ae094bec781d"],
+Cell[2397, 64, 260, 5, 53, "Subsection",ExpressionUUID->"7c1e3fd0-d08f-4fe6-a448-151e0e2d13fa"],
 Cell[CellGroupData[{
-Cell[3837, 93, 164, 3, 44, "Subsubsection",ExpressionUUID->"80e59622-d448-42c2-ba1d-dea6d6fe01e0"],
-Cell[4004, 98, 772, 13, 34, "Text",ExpressionUUID->"10352efa-54c1-4091-b4a6-90bf0a687f98"]
+Cell[2682, 73, 164, 3, 44, "Subsubsection",ExpressionUUID->"3e0fa138-c1e9-4297-8631-19d6195f92b1"],
+Cell[2849, 78, 434, 8, 56, "Text",ExpressionUUID->"a82ba741-f52e-4367-9d9d-329ddd492526"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4813, 116, 177, 3, 44, "Subsubsection",ExpressionUUID->"f5652945-b153-4a14-9898-05ff092369bf"],
-Cell[4993, 121, 1197, 18, 56, "Text",ExpressionUUID->"e4eb0ccc-5d6c-4c62-8fa9-466196d38ee2"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[6227, 144, 171, 3, 44, "Subsubsection",ExpressionUUID->"d0e25aff-ed86-4cdf-b9ae-536e8d719547"],
-Cell[6401, 149, 1105, 18, 122, "Text",ExpressionUUID->"751c6f6e-9bc5-4247-acef-98c4c308f1a2"],
-Cell[7509, 169, 1175, 19, 122, "Text",ExpressionUUID->"5b9abe16-6e2f-43bd-b729-6c58f53766fb"],
-Cell[CellGroupData[{
-Cell[8709, 192, 813, 16, 47, "Input",ExpressionUUID->"182cd836-a72c-45cf-9546-08b9f14b719b"],
-Cell[9525, 210, 637, 14, 35, "Output",ExpressionUUID->"9219888e-b4df-445f-bdad-29a6cc43e5fa"]
-}, Open  ]],
-Cell[10177, 227, 505, 9, 56, "Text",ExpressionUUID->"6e801b5d-c7e4-44a7-bb89-ba75cf9e0fa3"],
-Cell[10685, 238, 483, 7, 28, "Input",ExpressionUUID->"9a3d8dbe-a694-469b-8cec-62741e0acf07"]
+Cell[3320, 91, 177, 3, 44, "Subsubsection",ExpressionUUID->"97338d5b-4857-45dc-a8c0-627422502bc8"],
+Cell[3500, 96, 624, 11, 144, "Text",ExpressionUUID->"cb09da3e-6f9e-4614-8a71-ff47852c82a4"],
+Cell[4127, 109, 305, 6, 56, "Text",ExpressionUUID->"1eba098b-ca8c-45c7-b35d-71f134349cd1"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11217, 251, 329, 6, 53, "Subsection",ExpressionUUID->"877c8e49-b95b-44c3-b7b8-233eae48770e"],
+Cell[4481, 121, 223, 5, 79, "Subsection",ExpressionUUID->"8012cf5c-7b30-4727-93d4-d5dbe5d4d456"],
 Cell[CellGroupData[{
-Cell[11571, 261, 166, 3, 44, "Subsubsection",ExpressionUUID->"319c03a2-8064-4c3d-a4ff-d3800f6b3d24"],
-Cell[11740, 266, 723, 12, 56, "Text",ExpressionUUID->"0b45af6b-8090-49b6-9591-2315693d1a94"]
+Cell[4729, 130, 164, 3, 44, "Subsubsection",ExpressionUUID->"e43efacc-e324-40ae-b146-77e9e4fff41a"],
+Cell[4896, 135, 451, 8, 56, "Text",ExpressionUUID->"fb102479-4655-480b-8086-7d09f3b1de13"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[12500, 283, 177, 3, 44, "Subsubsection",ExpressionUUID->"5033e236-3160-4698-b020-c7df6f45b370"],
-Cell[12680, 288, 1178, 22, 78, "Text",ExpressionUUID->"4a4fc23d-8ed1-40cc-b62a-59b72434189f"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[13895, 315, 171, 3, 44, "Subsubsection",ExpressionUUID->"10a0b95f-cda2-4966-a675-ec279ba56ac0"],
-Cell[14069, 320, 764, 16, 56, "Text",ExpressionUUID->"1e774931-d29d-4562-98a1-6a17f87293f4"],
-Cell[CellGroupData[{
-Cell[14858, 340, 450, 9, 28, "Input",ExpressionUUID->"4b4778ad-1f3c-4988-a09b-423118f36b94"],
-Cell[15311, 351, 576, 12, 23, "Message",ExpressionUUID->"79582cd1-fa73-4908-978e-eedfedb3c0cc"],
-Cell[15890, 365, 154, 2, 32, "Output",ExpressionUUID->"3cea4497-4445-499c-a717-b6accbcc9428"]
-}, Open  ]],
-Cell[16059, 370, 397, 8, 34, "Text",ExpressionUUID->"4a7c59c1-b6f3-4325-a199-067450048233"],
-Cell[CellGroupData[{
-Cell[16481, 382, 612, 15, 28, "Input",ExpressionUUID->"c0ee575b-f25c-4d36-9ddd-857b37f60788"],
-Cell[17096, 399, 347, 9, 21, "Message",ExpressionUUID->"4c5e6e0b-1dd5-4b7c-8620-68e881b90db2"],
-Cell[17446, 410, 505, 12, 23, "Message",ExpressionUUID->"07e5da24-50b9-45e2-ae35-f0aa2f20300c"],
-Cell[17954, 424, 156, 2, 32, "Output",ExpressionUUID->"f507a79a-6c6a-400a-ac06-9325945c1eae"]
+Cell[5384, 148, 224, 4, 44, "Subsubsection",ExpressionUUID->"436e038e-7275-4d17-9088-a91f7d94a6b5"],
+Cell[5611, 154, 785, 13, 144, "Text",ExpressionUUID->"44662f49-f64c-4d1a-af42-a8b7378c569c"],
+Cell[6399, 169, 249, 5, 28, "Input",ExpressionUUID->"27a7c0d7-1392-4c84-bc32-a7824d7ad4ab"]
 }, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6697, 180, 385, 8, 79, "Subsection",ExpressionUUID->"877c8e49-b95b-44c3-b7b8-233eae48770e"],
+Cell[CellGroupData[{
+Cell[7107, 192, 166, 3, 44, "Subsubsection",ExpressionUUID->"319c03a2-8064-4c3d-a4ff-d3800f6b3d24"],
+Cell[7276, 197, 723, 12, 100, "Text",ExpressionUUID->"0b45af6b-8090-49b6-9591-2315693d1a94"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8036, 214, 177, 3, 44, "Subsubsection",ExpressionUUID->"5033e236-3160-4698-b020-c7df6f45b370"],
+Cell[8216, 219, 1178, 22, 144, "Text",ExpressionUUID->"4a4fc23d-8ed1-40cc-b62a-59b72434189f"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9431, 246, 171, 3, 44, "Subsubsection",ExpressionUUID->"10a0b95f-cda2-4966-a675-ec279ba56ac0"],
+Cell[9605, 251, 946, 17, 100, "Text",ExpressionUUID->"1e774931-d29d-4562-98a1-6a17f87293f4"],
+Cell[10554, 270, 360, 7, 28, "Input",ExpressionUUID->"4b4778ad-1f3c-4988-a09b-423118f36b94"],
+Cell[10917, 279, 537, 10, 100, "Text",ExpressionUUID->"b8ec758a-2fdf-4dad-9d93-d057a8f2d631"],
+Cell[11457, 291, 360, 9, 48, "Input",ExpressionUUID->"cba08b71-45f7-4bae-ad59-82881e99a6fc"],
+Cell[11820, 302, 447, 9, 56, "Text",ExpressionUUID->"4a7c59c1-b6f3-4325-a199-067450048233"],
+Cell[12270, 313, 612, 15, 48, "Input",ExpressionUUID->"c0ee575b-f25c-4d36-9ddd-857b37f60788"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12931, 334, 503, 9, 79, "Subsection",ExpressionUUID->"52765876-74d0-47a1-a851-ae094bec781d"],
+Cell[CellGroupData[{
+Cell[13459, 347, 164, 3, 44, "Subsubsection",ExpressionUUID->"80e59622-d448-42c2-ba1d-dea6d6fe01e0"],
+Cell[13626, 352, 879, 14, 78, "Text",ExpressionUUID->"10352efa-54c1-4091-b4a6-90bf0a687f98"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[14542, 371, 171, 3, 44, "Subsubsection",ExpressionUUID->"d0e25aff-ed86-4cdf-b9ae-536e8d719547"],
+Cell[14716, 376, 1319, 21, 210, "Text",ExpressionUUID->"751c6f6e-9bc5-4247-acef-98c4c308f1a2"],
+Cell[16038, 399, 1255, 21, 232, "Text",ExpressionUUID->"5b9abe16-6e2f-43bd-b729-6c58f53766fb"],
+Cell[17296, 422, 592, 13, 77, "Input",ExpressionUUID->"f611d556-2f2d-486a-9637-b4cfb93c5d1e"],
+Cell[17891, 437, 505, 9, 78, "Text",ExpressionUUID->"6e801b5d-c7e4-44a7-bb89-ba75cf9e0fa3"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
