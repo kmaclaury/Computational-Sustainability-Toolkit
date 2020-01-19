@@ -1,0 +1,332 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='WolframDesktop 12.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       161,          7]
+NotebookDataLength[     14292,        324]
+NotebookOptionsPosition[     12300,        280]
+NotebookOutlinePosition[     12644,        295]
+CellTagsIndexPosition[     12601,        292]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Chapter 2: Multiple Buildings and Complex Campuses", "Chapter",
+ CellChangeTimes->{{3.788436778652193*^9, 3.7884368369029284`*^9}, {
+  3.7884380185098915`*^9, 
+  3.7884380226424894`*^9}},ExpressionUUID->"e009d0d6-f6d9-41cc-9fad-\
+c8a5be675b08"],
+
+Cell["\<\
+Overview
+\
+\>", "Subsection",
+ CellChangeTimes->{{3.788436832408099*^9, 
+  3.788436846573325*^9}},ExpressionUUID->"9d4c3d46-3775-49c5-87e2-\
+1c9d334b1040"],
+
+Cell[CellGroupData[{
+
+Cell["Data Models", "Section",
+ CellChangeTimes->{{3.7762008197799683`*^9, 3.776200823450311*^9}, 
+   3.78843803691226*^9},ExpressionUUID->"be52c3e1-a212-4943-af0e-\
+b068bde4daaf"],
+
+Cell["\<\
+There are three primary concepts that this application models.  Those are \
+Campus Buildings, Points of Delivery, and Measured Quantities. \
+\>", "Text",
+ CellChangeTimes->{{3.780702701540004*^9, 3.7807028006030006`*^9}, {
+  3.7807028390052805`*^9, 3.780702897918837*^9}, {3.7807029301694527`*^9, 
+  3.780702989339476*^9}, {3.7807030345005045`*^9, 3.7807031500748105`*^9}, {
+  3.780704253248144*^9, 3.7807042731731977`*^9}, {3.7807045264470663`*^9, 
+  3.7807045317759733`*^9}},ExpressionUUID->"e7ebdc7b-bdf1-48d1-b88e-\
+9a3ecf2b88ec"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{"importUserFunctionalGraph", "=", 
+   RowBox[{"Graph", "[", 
+    RowBox[{
+     RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"Labeled", "[", 
+        RowBox[{
+         RowBox[{
+         "\"\<Point of Delivery\>\"", "\[Rule]", "\"\<Campus Buildings\>\""}],
+          ",", "\"\<serves\>\""}], "]"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"Labeled", "[", 
+        RowBox[{
+         RowBox[{
+         "\"\<Measured Quantity\>\"", "\[Rule]", 
+          "\"\<Point of Delivery\>\""}], ",", "\"\<delivered to\>\""}], 
+        "]"}]}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"VertexLabels", "\[Rule]", "\"\<Name\>\""}], ",", 
+     RowBox[{"EdgeLabels", "\[Rule]", "True"}]}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.7843371485586786`*^9, 3.784337155112029*^9}, {
+  3.784337282061895*^9, 3.784337298985095*^9}, {3.7843373340709286`*^9, 
+  3.784337397933092*^9}, {3.784337430821959*^9, 3.7843374463734655`*^9}, {
+  3.784338650301355*^9, 3.7843386537232685`*^9}},
+ CellLabel->"In[3]:=",ExpressionUUID->"d95b8ca7-aaba-4ea6-931d-20fbcf06b381"],
+
+Cell[BoxData[
+ GraphicsBox[
+  NamespaceBox["NetworkGraphics",
+   DynamicModuleBox[{Typeset`graph = HoldComplete[
+     Graph[{
+      "Point of Delivery", "Campus Buildings", "Measured Quantity"}, {{{1, 
+       2}, {3, 1}}, Null}, {
+      EdgeLabels -> {
+        True, DirectedEdge["Point of Delivery", "Campus Buildings"] -> 
+         "serves", DirectedEdge["Measured Quantity", "Point of Delivery"] -> 
+         "delivered to"}, VertexLabels -> {"Name"}}]]}, 
+    TagBox[GraphicsGroupBox[{
+       {Hue[0.6, 0.7, 0.5], Opacity[0.7], Arrowheads[
+        Medium], {
+         ArrowBox[{{1., 2.4492935982947064`*^-16}, {2., 0.}}, 
+          0.02261146496815286], 
+         InsetBox["\<\"serves\"\>", {1.5, 1.2246467991473532*^-16}, 
+          ImageScaled[{0.5, 0.5}],
+          BaseStyle->"Graphics"]}, {
+         ArrowBox[{{0., 3.6739403974420594`*^-16}, {1., 
+          2.4492935982947064`*^-16}}, 0.02261146496815286], 
+         InsetBox["\<\"delivered to\"\>", {0.5, 3.0616169978683826*^-16}, 
+          ImageScaled[{0.5, 0.5}],
+          BaseStyle->"Graphics"]}}, 
+       {Hue[0.6, 0.2, 0.8], EdgeForm[{GrayLevel[0], Opacity[
+        0.7]}], {DiskBox[{1., 2.4492935982947064*^-16}, 0.02261146496815286], 
+         InsetBox["\<\"Point of Delivery\"\>", 
+          Offset[{2, 2}, {1.0226114649681528, 0.022611464968153108}], 
+          ImageScaled[{0, 0}],
+          BaseStyle->"Graphics"]}, {DiskBox[{2., 0.}, 0.02261146496815286], 
+         InsetBox["\<\"Campus Buildings\"\>", 
+          Offset[{2, 2}, {2.022611464968153, 0.02261146496815286}], 
+          ImageScaled[{0, 0}],
+          BaseStyle->"Graphics"]}, {
+         DiskBox[{0., 3.6739403974420594*^-16}, 0.02261146496815286], 
+         InsetBox["\<\"Measured Quantity\"\>", 
+          Offset[{2, 2}, {0.02261146496815286, 0.02261146496815323}], 
+          ImageScaled[{0, 0}],
+          BaseStyle->"Graphics"]}}}],
+     MouseAppearanceTag["NetworkGraphics"]],
+    AllowKernelInitialization->False]],
+  DefaultBaseStyle->{
+   "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> Hue[0.8, 1., 0.6]},
+  FormatType->TraditionalForm,
+  FrameTicks->None,
+  ImageSize->{511., Automatic}]], "Output",
+ CellChangeTimes->{3.7843374483104806`*^9, 3.784338366819537*^9, 
+  3.7843386599960556`*^9},
+ CellLabel->"Out[3]=",ExpressionUUID->"2f039ce7-335e-45d3-b845-c3eca8ebc433"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Campus Buildings", "Subsubsection",
+ CellChangeTimes->{{3.78070427676073*^9, 
+  3.7807042793401985`*^9}},ExpressionUUID->"523ead97-e4b6-4f02-98d7-\
+4c1bc577904c"],
+
+Cell["\<\
+Campus Buildings will often have their own points of delivery for each \
+commodity consumed, however on many campuses it is common for many buildings \
+to share points of delivery, for example where an electric utility places a \
+meter on a transformer that provides power to multiple buildings.  \
+\>", "Text",
+ CellChangeTimes->{{3.7807042876410275`*^9, 
+  3.780704407702389*^9}},ExpressionUUID->"7d36259c-b4fd-4abf-a62f-\
+9e2883d745e4"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Points of Delivery", "Subsubsection",
+ CellChangeTimes->{{3.780703165235168*^9, 
+  3.7807031718771534`*^9}},ExpressionUUID->"17b056ee-f5cd-4661-8a47-\
+09d53a74f487"],
+
+Cell["\<\
+Points of Delivery, sometimes referred to Service Delivery Points, or Service \
+Point Locations are the point at which a commodity is delivered from the  \
+supplier to the  customer.  In the case of electricity supply, the Point of \
+Delivery is typically the point at which the utility places a meter that \
+measures electrical consumption by the customer.  In the case of fuel oil \
+deliveries it would be the fill tube of the customer\[CloseCurlyQuote]s fuel \
+tank.  In this case the measurement of the quantity delivered is done by a \
+meter on the fuel oil truck, not by a meter installed at the customer\
+\[CloseCurlyQuote]s facility.  Points of Delivery often supply a single \
+building with an  commodity, although in many instances a point of delivery \
+may supply many buildings, such as delivery of wood chips to a biomass boiler \
+that heats many buildings on campus.  In some cases a Point of Delivery may \
+not have any association with a building, such as metered street lights or \
+water pumps.  It is for these reasons of multiple buildings being served by a \
+single service delivery point, or a service delivery point having no building \
+at all, that we require a concept distinct from campus buildings to associate \
+measured quantities to.  \
+\>", "Text",
+ CellChangeTimes->{{3.7807031818430867`*^9, 3.780703721299073*^9}, {
+  3.7807037579111032`*^9, 3.7807037631817994`*^9}, {3.7807044229438014`*^9, 
+  3.780704476388129*^9}, {3.7843360788521647`*^9, 3.7843360854636726`*^9}, {
+  3.784336136780439*^9, 3.7843361477851667`*^9}, {3.78433635273553*^9, 
+  3.7843363770147295`*^9}, {3.7843366709215517`*^9, 3.7843367025807314`*^9}, {
+  3.7843369672238655`*^9, 3.7843369925880547`*^9}, {3.7843370599374814`*^9, 
+  3.7843370709179163`*^9}, {3.7843371167254567`*^9, 
+  3.7843371287839084`*^9}},ExpressionUUID->"eb83807a-d2a5-467f-9e14-\
+ee6627dd8e1c"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Measured Quantities", "Subsubsection",
+ CellChangeTimes->{{3.780703810612239*^9, 
+  3.78070381454782*^9}},ExpressionUUID->"b0c54f3d-3b3e-4239-9237-\
+9f8d6f0f7ab7"],
+
+Cell["\<\
+There are a few flavors of measured quantities whose differences arise from \
+different delivery and metering technologies.  In most cases a single \
+quantity will be associated to a Point of Delivery, however electrical meters \
+often measure multiple distinct units of measure, and often in two directions \
+when a generator is installed behind the meter so that electricity is at times 
+
+\
+\>", "Text",
+ CellChangeTimes->{{3.7807050168491178`*^9, 3.7807050289685016`*^9}, {
+  3.78070512090032*^9, 3.780705282122394*^9}, {3.784338583827731*^9, 
+  3.784338585082017*^9}, {3.7843387896062183`*^9, 3.7843388371480465`*^9}, {
+  3.7843392920540047`*^9, 3.784339296223456*^9}, {3.784339349560765*^9, 
+  3.7843393909275675`*^9}, {3.7843400240848923`*^9, 
+  3.7843400472649355`*^9}},ExpressionUUID->"fc96df97-9030-4325-9212-\
+38b3e2b19e6d"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Entering Master Data", "Section",
+ CellChangeTimes->{{3.7808744590567026`*^9, 
+  3.7808744633559976`*^9}},ExpressionUUID->"a9e89785-9666-4895-964c-\
+6d8f4db04356"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"TextSentences", "[", 
+   RowBox[{"WikipediaData", "[", "\"\<master data\>\"", "]"}], "]"}], "[", 
+  RowBox[{"[", 
+   RowBox[{";;", "5"}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.780875312994232*^9, 3.780875326784379*^9}, {
+  3.7808754201760244`*^9, 3.7808754408694854`*^9}, {3.7808755551796904`*^9, 
+  3.780875573243741*^9}},
+ CellLabel->"In[3]:=",ExpressionUUID->"40b50373-6e7f-4cf4-8ca8-72dc82c2213e"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"Master data represents the business objects that contain the \
+most valuable, agreed upon information shared across an organization.\"\>", 
+   ",", "\<\"It can cover relatively static reference data, transactional, \
+unstructured, analytical, hierarchical and metadata.\"\>", 
+   ",", "\<\"It is the primary focus of the information technology (IT) \
+discipline of master data management (MDM).\"\>", 
+   ",", "\<\"Master data is usually non-transactional in nature, but in some \
+cases gray areas exist where transactional processes and operations may be \
+considered master data by an organization.\"\>", 
+   ",", "\<\"For example, master data may contain information about \
+customers, products, employees, materials, suppliers, and vendors.\"\>"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.7808753344337873`*^9, 3.780875453542935*^9, 
+  3.7808755757592683`*^9},
+ CellLabel->"Out[3]=",ExpressionUUID->"ba0f471a-9d35-4ef2-a263-9a62e53a4443"]
+}, Open  ]],
+
+Cell["\<\
+Buildings and Points of Delivery are the  master data objects of interest to \
+a campus energy management project.  By collecting and maintaining accurate \
+master data you will be able to perform analyses that go far beyond what is \
+possible with collecting energy consumption data alone.  For instance, if you \
+have access to accurate information regarding the floor area of each building \
+on campus, you will be able to calculate the energy intensity of each \
+building.  If you include each building\[CloseCurlyQuote]s function, such as \
+athletic facility, dormitory, administrative building you will be able to \
+determine how much each function contributes to your \
+school\[CloseCurlyQuote]s energy consumption.  
+There are several possible methods of building a master data repository with \
+the Wolfram Language.  This project is using the language\[CloseCurlyQuote]s \
+EntityStore functionality.  If you wish, one can enter master data by brute \
+force, and fully compose the code for each entry.  It is also possible to use \
+the Language\[CloseCurlyQuote]s form building capabilities to construct a \
+form to facilitate data entry.  \
+\>", "Text",
+ CellChangeTimes->{{3.7808756359160223`*^9, 3.7808756464040003`*^9}, {
+  3.780875740377532*^9, 3.780875742887061*^9}, {3.780875872741271*^9, 
+  3.7808758873650837`*^9}, {3.7808759211140337`*^9, 3.7808759498902016`*^9}, {
+  3.780875987837768*^9, 3.7808762550843782`*^9}, {3.78087630336691*^9, 
+  3.780876760331733*^9}},ExpressionUUID->"d188e3de-0ad4-4104-8aa4-\
+e2f89cd778d6"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1352, 817},
+WindowMargins->{{77, Automatic}, {Automatic, 37}},
+FrontEndVersion->"12.0 for Microsoft Windows (64-bit) (April 11, 2019)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[583, 22, 250, 4, 67, "Chapter",ExpressionUUID->"e009d0d6-f6d9-41cc-9fad-c8a5be675b08"],
+Cell[836, 28, 165, 6, 79, "Subsection",ExpressionUUID->"9d4c3d46-3775-49c5-87e2-1c9d334b1040"],
+Cell[CellGroupData[{
+Cell[1026, 38, 180, 3, 53, "Section",ExpressionUUID->"be52c3e1-a212-4943-af0e-b068bde4daaf"],
+Cell[1209, 43, 544, 9, 34, "Text",ExpressionUUID->"e7ebdc7b-bdf1-48d1-b88e-9a3ecf2b88ec"],
+Cell[CellGroupData[{
+Cell[1778, 56, 1127, 24, 105, "Input",ExpressionUUID->"d95b8ca7-aaba-4ea6-931d-20fbcf06b381"],
+Cell[2908, 82, 2324, 48, 50, "Output",ExpressionUUID->"2f039ce7-335e-45d3-b845-c3eca8ebc433"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5269, 135, 168, 3, 44, "Subsubsection",ExpressionUUID->"523ead97-e4b6-4f02-98d7-4c1bc577904c"],
+Cell[5440, 140, 449, 8, 56, "Text",ExpressionUUID->"7d36259c-b4fd-4abf-a62f-9e2883d745e4"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5926, 153, 171, 3, 44, "Subsubsection",ExpressionUUID->"17b056ee-f5cd-4661-8a47-09d53a74f487"],
+Cell[6100, 158, 1877, 27, 144, "Text",ExpressionUUID->"eb83807a-d2a5-467f-9e14-ee6627dd8e1c"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8014, 190, 169, 3, 44, "Subsubsection",ExpressionUUID->"b0c54f3d-3b3e-4239-9237-9f8d6f0f7ab7"],
+Cell[8186, 195, 844, 15, 100, "Text",ExpressionUUID->"fc96df97-9030-4325-9212-38b3e2b19e6d"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9079, 216, 169, 3, 67, "Section",ExpressionUUID->"a9e89785-9666-4895-964c-6d8f4db04356"],
+Cell[CellGroupData[{
+Cell[9273, 223, 444, 9, 28, "Input",ExpressionUUID->"40b50373-6e7f-4cf4-8ca8-72dc82c2213e"],
+Cell[9720, 234, 988, 16, 109, "Output",ExpressionUUID->"ba0f471a-9d35-4ef2-a263-9a62e53a4443"]
+}, Open  ]],
+Cell[10723, 253, 1549, 23, 144, "Text",ExpressionUUID->"d188e3de-0ad4-4104-8aa4-e2f89cd778d6"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
