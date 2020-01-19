@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       161,          7]
-NotebookDataLength[     14292,        324]
-NotebookOptionsPosition[     12300,        280]
-NotebookOutlinePosition[     12644,        295]
-CellTagsIndexPosition[     12601,        292]
+NotebookDataLength[     19379,        420]
+NotebookOptionsPosition[     16753,        366]
+NotebookOutlinePosition[     17097,        381]
+CellTagsIndexPosition[     17054,        378]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -26,20 +26,106 @@ Cell["Chapter 2: Multiple Buildings and Complex Campuses", "Chapter",
   3.7884380226424894`*^9}},ExpressionUUID->"e009d0d6-f6d9-41cc-9fad-\
 c8a5be675b08"],
 
-Cell["\<\
-Overview
-\
-\>", "Subsection",
- CellChangeTimes->{{3.788436832408099*^9, 
-  3.788436846573325*^9}},ExpressionUUID->"9d4c3d46-3775-49c5-87e2-\
+Cell[CellGroupData[{
+
+Cell["Overview", "Subsection",
+ CellChangeTimes->{{3.788436832408099*^9, 3.788436846573325*^9}, {
+  3.7884389863432474`*^9, 
+  3.788438990369706*^9}},ExpressionUUID->"9d4c3d46-3775-49c5-87e2-\
 1c9d334b1040"],
+
+Cell["\<\
+In the first chapter we built a simple application to track the energy \
+consumption of a single building using multiple fuel sources.  This is the \
+obvious place to start, and it will work for many schools.  Of course, many \
+schools have several buildings, and you may find that not every building has \
+its own meter.  You may also find meters on campus that \
+don\[CloseCurlyQuote]t measure the consumption of a building.  For instance, \
+I happen to live on a boarding school campus.  On that campus there are many \
+buildings with their own meters, one building with two meters, and in the \
+center of campus there is a single large transformer with a meter that serves \
+several large academic buildings that do not have individual meters.  There \
+are also meters not on buildings, but on  water pumps and parking lot lights. \
+ There is similar complexity with regard to heating fuel, where there is a \
+central plant that burns wood chips to heat much, but not all, of the campus.\
+\>", "Text",
+ CellChangeTimes->{{3.7884389957735524`*^9, 3.7884390407383285`*^9}, {
+  3.7884392357398605`*^9, 3.788439398355132*^9}, {3.78843951519209*^9, 
+  3.7884397201237354`*^9}, {3.7884457699312925`*^9, 
+  3.7884458957821445`*^9}},ExpressionUUID->"8e495ca1-a3e6-4ef9-b1fb-\
+8c1374ddffb9"]
+}, Open  ]],
 
 Cell[CellGroupData[{
 
-Cell["Data Models", "Section",
+Cell["Defining our Data Model", "Section",
  CellChangeTimes->{{3.7762008197799683`*^9, 3.776200823450311*^9}, 
-   3.78843803691226*^9},ExpressionUUID->"be52c3e1-a212-4943-af0e-\
+   3.78843803691226*^9, {3.788447127214841*^9, 
+   3.788447138452957*^9}},ExpressionUUID->"be52c3e1-a212-4943-af0e-\
 b068bde4daaf"],
+
+Cell["\<\
+Since our application needs to work for school campuses with this kind of \
+complexity we need to step back, and put some thought into how we want to \
+represent the world within the application.  We need to define our data model.\
+\>", "Text",
+ CellChangeTimes->{{3.788446236854744*^9, 3.788446343174817*^9}, {
+  3.7884464252420797`*^9, 3.7884464659025*^9}, {3.7884471744740615`*^9, 
+  3.78844719602549*^9}},ExpressionUUID->"4fa2f2f6-96d1-493b-97d8-\
+6541d3a0b68b"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"TextSentences", "[", 
+   RowBox[{"WikipediaData", "[", "\"\<data model\>\"", "]"}], "]"}], "[", 
+  RowBox[{"[", 
+   RowBox[{";;", "5"}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.7884390927483387`*^9, 3.788439097139758*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"f62ca71a-716b-4e70-9035-71130f058ded"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"A data model (or datamodel) is an abstract model that \
+organizes elements of data and standardizes how they relate to one another \
+and to the properties of real-world entities.\"\>", 
+   ",", "\<\"For instance, a data model may specify that the data element \
+representing a car be composed of a number of other elements which, in turn, \
+represent the color and size of the car and define its owner.\"\>", 
+   ",", "\<\"The term data model can refer to two distinct but closely \
+related concepts.\"\>", 
+   ",", "\<\"Sometimes it refers to an abstract formalization of the objects \
+and relationships found in a particular application domain: for example the \
+customers, products, and orders found in a manufacturing organization.\"\>", 
+   ",", "\<\"At other times it refers to the set of concepts used in defining \
+such formalizations: for example concepts such as entities, attributes, \
+relations, or tables.\"\>"}], "}"}]], "Output",
+ CellChangeTimes->{3.788439114231676*^9},
+ CellLabel->"Out[1]=",ExpressionUUID->"fcd3e4b0-a803-4239-affe-2501ed039d34"]
+}, Open  ]],
+
+Cell["\<\
+To define our data model we need to ask what objects does our application \
+need to represent, what are the attributes of those objects that we need to \
+represent, and how are those objects related to each other.  Of particular \
+interest for this application is the question of to which object within the \
+application we will associate energy consumption values.  \
+\>", "Text",
+ CellChangeTimes->{{3.788446510459679*^9, 3.7884465707621984`*^9}, {
+  3.788446990997261*^9, 3.7884470674960318`*^9}, {3.788447112294965*^9, 
+  3.7884471131105194`*^9}, {3.7884472266470633`*^9, 
+  3.788447332798422*^9}},ExpressionUUID->"b5a5a1ea-ebea-4df5-8f85-\
+d749c98c6093"],
+
+Cell["\<\
+I like to use the Wolfram Language\[CloseCurlyQuote]s Graph functionality to \
+visualize objects and how they are related.  \
+\>", "Text",
+ CellChangeTimes->{{3.78844836884133*^9, 3.7884483900062146`*^9}, {
+  3.7884484425780277`*^9, 3.7884484596879497`*^9}, {3.788448948749*^9, 
+  3.7884489946753163`*^9}},ExpressionUUID->"79f1cb2b-ffab-474d-8f6e-\
+bb34f6d3343e"],
 
 Cell["\<\
 There are three primary concepts that this application models.  Those are \
@@ -278,8 +364,8 @@ e2f89cd778d6"]
 }, Open  ]]
 }, Open  ]]
 },
-WindowSize->{1352, 817},
-WindowMargins->{{77, Automatic}, {Automatic, 37}},
+WindowSize->{1368, 829},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
 FrontEndVersion->"12.0 for Microsoft Windows (64-bit) (April 11, 2019)",
 StyleDefinitions->"Default.nb"
 ]
@@ -296,34 +382,44 @@ CellTagsIndex->{}
 Notebook[{
 Cell[CellGroupData[{
 Cell[583, 22, 250, 4, 67, "Chapter",ExpressionUUID->"e009d0d6-f6d9-41cc-9fad-c8a5be675b08"],
-Cell[836, 28, 165, 6, 79, "Subsection",ExpressionUUID->"9d4c3d46-3775-49c5-87e2-1c9d334b1040"],
 Cell[CellGroupData[{
-Cell[1026, 38, 180, 3, 53, "Section",ExpressionUUID->"be52c3e1-a212-4943-af0e-b068bde4daaf"],
-Cell[1209, 43, 544, 9, 34, "Text",ExpressionUUID->"e7ebdc7b-bdf1-48d1-b88e-9a3ecf2b88ec"],
-Cell[CellGroupData[{
-Cell[1778, 56, 1127, 24, 105, "Input",ExpressionUUID->"d95b8ca7-aaba-4ea6-931d-20fbcf06b381"],
-Cell[2908, 82, 2324, 48, 50, "Output",ExpressionUUID->"2f039ce7-335e-45d3-b845-c3eca8ebc433"]
+Cell[858, 30, 207, 4, 53, "Subsection",ExpressionUUID->"9d4c3d46-3775-49c5-87e2-1c9d334b1040"],
+Cell[1068, 36, 1296, 19, 122, "Text",ExpressionUUID->"8e495ca1-a3e6-4ef9-b1fb-8c1374ddffb9"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5269, 135, 168, 3, 44, "Subsubsection",ExpressionUUID->"523ead97-e4b6-4f02-98d7-4c1bc577904c"],
-Cell[5440, 140, 449, 8, 56, "Text",ExpressionUUID->"7d36259c-b4fd-4abf-a62f-9e2883d745e4"]
+Cell[2401, 60, 242, 4, 67, "Section",ExpressionUUID->"be52c3e1-a212-4943-af0e-b068bde4daaf"],
+Cell[2646, 66, 476, 8, 56, "Text",ExpressionUUID->"4fa2f2f6-96d1-493b-97d8-6541d3a0b68b"],
+Cell[CellGroupData[{
+Cell[3147, 78, 341, 7, 28, "Input",ExpressionUUID->"f62ca71a-716b-4e70-9035-71130f058ded"],
+Cell[3491, 87, 1108, 17, 128, "Output",ExpressionUUID->"fcd3e4b0-a803-4239-affe-2501ed039d34"]
+}, Open  ]],
+Cell[4614, 107, 669, 11, 56, "Text",ExpressionUUID->"b5a5a1ea-ebea-4df5-8f85-d749c98c6093"],
+Cell[5286, 120, 373, 7, 34, "Text",ExpressionUUID->"79f1cb2b-ffab-474d-8f6e-bb34f6d3343e"],
+Cell[5662, 129, 544, 9, 34, "Text",ExpressionUUID->"e7ebdc7b-bdf1-48d1-b88e-9a3ecf2b88ec"],
+Cell[CellGroupData[{
+Cell[6231, 142, 1127, 24, 105, "Input",ExpressionUUID->"d95b8ca7-aaba-4ea6-931d-20fbcf06b381"],
+Cell[7361, 168, 2324, 48, 50, "Output",ExpressionUUID->"2f039ce7-335e-45d3-b845-c3eca8ebc433"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5926, 153, 171, 3, 44, "Subsubsection",ExpressionUUID->"17b056ee-f5cd-4661-8a47-09d53a74f487"],
-Cell[6100, 158, 1877, 27, 144, "Text",ExpressionUUID->"eb83807a-d2a5-467f-9e14-ee6627dd8e1c"]
+Cell[9722, 221, 168, 3, 44, "Subsubsection",ExpressionUUID->"523ead97-e4b6-4f02-98d7-4c1bc577904c"],
+Cell[9893, 226, 449, 8, 56, "Text",ExpressionUUID->"7d36259c-b4fd-4abf-a62f-9e2883d745e4"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8014, 190, 169, 3, 44, "Subsubsection",ExpressionUUID->"b0c54f3d-3b3e-4239-9237-9f8d6f0f7ab7"],
-Cell[8186, 195, 844, 15, 100, "Text",ExpressionUUID->"fc96df97-9030-4325-9212-38b3e2b19e6d"]
+Cell[10379, 239, 171, 3, 44, "Subsubsection",ExpressionUUID->"17b056ee-f5cd-4661-8a47-09d53a74f487"],
+Cell[10553, 244, 1877, 27, 144, "Text",ExpressionUUID->"eb83807a-d2a5-467f-9e14-ee6627dd8e1c"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12467, 276, 169, 3, 44, "Subsubsection",ExpressionUUID->"b0c54f3d-3b3e-4239-9237-9f8d6f0f7ab7"],
+Cell[12639, 281, 844, 15, 100, "Text",ExpressionUUID->"fc96df97-9030-4325-9212-38b3e2b19e6d"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9079, 216, 169, 3, 67, "Section",ExpressionUUID->"a9e89785-9666-4895-964c-6d8f4db04356"],
+Cell[13532, 302, 169, 3, 67, "Section",ExpressionUUID->"a9e89785-9666-4895-964c-6d8f4db04356"],
 Cell[CellGroupData[{
-Cell[9273, 223, 444, 9, 28, "Input",ExpressionUUID->"40b50373-6e7f-4cf4-8ca8-72dc82c2213e"],
-Cell[9720, 234, 988, 16, 109, "Output",ExpressionUUID->"ba0f471a-9d35-4ef2-a263-9a62e53a4443"]
+Cell[13726, 309, 444, 9, 28, "Input",ExpressionUUID->"40b50373-6e7f-4cf4-8ca8-72dc82c2213e"],
+Cell[14173, 320, 988, 16, 109, "Output",ExpressionUUID->"ba0f471a-9d35-4ef2-a263-9a62e53a4443"]
 }, Open  ]],
-Cell[10723, 253, 1549, 23, 144, "Text",ExpressionUUID->"d188e3de-0ad4-4104-8aa4-e2f89cd778d6"]
+Cell[15176, 339, 1549, 23, 144, "Text",ExpressionUUID->"d188e3de-0ad4-4104-8aa4-e2f89cd778d6"]
 }, Open  ]]
 }, Open  ]]
 }
