@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       161,          7]
-NotebookDataLength[     19379,        420]
-NotebookOptionsPosition[     16753,        366]
-NotebookOutlinePosition[     17097,        381]
-CellTagsIndexPosition[     17054,        378]
+NotebookDataLength[     32328,        715]
+NotebookOptionsPosition[     28964,        650]
+NotebookOutlinePosition[     29307,        665]
+CellTagsIndexPosition[     29264,        662]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -47,12 +47,14 @@ center of campus there is a single large transformer with a meter that serves \
 several large academic buildings that do not have individual meters.  There \
 are also meters not on buildings, but on  water pumps and parking lot lights. \
  There is similar complexity with regard to heating fuel, where there is a \
-central plant that burns wood chips to heat much, but not all, of the campus.\
+central plant that burns wood chips to heat much of the campus, but a number \
+of buildings use fuel oil or propane\
 \>", "Text",
  CellChangeTimes->{{3.7884389957735524`*^9, 3.7884390407383285`*^9}, {
   3.7884392357398605`*^9, 3.788439398355132*^9}, {3.78843951519209*^9, 
-  3.7884397201237354`*^9}, {3.7884457699312925`*^9, 
-  3.7884458957821445`*^9}},ExpressionUUID->"8e495ca1-a3e6-4ef9-b1fb-\
+  3.7884397201237354`*^9}, {3.7884457699312925`*^9, 3.7884458957821445`*^9}, {
+  3.7884716393631296`*^9, 
+  3.788471674270425*^9}},ExpressionUUID->"8e495ca1-a3e6-4ef9-b1fb-\
 8c1374ddffb9"]
 }, Open  ]],
 
@@ -126,6 +128,288 @@ visualize objects and how they are related.  \
   3.7884484425780277`*^9, 3.7884484596879497`*^9}, {3.788448948749*^9, 
   3.7884489946753163`*^9}},ExpressionUUID->"79f1cb2b-ffab-474d-8f6e-\
 bb34f6d3343e"],
+
+Cell[BoxData[
+ RowBox[{"academicBuilding", "="}]], "Input",
+ CellChangeTimes->{{3.788472956741399*^9, 3.7884729640499563`*^9}, {
+  3.7884735768615665`*^9, 
+  3.788473584247241*^9}},ExpressionUUID->"8985d1e9-58b2-46db-8384-\
+d260ab45f983"],
+
+Cell[BoxData[
+ RowBox[{"transformer", "="}]], "Input",
+ CellChangeTimes->{{3.788482204454071*^9, 
+  3.788482208845953*^9}},ExpressionUUID->"d8fa50a6-89ff-4fb6-8106-\
+7dec39f468b1"],
+
+Cell[BoxData[
+ RowBox[{"meter", "="}]], "Input",
+ CellChangeTimes->{{3.788484062809788*^9, 3.7884840653299494`*^9}},
+ EmphasizeSyntaxErrors->True,
+ CellLabel->"In[2]:=",ExpressionUUID->"8c350f49-c0fe-4ede-98e3-3b7ae44d9752"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Graph", "[", "\[IndentingNewLine]", 
+  RowBox[{"{", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Labeled", "[", 
+     RowBox[{
+      RowBox[{
+      "\"\<Transformer\>\"", "\[Rule]", "\"\<Academic Building 1\>\""}], ",", 
+      "\"\<energizes\>\""}], "]"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"Labeled", "[", 
+     RowBox[{
+      RowBox[{
+      "\"\<Transformer\>\"", "\[Rule]", "\"\<Academic Building 2\>\""}], ",", 
+      "\"\<energizes\>\""}], "]"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"Labeled", "[", 
+     RowBox[{
+      RowBox[{
+      "\"\<Biomass Boiler\>\"", "\[Rule]", "\"\<Academic Building 1\>\""}], 
+      ",", "\"\<heats\>\""}], "]"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"Labeled", "[", 
+     RowBox[{
+      RowBox[{
+      "\"\<Biomass Boiler\>\"", "\[Rule]", "\"\<Academic Building 2\>\""}], 
+      ",", "\"\<heats\>\""}], "]"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"Labeled", "[", 
+     RowBox[{
+      RowBox[{"\"\<Meter 1\>\"", "\[Rule]", "\"\<Transformer\>\""}], ",", 
+      "\"\<meters\>\""}], "]"}]}], "\n", "}"}], "]"}]], "Input",
+ CellChangeTimes->{{3.7884734148634152`*^9, 3.7884734188220673`*^9}, {
+   3.788473466817091*^9, 3.788473481070527*^9}, {3.7884735464494476`*^9, 
+   3.7884736350646267`*^9}, {3.7884817759584885`*^9, 3.788481794838456*^9}, {
+   3.7884818314549227`*^9, 3.7884818618571467`*^9}, {3.7884818993037577`*^9, 
+   3.788481906831875*^9}, {3.7884820314390726`*^9, 3.788482078933739*^9}, {
+   3.788482386563002*^9, 3.78848244081037*^9}, {3.7884824727362356`*^9, 
+   3.788482480662491*^9}, {3.7884825266808176`*^9, 3.788482536876148*^9}, {
+   3.7884826046487827`*^9, 3.7884826818621445`*^9}, {3.788482712990629*^9, 
+   3.7884827371843767`*^9}, {3.7884827771676483`*^9, 
+   3.7884828156060963`*^9}, {3.7884829020248785`*^9, 
+   3.7884829490702963`*^9}, {3.788483437985376*^9, 3.788483573288375*^9}, {
+   3.78848364537801*^9, 3.7884837236379433`*^9}, {3.7884839639601173`*^9, 
+   3.788483965416423*^9}, {3.7884840002007217`*^9, 3.788484056860804*^9}, 
+   3.788484187898107*^9, {3.788484353261904*^9, 3.7884843753879004`*^9}, 
+   3.788484633949516*^9, 3.788484724327329*^9},
+ CellLabel->"In[5]:=",ExpressionUUID->"7e2a500c-a1f5-4446-99c0-045fcaff1f64"],
+
+Cell[BoxData[
+ GraphicsBox[
+  NamespaceBox["NetworkGraphics",
+   DynamicModuleBox[{Typeset`graph = HoldComplete[
+     Graph[{
+      "Transformer", "Academic Building 1", "Academic Building 2", 
+       "Biomass Boiler", "Meter 1"}, {{{1, 2}, {1, 3}, {4, 2}, {4, 3}, {5, 
+       1}}, Null}, {
+      EdgeLabels -> {
+        DirectedEdge["Transformer", "Academic Building 2"] -> "energizes", 
+         DirectedEdge["Transformer", "Academic Building 1"] -> "energizes", 
+         DirectedEdge["Biomass Boiler", "Academic Building 2"] -> "heats", 
+         DirectedEdge["Meter 1", "Transformer"] -> "meters", 
+         DirectedEdge["Biomass Boiler", "Academic Building 1"] -> 
+         "heats"}}]]}, 
+    TagBox[GraphicsGroupBox[{
+       {Hue[0.6, 0.7, 0.5], Opacity[0.7], Arrowheads[
+        Medium], {ArrowBox[{{0., 1.}, {0., 0.}}, 0.02261146496815286], 
+         InsetBox["\<\"energizes\"\>", {0., 0.5}, ImageScaled[{0.5, 0.5}],
+          BaseStyle->"Graphics"]}, {
+         ArrowBox[{{0., 1.}, {1., 0.}}, 0.02261146496815286], 
+         InsetBox["\<\"energizes\"\>", {0.5, 0.5}, ImageScaled[{0.5, 0.5}],
+          BaseStyle->"Graphics"]}, {
+         ArrowBox[{{1., 1.}, {0., 0.}}, 0.02261146496815286], 
+         InsetBox["\<\"heats\"\>", {0.5, 0.5}, ImageScaled[{0.5, 0.5}],
+          BaseStyle->"Graphics"]}, {
+         ArrowBox[{{1., 1.}, {1., 0.}}, 0.02261146496815286], 
+         InsetBox["\<\"heats\"\>", {1., 0.5}, ImageScaled[{0.5, 0.5}],
+          BaseStyle->"Graphics"]}, {
+         ArrowBox[{{0., 2.}, {0., 1.}}, 0.02261146496815286], 
+         InsetBox["\<\"meters\"\>", {0., 1.5}, ImageScaled[{0.5, 0.5}],
+          BaseStyle->"Graphics"]}}, 
+       {Hue[0.6, 0.2, 0.8], EdgeForm[{GrayLevel[0], Opacity[0.7]}], 
+        DiskBox[{0., 1.}, 0.02261146496815286], 
+        DiskBox[{0., 0.}, 0.02261146496815286], 
+        DiskBox[{1., 0.}, 0.02261146496815286], 
+        DiskBox[{1., 1.}, 0.02261146496815286], 
+        DiskBox[{0., 2.}, 0.02261146496815286]}}],
+     MouseAppearanceTag["NetworkGraphics"]],
+    AllowKernelInitialization->False]],
+  DefaultBaseStyle->{
+   "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> Hue[0.8, 1., 0.6]},
+  FormatType->TraditionalForm,
+  FrameTicks->None]], "Output",
+ CellChangeTimes->{3.7884847317911706`*^9},
+ CellLabel->"Out[5]=",ExpressionUUID->"c2a73746-1e90-4daa-a523-07fbf06cf437"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{",", "\n", 
+  RowBox[{"VertexCoordinates", "\[Rule]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\"\<Transformer\>\"", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "0"}], "}"}]}], ",", 
+     RowBox[{"\"\<Academic Building 1\>\"", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", "1"}], "}"}]}], ",", 
+     RowBox[{"\"\<Academic Building 2\>\"", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", "2"}], "}"}]}], ",", 
+     RowBox[{"\"\<Meter 1\>\"", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"-", "1"}], ",", "0"}], "}"}]}]}], "}"}]}], ",", "\n", 
+  RowBox[{"VertexShape", "\[Rule]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\"\<Transformer\>\"", "\[Rule]", "transformer"}], ",", 
+     RowBox[{"\"\<Academic Building 1\>\"", "\[Rule]", "academicBuilding"}], 
+     ",", 
+     RowBox[{"\"\<Academic Building 2\>\"", "\[Rule]", "academicBuilding"}], 
+     ",", 
+     RowBox[{"\"\<Meter 1\>\"", "\[Rule]", "meter"}]}], "}"}]}], ",", "\n", 
+  RowBox[{"VertexLabels", "\[Rule]", 
+   RowBox[{"Placed", "[", 
+    RowBox[{"\"\<Name\>\"", ",", "Below"}], "]"}]}], ",", "\n", 
+  RowBox[{"VertexSize", "\[Rule]", "0.5"}]}]], "Input",ExpressionUUID->\
+"8ec60343-e66d-4752-96f4-ee303227d466"],
+
+Cell[BoxData[
+ RowBox[{"Graph", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     TemplateBox[{
+      RowBox[{"\"Transformer\"", "\[Rule]", "\"Academic Building 1\""}],
+       "\"energizes\""},
+      "Labeled",
+      DisplayFunction->(GridBox[{{
+          TagBox[
+           ItemBox[
+            PaneBox[
+             TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline},
+              BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+           "SkipImageSizeLevel"]}, {
+          ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"]}}, 
+        GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+        AutoDelete -> False, 
+        GridBoxItemSize -> {
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+        BaselinePosition -> {1, 1}]& ),
+      InterpretationFunction->(RowBox[{"Labeled", "[", 
+         RowBox[{#, ",", #2}], "]"}]& )], ",", 
+     TemplateBox[{
+      RowBox[{"\"Transformer\"", "\[Rule]", "\"Academic Building 2\""}],
+       "\"energizes\""},
+      "Labeled",
+      DisplayFunction->(GridBox[{{
+          TagBox[
+           ItemBox[
+            PaneBox[
+             TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline},
+              BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+           "SkipImageSizeLevel"]}, {
+          ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"]}}, 
+        GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+        AutoDelete -> False, 
+        GridBoxItemSize -> {
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+        BaselinePosition -> {1, 1}]& ),
+      InterpretationFunction->(RowBox[{"Labeled", "[", 
+         RowBox[{#, ",", #2}], "]"}]& )], ",", 
+     TemplateBox[{
+      RowBox[{"\"Biomass Boiler\"", "\[Rule]", "\"Academic Building 1\""}],
+       "\"heats\""},
+      "Labeled",
+      DisplayFunction->(GridBox[{{
+          TagBox[
+           ItemBox[
+            PaneBox[
+             TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline},
+              BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+           "SkipImageSizeLevel"]}, {
+          ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"]}}, 
+        GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+        AutoDelete -> False, 
+        GridBoxItemSize -> {
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+        BaselinePosition -> {1, 1}]& ),
+      InterpretationFunction->(RowBox[{"Labeled", "[", 
+         RowBox[{#, ",", #2}], "]"}]& )], ",", 
+     TemplateBox[{
+      RowBox[{"\"Biomass Boiler\"", "\[Rule]", "\"Academic Building 2\""}],
+       "\"heats\""},
+      "Labeled",
+      DisplayFunction->(GridBox[{{
+          TagBox[
+           ItemBox[
+            PaneBox[
+             TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline},
+              BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+           "SkipImageSizeLevel"]}, {
+          ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"]}}, 
+        GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+        AutoDelete -> False, 
+        GridBoxItemSize -> {
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+        BaselinePosition -> {1, 1}]& ),
+      InterpretationFunction->(RowBox[{"Labeled", "[", 
+         RowBox[{#, ",", #2}], "]"}]& )], ",", 
+     TemplateBox[{
+      RowBox[{"\"Meter 1\"", "\[Rule]", "\"Transformer\""}],"\"meters\""},
+      "Labeled",
+      DisplayFunction->(GridBox[{{
+          TagBox[
+           ItemBox[
+            PaneBox[
+             TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline},
+              BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+           "SkipImageSizeLevel"]}, {
+          ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"]}}, 
+        GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+        AutoDelete -> False, 
+        GridBoxItemSize -> {
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+        BaselinePosition -> {1, 1}]& ),
+      InterpretationFunction->(RowBox[{"Labeled", "[", 
+         RowBox[{#, ",", #2}], "]"}]& )]}], "}"}], ",", 
+   RowBox[{"VertexCoordinates", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"\<\"Transformer\"\>", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"0", ",", "0"}], "}"}]}], ",", 
+      RowBox[{"\<\"Academic Building 1\"\>", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "1"}], "}"}]}], ",", 
+      RowBox[{"\<\"Academic Building 2\"\>", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "2"}], "}"}]}], ",", 
+      RowBox[{"\<\"Meter 1\"\>", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "1"}], ",", "0"}], "}"}]}]}], "}"}]}], ",", 
+   RowBox[{"VertexShape", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"\<\"Transformer\"\>", "\[Rule]", "transformer"}], ",", 
+      RowBox[{"\<\"Academic Building 1\"\>", "\[Rule]", "academicBuilding"}], 
+      ",", 
+      RowBox[{"\<\"Academic Building 2\"\>", "\[Rule]", "academicBuilding"}], 
+      ",", 
+      RowBox[{"\<\"Meter 1\"\>", "\[Rule]", "meter"}]}], "}"}]}], ",", 
+   RowBox[{"VertexLabels", "\[Rule]", 
+    RowBox[{"Placed", "[", 
+     RowBox[{"\<\"Name\"\>", ",", "Below"}], "]"}]}], ",", 
+   RowBox[{"VertexSize", "\[Rule]", "0.5`"}]}], "]"}]], "Output",
+ CellChangeTimes->{3.7884839727516184`*^9, 3.7884841542236195`*^9, 
+  3.788484585159313*^9},
+ CellLabel->"Out[3]=",ExpressionUUID->"387d5047-7619-42b8-be9f-db7d62b14a64"]
+}, Open  ]],
 
 Cell["\<\
 There are three primary concepts that this application models.  Those are \
@@ -364,8 +648,8 @@ e2f89cd778d6"]
 }, Open  ]]
 }, Open  ]]
 },
-WindowSize->{1368, 829},
-WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+WindowSize->{1352, 829},
+WindowMargins->{{-8, Automatic}, {Automatic, 0}},
 FrontEndVersion->"12.0 for Microsoft Windows (64-bit) (April 11, 2019)",
 StyleDefinitions->"Default.nb"
 ]
@@ -384,42 +668,53 @@ Cell[CellGroupData[{
 Cell[583, 22, 250, 4, 67, "Chapter",ExpressionUUID->"e009d0d6-f6d9-41cc-9fad-c8a5be675b08"],
 Cell[CellGroupData[{
 Cell[858, 30, 207, 4, 53, "Subsection",ExpressionUUID->"9d4c3d46-3775-49c5-87e2-1c9d334b1040"],
-Cell[1068, 36, 1296, 19, 122, "Text",ExpressionUUID->"8e495ca1-a3e6-4ef9-b1fb-8c1374ddffb9"]
+Cell[1068, 36, 1385, 21, 122, "Text",ExpressionUUID->"8e495ca1-a3e6-4ef9-b1fb-8c1374ddffb9"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[2401, 60, 242, 4, 67, "Section",ExpressionUUID->"be52c3e1-a212-4943-af0e-b068bde4daaf"],
-Cell[2646, 66, 476, 8, 56, "Text",ExpressionUUID->"4fa2f2f6-96d1-493b-97d8-6541d3a0b68b"],
+Cell[2490, 62, 242, 4, 67, "Section",ExpressionUUID->"be52c3e1-a212-4943-af0e-b068bde4daaf"],
+Cell[2735, 68, 476, 8, 56, "Text",ExpressionUUID->"4fa2f2f6-96d1-493b-97d8-6541d3a0b68b"],
 Cell[CellGroupData[{
-Cell[3147, 78, 341, 7, 28, "Input",ExpressionUUID->"f62ca71a-716b-4e70-9035-71130f058ded"],
-Cell[3491, 87, 1108, 17, 128, "Output",ExpressionUUID->"fcd3e4b0-a803-4239-affe-2501ed039d34"]
+Cell[3236, 80, 341, 7, 28, "Input",ExpressionUUID->"f62ca71a-716b-4e70-9035-71130f058ded"],
+Cell[3580, 89, 1108, 17, 147, "Output",ExpressionUUID->"fcd3e4b0-a803-4239-affe-2501ed039d34"]
 }, Open  ]],
-Cell[4614, 107, 669, 11, 56, "Text",ExpressionUUID->"b5a5a1ea-ebea-4df5-8f85-d749c98c6093"],
-Cell[5286, 120, 373, 7, 34, "Text",ExpressionUUID->"79f1cb2b-ffab-474d-8f6e-bb34f6d3343e"],
-Cell[5662, 129, 544, 9, 34, "Text",ExpressionUUID->"e7ebdc7b-bdf1-48d1-b88e-9a3ecf2b88ec"],
+Cell[4703, 109, 669, 11, 56, "Text",ExpressionUUID->"b5a5a1ea-ebea-4df5-8f85-d749c98c6093"],
+Cell[5375, 122, 373, 7, 34, "Text",ExpressionUUID->"79f1cb2b-ffab-474d-8f6e-bb34f6d3343e"],
+Cell[5751, 131, 238, 5, 28, "Input",ExpressionUUID->"8985d1e9-58b2-46db-8384-d260ab45f983"],
+Cell[5992, 138, 180, 4, 28, "Input",ExpressionUUID->"d8fa50a6-89ff-4fb6-8106-7dec39f468b1"],
+Cell[6175, 144, 224, 4, 28, "Input",ExpressionUUID->"8c350f49-c0fe-4ede-98e3-3b7ae44d9752"],
 Cell[CellGroupData[{
-Cell[6231, 142, 1127, 24, 105, "Input",ExpressionUUID->"d95b8ca7-aaba-4ea6-931d-20fbcf06b381"],
-Cell[7361, 168, 2324, 48, 50, "Output",ExpressionUUID->"2f039ce7-335e-45d3-b845-c3eca8ebc433"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[9722, 221, 168, 3, 44, "Subsubsection",ExpressionUUID->"523ead97-e4b6-4f02-98d7-4c1bc577904c"],
-Cell[9893, 226, 449, 8, 56, "Text",ExpressionUUID->"7d36259c-b4fd-4abf-a62f-9e2883d745e4"]
+Cell[6424, 152, 2236, 43, 162, "Input",ExpressionUUID->"7e2a500c-a1f5-4446-99c0-045fcaff1f64"],
+Cell[8663, 197, 2338, 45, 482, "Output",ExpressionUUID->"c2a73746-1e90-4daa-a523-07fbf06cf437"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10379, 239, 171, 3, 44, "Subsubsection",ExpressionUUID->"17b056ee-f5cd-4661-8a47-09d53a74f487"],
-Cell[10553, 244, 1877, 27, 144, "Text",ExpressionUUID->"eb83807a-d2a5-467f-9e14-ee6627dd8e1c"]
+Cell[11038, 247, 1255, 31, 105, "Input",ExpressionUUID->"8ec60343-e66d-4752-96f4-ee303227d466"],
+Cell[12296, 280, 5562, 130, 147, "Output",ExpressionUUID->"387d5047-7619-42b8-be9f-db7d62b14a64"]
+}, Open  ]],
+Cell[17873, 413, 544, 9, 34, "Text",ExpressionUUID->"e7ebdc7b-bdf1-48d1-b88e-9a3ecf2b88ec"],
+Cell[CellGroupData[{
+Cell[18442, 426, 1127, 24, 105, "Input",ExpressionUUID->"d95b8ca7-aaba-4ea6-931d-20fbcf06b381"],
+Cell[19572, 452, 2324, 48, 50, "Output",ExpressionUUID->"2f039ce7-335e-45d3-b845-c3eca8ebc433"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[12467, 276, 169, 3, 44, "Subsubsection",ExpressionUUID->"b0c54f3d-3b3e-4239-9237-9f8d6f0f7ab7"],
-Cell[12639, 281, 844, 15, 100, "Text",ExpressionUUID->"fc96df97-9030-4325-9212-38b3e2b19e6d"]
+Cell[21933, 505, 168, 3, 44, "Subsubsection",ExpressionUUID->"523ead97-e4b6-4f02-98d7-4c1bc577904c"],
+Cell[22104, 510, 449, 8, 56, "Text",ExpressionUUID->"7d36259c-b4fd-4abf-a62f-9e2883d745e4"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[22590, 523, 171, 3, 44, "Subsubsection",ExpressionUUID->"17b056ee-f5cd-4661-8a47-09d53a74f487"],
+Cell[22764, 528, 1877, 27, 144, "Text",ExpressionUUID->"eb83807a-d2a5-467f-9e14-ee6627dd8e1c"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[24678, 560, 169, 3, 44, "Subsubsection",ExpressionUUID->"b0c54f3d-3b3e-4239-9237-9f8d6f0f7ab7"],
+Cell[24850, 565, 844, 15, 100, "Text",ExpressionUUID->"fc96df97-9030-4325-9212-38b3e2b19e6d"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[13532, 302, 169, 3, 67, "Section",ExpressionUUID->"a9e89785-9666-4895-964c-6d8f4db04356"],
+Cell[25743, 586, 169, 3, 67, "Section",ExpressionUUID->"a9e89785-9666-4895-964c-6d8f4db04356"],
 Cell[CellGroupData[{
-Cell[13726, 309, 444, 9, 28, "Input",ExpressionUUID->"40b50373-6e7f-4cf4-8ca8-72dc82c2213e"],
-Cell[14173, 320, 988, 16, 109, "Output",ExpressionUUID->"ba0f471a-9d35-4ef2-a263-9a62e53a4443"]
+Cell[25937, 593, 444, 9, 28, "Input",ExpressionUUID->"40b50373-6e7f-4cf4-8ca8-72dc82c2213e"],
+Cell[26384, 604, 988, 16, 109, "Output",ExpressionUUID->"ba0f471a-9d35-4ef2-a263-9a62e53a4443"]
 }, Open  ]],
-Cell[15176, 339, 1549, 23, 144, "Text",ExpressionUUID->"d188e3de-0ad4-4104-8aa4-e2f89cd778d6"]
+Cell[27387, 623, 1549, 23, 144, "Text",ExpressionUUID->"d188e3de-0ad4-4104-8aa4-e2f89cd778d6"]
 }, Open  ]]
 }, Open  ]]
 }
