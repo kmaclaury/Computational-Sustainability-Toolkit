@@ -1,6 +1,10 @@
 # Computational-Sustainability-Toolkit
 **Lessons in Energy Monitoring and Application Building using the Wolfram Language**
 
+A published version of the tookit can be found at the link below.
+
+https://www.wolframcloud.com/env/kmaclaury/Published/Computational%20Sustainability%20Toolkit.nb
+
 I hope that these materials provide students with an understanding of how to use computational technology and computational thinking in their pursuit of a more sustainable world. 
 
 To that end, these materials provide:
